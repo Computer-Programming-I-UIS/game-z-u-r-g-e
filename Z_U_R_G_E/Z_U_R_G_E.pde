@@ -1,14 +1,11 @@
 
-
 int stage;
 PFont fuente;
 PImage star;
-PImage zurgeimg;
-PImage luna1;
-PImage luna2;
-PImage alien;
-Estrellas stars[]=new Estrellas[30];
-Zurge zurge;
+PImage zurge;
+Estrellas estrellas;
+Estrellas stars[]=new Estrellas[20];
+Zurge ZURGE;
 int cont;
 
 void setup(){
@@ -16,20 +13,15 @@ void setup(){
   background(0);
   fuente=createFont("fuente.otf",70);
   star=loadImage("estrella.png");
-  zurgeimg=loadImage("zurge.png");
-  alien=loadImage("Alien.png");
-  luna1=loadImage("luna1.png");
-  luna2=loadImage("luna2.png");
-  
-  zurge=new Zurge(3,20,300);
-  //estrellas=new Estrellas(100,200,1);
+  zurge=loadImage("zurge.png");
+  estrellas=new Estrellas(100,200,1);
   imageMode(CENTER);
   textAlign(CENTER);
   stage=0;
-  for(int i=0;i<30;i++){
-    stars[cont]=new Estrellas(random(0,width)+i,random(0,height)+i,3);
+  ZURGE=new Zurge (5,50,height/2);
+  for(int i=0;i<20;i++){
+    stars[cont]=new Estrellas(random(0,width),random(0,height),3);
     cont++;
-    cont=constrain(cont,0,29);
 }
 }
 
@@ -50,15 +42,28 @@ void draw(){
   
   if(stage==1){
     background(0);
-    image(luna1,800,100);
-    image(luna2,800,300);
-    image(alien,500,300);
-    
-    for(int i=0;i<30;i++){
-    stars[i].fondo();
-    }
-
-    zurge.movi();
+    stars[0].fondo();
+    stars[1].fondo();
+    stars[2].fondo();
+    stars[3].fondo();
+    stars[4].fondo();
+    stars[5].fondo();
+    stars[6].fondo();
+    stars[7].fondo();
+    stars[8].fondo();
+    stars[9].fondo();
+    stars[10].fondo();
+    stars[11].fondo();
+    stars[12].fondo();
+    stars[13].fondo();
+    stars[14].fondo();
+    stars[15].fondo();
+    stars[16].fondo();
+    stars[17].fondo();
+    stars[18].fondo();
+    stars[19].fondo();
+    ZURGE.movi();
+    ZURGE.fondo();
    
 
    // image(star,100,200);
