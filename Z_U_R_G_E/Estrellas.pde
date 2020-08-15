@@ -15,6 +15,8 @@ class Estrellas {
   
   void fondo(){
    image(star,xstars,ystars,50,50);
+   image(muni,500,200);
+   image(energia,100,200);
    xstars-=vel;
    if(xstars<=0){
      xstars=width;
@@ -45,7 +47,7 @@ class Estrellas {
     
     if(mouseX>350&&mouseX<650&&mouseY>300&&mouseY<340){
       if(mousePressed){
-        background(0);
+        stage=2;
       }
     }
   }

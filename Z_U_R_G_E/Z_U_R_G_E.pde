@@ -5,6 +5,8 @@ PImage zurge;
 PImage luna1;
 PImage luna2;
 PImage alien;
+PImage energia;
+PImage muni;
 PImage laser[]=new PImage[6];
 
 Estrellas estrellas;
@@ -21,6 +23,9 @@ void setup(){
   luna1=loadImage("luna1.png");
   luna2=loadImage("luna2.png");
   alien=loadImage("Alien.png");
+  energia=loadImage("energia.png");
+  muni=loadImage("muni.png");
+  
   estrellas=new Estrellas(100,200,3);
   imageMode(CENTER);
   textAlign(CENTER);
@@ -62,9 +67,7 @@ void draw(){
     for(int i=0;i<30;i++){
     stars[i].fondo();
     }
-     
-    
-      
+
       image(laser[1],200,200);
       if(mousePressed){
         image(laser[5],200,200);
@@ -75,9 +78,14 @@ void draw(){
     
     ZURGE.movi();
     ZURGE.fondo();
+   
 
 
    // image(star,100,200);
+}
+
+if(stage==2){
+  background(0);
 }
 }
 
