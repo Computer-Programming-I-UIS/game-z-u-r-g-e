@@ -48,7 +48,7 @@ class Zurge {
   void fondo(){
    if(mousePressed){
     copy(zurge,0, 0, 100, 186, xzurge, yzurge, 100, 200);
-    if (++a>10){
+    if (a>10){
       mousePressed=false;
       a=0;
     }
@@ -57,5 +57,6 @@ class Zurge {
     copy(zurge,0, 186, 100, 186, xzurge, yzurge,100, 200);
     //image(per, x, y);
   }
+ 
 }
 }

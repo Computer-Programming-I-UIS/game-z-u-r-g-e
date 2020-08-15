@@ -41,5 +41,14 @@ class Estrellas {
     }
   }
   
+  void menu(){
+    
+    if(mouseX>350&&mouseX<650&&mouseY>300&&mouseY<340){
+      if(mousePressed){
+        background(0);
+      }
+    }
+  }
+  
 }
   

@@ -5,6 +5,8 @@ PImage zurge;
 PImage luna1;
 PImage luna2;
 PImage alien;
+PImage laser[]=new PImage[6];
+
 Estrellas estrellas;
 Estrellas stars[]=new Estrellas[30];
 Zurge ZURGE;
@@ -24,10 +26,16 @@ void setup(){
   textAlign(CENTER);
   stage=0;
   ZURGE=new Zurge (5,50,height/2);
+  
   for(int i=0;i<30;i++){
     stars[cont]=new Estrellas(random(0,width),random(0,height),3);
     cont++;
 }
+  for(int j=0;j<laser.length;j++){
+  
+  laser[j]=loadImage("laser"+j+".png");  
+    
+  }
 }
 
 void draw(){
@@ -40,6 +48,7 @@ void draw(){
     text("Créditos",width/2,390);
     textSize(20);
     text("Presiona cualquier tecla para iniciar el juego",width/2,height-100);
+    stars[0].menu();
     if(keyPressed){
       stage=1;
     }
@@ -53,6 +62,17 @@ void draw(){
     for(int i=0;i<30;i++){
     stars[i].fondo();
     }
+     
+    
+      
+      image(laser[1],200,200);
+      if(mousePressed){
+        image(laser[5],200,200);
+    }
+
+   
+    
+    
     ZURGE.movi();
     ZURGE.fondo();
 
