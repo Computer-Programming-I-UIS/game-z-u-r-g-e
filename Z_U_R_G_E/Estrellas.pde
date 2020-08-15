@@ -21,8 +21,8 @@ class Estrellas {
     }
   }
   
-  void move(){
-    image(zurge,xzurge,yzurge);
+  /*void movi(){
+    image(zurgeimg,xzurge,yzurge,100,100);
     if(keyPressed){
       switch(key){
         case 'w':
@@ -39,7 +39,7 @@ class Estrellas {
         break;
       }
     }
-  }
+  }*/
   
 }
   
