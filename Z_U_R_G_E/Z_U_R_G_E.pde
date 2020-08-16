@@ -12,10 +12,11 @@ PImage material;
 PImage laser[]=new PImage[6];
 PImage gus[]=new PImage[2];
 PImage bil[]=new PImage[3];
-Estrellas estrellas;
 Estrellas stars[]=new Estrellas[30];
 Zurge ZURGE;
-Enemigo aliens;
+Enemigo aliens[]=new Enemigo[60];
+Enemigo guss;
+Enemigo BIL;
 cajas caja;
 int cont;
 
@@ -32,15 +33,16 @@ void setup(){
   muni=loadImage("muni.png");
   material=loadImage("material.png");
   
-  estrellas=new Estrellas(100,200,3);
   imageMode(CENTER);
   textAlign(CENTER);
   stage=0;
   ZURGE=new Zurge (5,50,height/2);
-  aliens=new Enemigo (5,800,300);
+  guss=new Enemigo (5,850,300,2,200);
+  BIL=new Enemigo (5,850,300,3,400);
   caja=new cajas (3.5,width,random(0,height));
   for(int i=0;i<30;i++){
     stars[cont]=new Estrellas(random(0,width),random(0,height),3);
+    aliens[cont]=new Enemigo (5,800,300,1,1000);
     cont++;
 }
   for(int j=0;j<laser.length;j++){
@@ -52,7 +54,6 @@ void setup(){
   for(int l=0;l<bil.length;l++){
    bil[l]=loadImage("bil"+l+".png");
   }
-    
 }
 
 void draw(){
@@ -73,7 +74,7 @@ void draw(){
 
   if(stage==1){
     background(0);
-     if(v<-500 ||   v>width+200){
+     if(v<-500 ||   v>width+200){  //luna
       w=random(width,width+100);
       v=random(width,width+100);
       h=random(0,height);
@@ -83,32 +84,29 @@ void draw(){
       image(luna1,w-=3,h);
       image(luna2,v-=3,j);
       }
-    for(int i=0;i<30;i++){
+    for(int i=0;i<30;i++){  //estrellas
     stars[i].fondo();
+    aliens[i].fondo();
+    aliens[i].movi();
     }
       if(mousePressed){
-        image(gus[1],300,300);
         image(laser[5],200,200);
-        image(bil[2],400,400);
-    }
+    } 
+    
      else{
       image(laser[1],200,200);
-      image(gus[0],300,300);
-      image(bil[0],400,400);
-      image(material,600,300);
       }
    
     
     ZURGE.movi();
     ZURGE.fondo();
-    aliens.fondo();
-    aliens.movi();
     caja.fondo();
     caja.movi();
-   
-
-
-   // image(star,100,200);
+    guss.movi();
+    guss.fondo();
+    BIL.movi();
+    BIL.fondo();
+  
 }
 
 if(stage==2){

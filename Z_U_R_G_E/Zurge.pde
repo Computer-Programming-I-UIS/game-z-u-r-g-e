@@ -1,6 +1,6 @@
 
 class Zurge {
-  float a,b;
+  float a;
   int xzurge;
   int yzurge;
   float vel;
@@ -12,7 +12,8 @@ class Zurge {
   }
   
   void movi(){
-    //image(zurgeimg,xzurge,yzurge);
+    xzurge=constrain(xzurge,0,width-64);
+    yzurge=constrain(yzurge,-50,height-100);
     if(keyPressed){
       switch(key){
         case 'w':

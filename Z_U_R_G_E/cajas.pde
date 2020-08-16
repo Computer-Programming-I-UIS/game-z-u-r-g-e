@@ -1,5 +1,5 @@
 class cajas {
-  float a=1,b,c;
+  float a=1,b;
   float xcaja;
   float ycaja;
   float vel1,vel2;
@@ -11,29 +11,32 @@ class cajas {
   }
   
   void movi(){
-    println(vel2);
-    if(ycaja<-4 ||  ycaja>height+10){
+    if(ycaja<-4 ||  ycaja>height+10){  //limites superior e inferior de cajas
       vel2*=-1;
       ycaja+=vel2;
     }
-    else if (xcaja<-50){
+    else if (xcaja<-50){  //no recolecta cajas
       a=0;
       b=0;
     }
-    else{
+    else if (xcaja<ZURGE.xzurge+100 && xcaja>ZURGE.xzurge && ycaja>ZURGE.yzurge+50 && ycaja<ZURGE.yzurge+150){  //recolecta de las cajas
+      a=0;
+      b=0;
+    }
+    else{  //movimiento
       xcaja-=vel1;
       ycaja+=vel2;
     }
   }
   
   void fondo(){
-    if(a==3  &&  b>50){
+    if(a==3  &&  b>500){
       image(muni,xcaja,ycaja);
     }
-    else if(a==1  &&  b>50){
+    else if(a==1  &&  b>500){
       image(muni,xcaja,ycaja);
     }
-    else if(a==2  &&  b>50){
+    else if(a==2  &&  b>500){
       image(energia,xcaja,ycaja);
     }
     else{
