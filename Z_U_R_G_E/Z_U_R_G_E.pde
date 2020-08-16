@@ -8,6 +8,7 @@ PImage alien;
 PImage energia;
 PImage muni;
 PImage laser[]=new PImage[6];
+PImage gus[]=new PImage[2];
 
 Estrellas estrellas;
 Estrellas stars[]=new Estrellas[30];
@@ -37,9 +38,10 @@ void setup(){
     cont++;
 }
   for(int j=0;j<laser.length;j++){
-  
-  laser[j]=loadImage("laser"+j+".png");  
-    
+  laser[j]=loadImage("laser"+j+".png");   
+  }
+  for(int k=0;k<gus.length;k++){
+   gus[k]=loadImage("gus"+k+".png");
   }
 }
 
@@ -68,9 +70,13 @@ void draw(){
     stars[i].fondo();
     }
 
-      image(laser[1],200,200);
+      
       if(mousePressed){
         image(laser[5],200,200);
+        image(gus[1],300,300);
+    }else{
+      image(laser[1],200,200);
+      image(gus[0],300,300);
     }
 
    
