@@ -1,3 +1,4 @@
+float v=width,w=width*4/5,h=height*3/8,j=height/2;
 int stage;
 PFont fuente;
 PImage star;
@@ -9,10 +10,11 @@ PImage energia;
 PImage muni;
 PImage laser[]=new PImage[6];
 PImage gus[]=new PImage[2];
-
 Estrellas estrellas;
 Estrellas stars[]=new Estrellas[30];
 Zurge ZURGE;
+Enemigo aliens;
+cajas caja;
 int cont;
 
 void setup(){
@@ -32,13 +34,14 @@ void setup(){
   textAlign(CENTER);
   stage=0;
   ZURGE=new Zurge (5,50,height/2);
-  
+  aliens=new Enemigo (5,800,300);
+  caja=new cajas (3.5,width,random(0,height));
   for(int i=0;i<30;i++){
     stars[cont]=new Estrellas(random(0,width),random(0,height),3);
     cont++;
 }
   for(int j=0;j<laser.length;j++){
-  laser[j]=loadImage("laser"+j+".png");   
+    laser[j]=loadImage("laser"+j+".png");   
   }
   for(int k=0;k<gus.length;k++){
    gus[k]=loadImage("gus"+k+".png");
@@ -63,27 +66,35 @@ void draw(){
 
   if(stage==1){
     background(0);
-    image(luna1,800,100);
-    image(luna2,800,300);
-    image(alien,600,300);
+     if(v<-500 ||   v>width+200){
+      w=random(width,width+100);
+      v=random(width,width+100);
+      h=random(0,height);
+      j=random(0,height);
+    }
+    else{
+      image(luna1,w-=3,h);
+      image(luna2,v-=3,j);
+      }
     for(int i=0;i<30;i++){
     stars[i].fondo();
     }
-
-      
       if(mousePressed){
-        image(laser[5],200,200);
         image(gus[1],300,300);
-    }else{
+        image(laser[5],200,200);  
+    }
+     else{
       image(laser[1],200,200);
       image(gus[0],300,300);
-    }
-
+      }
    
-    
     
     ZURGE.movi();
     ZURGE.fondo();
+    aliens.fondo();
+    aliens.movi();
+    caja.fondo();
+    caja.movi();
    
 
 
@@ -94,6 +105,3 @@ if(stage==2){
   background(0);
 }
 }
-
-
-  

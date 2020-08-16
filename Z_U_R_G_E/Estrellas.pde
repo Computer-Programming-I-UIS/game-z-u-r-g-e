@@ -15,12 +15,14 @@ class Estrellas {
   
   void fondo(){
    image(star,xstars,ystars,50,50);
-   image(muni,500,200);
-   image(energia,100,200);
+   
    xstars-=vel;
    if(xstars<=0){
      xstars=width;
     }
+   else if(xstars>=width){
+     xstars=0;
+    } 
   }
   
   void move(){

@@ -1,5 +1,6 @@
+
 class Zurge {
-  int a;
+  float a,b;
   int xzurge;
   int yzurge;
   float vel;
