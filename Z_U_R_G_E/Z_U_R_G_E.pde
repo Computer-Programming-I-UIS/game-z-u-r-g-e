@@ -8,8 +8,10 @@ PImage luna2;
 PImage alien;
 PImage energia;
 PImage muni;
+PImage material;
 PImage laser[]=new PImage[6];
 PImage gus[]=new PImage[2];
+PImage bil[]=new PImage[3];
 Estrellas estrellas;
 Estrellas stars[]=new Estrellas[30];
 Zurge ZURGE;
@@ -28,6 +30,7 @@ void setup(){
   alien=loadImage("Alien.png");
   energia=loadImage("energia.png");
   muni=loadImage("muni.png");
+  material=loadImage("material.png");
   
   estrellas=new Estrellas(100,200,3);
   imageMode(CENTER);
@@ -46,6 +49,10 @@ void setup(){
   for(int k=0;k<gus.length;k++){
    gus[k]=loadImage("gus"+k+".png");
   }
+  for(int l=0;l<bil.length;l++){
+   bil[l]=loadImage("bil"+l+".png");
+  }
+    
 }
 
 void draw(){
@@ -81,11 +88,14 @@ void draw(){
     }
       if(mousePressed){
         image(gus[1],300,300);
-        image(laser[5],200,200);  
+        image(laser[5],200,200);
+        image(bil[2],400,400);
     }
      else{
       image(laser[1],200,200);
       image(gus[0],300,300);
+      image(bil[0],400,400);
+      image(material,600,300);
       }
    
     
