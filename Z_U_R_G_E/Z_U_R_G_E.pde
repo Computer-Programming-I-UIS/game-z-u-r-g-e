@@ -2,14 +2,15 @@ float v=width,w=width*4/5,h=height*3/8,j=height/2;
 int stage;
 PFont fuente;
 PImage star;
-PImage zurge;
+PImage armas[]=new PImage[4];
+PImage zurge[]=new PImage[2];
 PImage luna1;
 PImage luna2;
 PImage alien;
 PImage energia;
 PImage muni;
 PImage material;
-PImage laser[]=new PImage[6];
+PImage laser[]=new PImage[4];
 PImage gus[]=new PImage[2];
 PImage bil[]=new PImage[3];
 Estrellas stars[]=new Estrellas[30];
@@ -25,7 +26,7 @@ void setup(){
   background(0);
   fuente=createFont("fuente.otf",70);
   star=loadImage("estrella.png");
-  zurge=loadImage("zurge.png");
+  //zurge=loadImage("zurge.png");
   luna1=loadImage("luna1.png");
   luna2=loadImage("luna2.png");
   alien=loadImage("Alien.png");
@@ -46,10 +47,12 @@ void setup(){
     cont++;
 }
   for(int j=0;j<laser.length;j++){
-    laser[j]=loadImage("laser"+j+".png");   
+    laser[j]=loadImage("laser"+j+".png");
+    armas[j]=loadImage("armas"+j+".png");
   }
   for(int k=0;k<gus.length;k++){
    gus[k]=loadImage("gus"+k+".png");
+   zurge[k]=loadImage("zurge"+k+".png");
   }
   for(int l=0;l<bil.length;l++){
    bil[l]=loadImage("bil"+l+".png");
@@ -90,11 +93,13 @@ void draw(){
     aliens[i].movi();
     }
       if(mousePressed){
-        image(laser[5],200,200);
+        image(laser[3],200,200);
+        image(armas[3],300,300);
     } 
     
      else{
       image(laser[1],200,200);
+      image(armas[1],300,300);
       }
    
     

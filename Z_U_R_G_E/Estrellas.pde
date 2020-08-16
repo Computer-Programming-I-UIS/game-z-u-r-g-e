@@ -26,7 +26,7 @@ class Estrellas {
   }
   
   void move(){
-    image(zurge,xzurge,yzurge);
+    image(zurge[0],xzurge,yzurge);
     if(keyPressed){
       switch(key){
         case 'w':
