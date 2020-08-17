@@ -12,8 +12,8 @@ class Zurge {
   }
   
   void movi(){
-    xzurge=constrain(xzurge,0,width-64);
-    yzurge=constrain(yzurge,-50,height-100);
+    xzurge=constrain(xzurge,100,width-100);
+    yzurge=constrain(yzurge,100,height-100);
     if(keyPressed){
       switch(key){
         case 'w':

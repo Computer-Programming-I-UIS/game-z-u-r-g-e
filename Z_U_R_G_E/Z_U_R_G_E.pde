@@ -26,7 +26,6 @@ void setup(){
   background(0);
   fuente=createFont("fuente.otf",70);
   star=loadImage("estrella.png");
-  //zurge=loadImage("zurge.png");
   luna1=loadImage("luna1.png");
   luna2=loadImage("luna2.png");
   alien=loadImage("Alien.png");
@@ -43,12 +42,12 @@ void setup(){
   caja=new cajas (3.5,width,random(0,height));
   for(int i=0;i<30;i++){
     stars[cont]=new Estrellas(random(0,width),random(0,height),3);
-    aliens[cont]=new Enemigo (5,800,300,1,1000);
+    aliens[cont]=new Enemigo (5,800,300,1,100);
     cont++;
 }
   for(int j=0;j<laser.length;j++){
     laser[j]=loadImage("laser"+j+".png");
-    armas[j]=loadImage("armas"+j+".png");
+    armas[j]=loadImage("armas"+j+".png");   
   }
   for(int k=0;k<gus.length;k++){
    gus[k]=loadImage("gus"+k+".png");
@@ -76,6 +75,7 @@ void draw(){
   }
 
   if(stage==1){
+    clear();
     background(0);
      if(v<-500 ||   v>width+200){  //luna
       w=random(width,width+100);
@@ -115,6 +115,7 @@ void draw(){
 }
 
 if(stage==2){
+  clear();
   background(0);
 }
 }

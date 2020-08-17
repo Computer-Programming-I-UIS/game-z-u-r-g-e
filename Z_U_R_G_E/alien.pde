@@ -35,7 +35,7 @@ class Enemigo {
       if(d<g && f==false){  //vivo
         image(alien,xenemigo,yenemigo);
       }
-      if(xenemigo>ZURGE.xzurge && yenemigo>ZURGE.yzurge && xenemigo<ZURGE.xzurge+100 && yenemigo<ZURGE.yzurge+200){  //muerte
+      if(xenemigo>ZURGE.xzurge-100 && yenemigo>ZURGE.yzurge-200 && xenemigo<ZURGE.xzurge+100 && yenemigo<ZURGE.yzurge+200){  //muerte
         f=true;
         g=0;
         xenemigo=random(width-150,width-64)-random(-86,width-96);
@@ -55,7 +55,7 @@ class Enemigo {
           image(gus[0],xenemigo,yenemigo);
         }
       }
-      if(xenemigo>ZURGE.xzurge && yenemigo>ZURGE.yzurge && xenemigo<ZURGE.xzurge+100 && yenemigo<ZURGE.yzurge+200){  //muerte
+      if(xenemigo>ZURGE.xzurge-100 && yenemigo>ZURGE.yzurge-200 && xenemigo<ZURGE.xzurge+100 && yenemigo<ZURGE.yzurge+200){  //muerte
         f=true;
         g=0;
         xenemigo=850;
@@ -64,7 +64,7 @@ class Enemigo {
       else{  //respawn
         f=false;
         g++;
-        image(material,xenemigo,yenemigo);
+        //image(material,xenemigo,yenemigo);
         //println(h);
         }
     }
@@ -80,7 +80,7 @@ class Enemigo {
           image(bil[0],xenemigo,yenemigo);
         }
       }
-      if(xenemigo>ZURGE.xzurge && yenemigo>ZURGE.yzurge && xenemigo<ZURGE.xzurge+100 && yenemigo<ZURGE.yzurge+200){  //muerte
+      if(xenemigo>ZURGE.xzurge-100 && yenemigo>ZURGE.yzurge-200 && xenemigo<ZURGE.xzurge+100 && yenemigo<ZURGE.yzurge+200){  //muerte
         f=true;
         g=0;
         xenemigo=850;
@@ -89,7 +89,7 @@ class Enemigo {
       else{  //respawn
         f=false;
         g++;
-        image(material,xenemigo,yenemigo);
+        //image(material,xenemigo,yenemigo);
         //println(h);
         }
     }
