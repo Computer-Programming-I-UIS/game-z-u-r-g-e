@@ -2,6 +2,7 @@
 class Enemigo {
   boolean f=false;
   float a,b,c,d,e,g=0,h=0,t;
+  int count=0;
   float xenemigo;
   float yenemigo;
   float vel;
@@ -29,24 +30,43 @@ class Enemigo {
     }
   }
   
-  void fondo(){
+  void enemigos(){
+    
     t=second();
-    if(e==1){  //enemigo alien
-      if(d<g && f==false){  //vivo
+    if(e==1){  //Aliens
+      if(d<g && f==false){  //vivos
         image(alien,xenemigo,yenemigo);
       }
-      if(xenemigo>ZURGE.xzurge-100 && yenemigo>ZURGE.yzurge-200 && xenemigo<ZURGE.xzurge+100 && yenemigo<ZURGE.yzurge+200){  //muerte
+      if(xenemigo>ZURGE.xzurge-50 && yenemigo>ZURGE.yzurge-50 && xenemigo<ZURGE.xzurge+50 && yenemigo<ZURGE.yzurge+50){  //muerte
         f=true;
         g=0;
         xenemigo=random(width-150,width-64)-random(-86,width-96);
         yenemigo=random(height-150,height-64)-random(-86,height-96);
+        count++;
       }
       else{  //respawn
         f=false;
         g++;
       }
     }
-    else if(e==2){  //enemigo gus
+
+    println(t);
+    }  //Fin del metodo enemigos
+    
+    void counter(){
+      text(count,500,200);
+      
+      //if(xenemigo>ZURGE.xzurge-50 && yenemigo>ZURGE.yzurge-50 && xenemigo<ZURGE.xzurge+50 && yenemigo<ZURGE.yzurge+50){
+        if((f==true&&g==0)==true){
+        count++;
+      }
+    }
+        
+
+    void gus(){
+      
+      if(count>=3){
+      if(e==2){  //enemigo gus
       if(d<g && f==false){  //vivo
          if((t%5)==0){
            image(gus[1],xenemigo,yenemigo);
@@ -55,7 +75,7 @@ class Enemigo {
           image(gus[0],xenemigo,yenemigo);
         }
       }
-      if(xenemigo>ZURGE.xzurge-100 && yenemigo>ZURGE.yzurge-200 && xenemigo<ZURGE.xzurge+100 && yenemigo<ZURGE.yzurge+200){  //muerte
+      if(xenemigo>ZURGE.xzurge-50 && yenemigo>ZURGE.yzurge-50 && xenemigo<ZURGE.xzurge+50 && yenemigo<ZURGE.yzurge+50){  //muerte
         f=true;
         g=0;
         xenemigo=850;
@@ -67,8 +87,12 @@ class Enemigo {
         //image(material,xenemigo,yenemigo);
         //println(h);
         }
+      }
+      }
     }
-    else if(e==3){  //enemigo bil
+    
+    void bil(){
+      if(e==3){  //enemigo bil
       if(d<g && f==false){  //vivo
          if((t%5)==1 ){
            image(bil[2],xenemigo,yenemigo);
@@ -80,7 +104,7 @@ class Enemigo {
           image(bil[0],xenemigo,yenemigo);
         }
       }
-      if(xenemigo>ZURGE.xzurge-100 && yenemigo>ZURGE.yzurge-200 && xenemigo<ZURGE.xzurge+100 && yenemigo<ZURGE.yzurge+200){  //muerte
+      if(xenemigo>ZURGE.xzurge-50 && yenemigo>ZURGE.yzurge-50 && xenemigo<ZURGE.xzurge+50 && yenemigo<ZURGE.yzurge+50){  //muerte
         f=true;
         g=0;
         xenemigo=850;
@@ -92,7 +116,9 @@ class Enemigo {
         //image(material,xenemigo,yenemigo);
         //println(h);
         }
+      }
     }
-
-println(t);}
+      
+      
+    
 }

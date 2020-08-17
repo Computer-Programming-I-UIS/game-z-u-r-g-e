@@ -15,7 +15,7 @@ PImage gus[]=new PImage[2];
 PImage bil[]=new PImage[3];
 Estrellas stars[]=new Estrellas[30];
 Zurge ZURGE;
-Enemigo aliens[]=new Enemigo[60];
+Enemigo aliens[]=new Enemigo[10];
 Enemigo guss;
 Enemigo BIL;
 cajas caja;
@@ -42,12 +42,13 @@ void setup(){
   caja=new cajas (3.5,width,random(0,height));
   for(int i=0;i<30;i++){
     stars[cont]=new Estrellas(random(0,width),random(0,height),3);
-    aliens[cont]=new Enemigo (5,800,300,1,100);
     cont++;
 }
+
   for(int j=0;j<laser.length;j++){
     laser[j]=loadImage("laser"+j+".png");
-    armas[j]=loadImage("armas"+j+".png");   
+    armas[j]=loadImage("armas"+j+".png"); 
+    aliens[j]=new Enemigo (5,800,300,1,100);
   }
   for(int k=0;k<gus.length;k++){
    gus[k]=loadImage("gus"+k+".png");
@@ -89,8 +90,12 @@ void draw(){
       }
     for(int i=0;i<30;i++){  //estrellas
     stars[i].fondo();
-    aliens[i].fondo();
-    aliens[i].movi();
+    }
+    for(int j=0;j<laser.length;j++){
+    aliens[j].enemigos();
+    aliens[j].movi();
+    aliens[j].counter();
+    
     }
       if(mousePressed){
         image(laser[3],200,200);
@@ -108,9 +113,11 @@ void draw(){
     caja.fondo();
     caja.movi();
     guss.movi();
-    guss.fondo();
+    guss.enemigos();
+    guss.gus();
     BIL.movi();
-    BIL.fondo();
+    BIL.enemigos();
+    BIL.bil();
   
 }
 
