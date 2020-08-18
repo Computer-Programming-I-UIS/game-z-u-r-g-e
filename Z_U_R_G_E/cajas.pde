@@ -16,11 +16,11 @@ class cajas {
       ycaja+=vel2;
     }
     else if (xcaja<-50){  //no recolecta cajas
-      a=0;
+      a=int(random(1,3));
       b=0;
     }
-    else if (xcaja<ZURGE.xzurge+100 && xcaja>ZURGE.xzurge && ycaja>ZURGE.yzurge+50 && ycaja<ZURGE.yzurge+150){  //recolecta de las cajas
-      a=0;
+    else if (xcaja<ZURGE.xzurge+100 && xcaja>ZURGE.xzurge && ycaja>ZURGE.yzurge && ycaja<ZURGE.yzurge+150){  //recolecta de las cajas
+      a=int(random(1,3));
       b=0;
     }
     else{  //movimiento
@@ -41,7 +41,6 @@ class cajas {
     }
     else{
       b++;
-      a=int(random(1,3));
       ycaja=random(0,height);
       xcaja=width;
       vel2=random(-3,3);

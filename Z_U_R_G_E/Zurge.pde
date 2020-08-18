@@ -12,8 +12,8 @@ class Zurge {
   }
   
   void movi(){
-    xzurge=constrain(xzurge,100,width-100);
-    yzurge=constrain(yzurge,100,height-100);
+    xzurge=constrain(xzurge,50,width-50);
+    yzurge=constrain(yzurge,50,height-50);
     if(keyPressed){
       switch(key){
         case 'w':
@@ -50,22 +50,26 @@ class Zurge {
   void zurge(){
    
    zurge.setXY(xzurge,yzurge);
-   if(mousePressed){
+   if(mouseX>xzurge && mousePressed){
     zurge.setFrameSequence(1,3,0.09,1);
-    if (a>10){
+    /*if (a>10){
       mousePressed=false;
       a=0;
+    }*/
+   }
+   else if(mouseX<xzurge && mousePressed){
+      zurge.setFrameSequence(5,7,0.09,1);
+      /*if (a>10){
+        mousePressed=false;
+        a=0;
+        }*/
     }
-   }else{
-    zurge.setFrameSequence(0,0,0.09,1);
+   else if (mouseX<xzurge && mousePressed==false){
+        zurge.setFrameSequence(4,4,0.09,1); 
+    }
+    else{
+      zurge.setFrameSequence(0,0,0.09,1);
     //image(per, x, y);
-  }
-   
-    if(keyPressed&&(keyCode==LEFT||key=='a')){
-    zurge.setFrameSequence(4,4,0.09,1);
-    if(mousePressed){
-    zurge.setFrameSequence(5,7,0.09,1);
-    }
   }
 }
 

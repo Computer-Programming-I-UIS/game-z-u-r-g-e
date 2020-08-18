@@ -25,8 +25,10 @@ Estrellas stars[]=new Estrellas[30];
 Zurge ZURGE;
 Enemigo guss;
 Enemigo BIL;
+Enemigo aliens1;
+Enemigo aliens0;
 cajas caja;
-int cont;
+int count=0;
 
 void setup(){
   size(1000,600);
@@ -45,21 +47,24 @@ void setup(){
   fusil=new Sprite(this,"fusil.png",2,2,20); 
   gus=new Sprite(this,"gus.png",2,2,20);
   bil=new Sprite(this,"bil.png",2,2,20);
-  alien=new Sprite(this,"alien.png",2,2,20);
+  alien=new Sprite(this,"Alien.png",2,2,20);
   laserbala=new Sprite(this,"laserbala.png",2,3,20);
   
   imageMode(CENTER);
   textAlign(CENTER);
   stage=0;
   ZURGE=new Zurge (5,50,height/2);
-  guss=new Enemigo (5,850,300,2,200);
-  BIL=new Enemigo (5,850,300,3,400);
+  guss=new Enemigo (5,random(850,width-60),random(60,height-60),2,200);
+  BIL=new Enemigo (5,random(850,width-60),random(60,height-60),3,4000);
   caja=new cajas (3.5,width,random(0,height));
+  aliens1=new Enemigo (5,800,300,1,1000000);
+  aliens0=new Enemigo (5,800,300,1,10200);
   for(int i=0;i<30;i++){
-    stars[cont]=new Estrellas(random(0,width),random(0,height),3);
-    cont++;
+    stars[i]=new Estrellas(random(0,width),random(0,height),3);
+    
 }
-
+  
+  
 }
 
 void draw(){
@@ -81,6 +86,7 @@ void draw(){
   if(stage==1){
     clear();
     background(0);
+    text(count,500,200);
      if(v<-500 ||   v>width+200){  //luna
       w=random(width,width+100);
       v=random(width,width+100);
@@ -118,17 +124,22 @@ void draw(){
       image(armas[1],300,300);
       }*/
    
+    aliens1.enemigo();
+    aliens0.enemigo();
+    aliens1.movi();
+    aliens0.movi();
     
     ZURGE.movi();
     ZURGE.zurge();
-    guss.enemigos();
+    guss.enemigo();
     caja.fondo();
     caja.movi();
     guss.movi();
     //guss.enemigos();
    // guss.gus();
     BIL.movi();
-    //BIL.enemigos();
+    BIL.enemigo();
+    println(guss.f);
     //BIL.bil();
   
 }

@@ -1,8 +1,9 @@
 
-class Enemigo {
+class Enemigo //extends Sprite
+{
   boolean f=false;
   float a,b,c,d,e,g=0,h=0,t;
-  int count=0;
+  //int count=0;
   float xenemigo;
   float yenemigo;
   float vel;
@@ -30,13 +31,11 @@ class Enemigo {
     }
   }
   
-  void enemigos(){
-    
-    t=second();
+  void enemigo(){
     if(e==1){  //Aliens
+      alien.setXY(xenemigo,yenemigo);
       if(d<g && f==false){  //vivos
-        alien.setXY(xenemigo,yenemigo);
-        alien.setFrameSequence(0,2,0.09,1);
+        alien.setFrameSequence(0,1,1,1);
       }
       if(xenemigo>ZURGE.xzurge-50 && yenemigo>ZURGE.yzurge-50 && xenemigo<ZURGE.xzurge+50 && yenemigo<ZURGE.yzurge+50){  //muerte
         f=true;
@@ -50,81 +49,47 @@ class Enemigo {
         g++;
       }
     }
-
-    println(t);
-    }  //Fin del metodo enemigos
     
-    void counter(){
-      text(count,500,200);
-      
-      //if(xenemigo>ZURGE.xzurge-50 && yenemigo>ZURGE.yzurge-50 && xenemigo<ZURGE.xzurge+50 && yenemigo<ZURGE.yzurge+50){
-        if((f==true&&g==0)==true){
-        count++;
-      }
-    }
-        
-
-    void gus(){
-      
-      if(count>=3){
-      if(e==2){  //enemigo gus
-      if(d<g && f==false){  //vivo
-         if((t%5)==0){
-           gus.setXY(xenemigo,yenemigo);
-           gus.setFrameSequence(0,1,0.09,1);
+    
+    else if(e==2 && count>5){  //enemigo gus
+      gus.setXY(xenemigo,yenemigo);
+      if(g>d && f==false){  //vivo
+           gus.setFrameSequence(0,2,1,1);
         }
-        else{
-          gus.setXY(600,300);
-           gus.setFrameSequence(1,2,0.09,1);
-        }
-      }
-      if(xenemigo>ZURGE.xzurge-50 && yenemigo>ZURGE.yzurge-50 && xenemigo<ZURGE.xzurge+50 && yenemigo<ZURGE.yzurge+50){  //muerte
+      else if(xenemigo>ZURGE.xzurge-50 && yenemigo>ZURGE.yzurge-50 && xenemigo<ZURGE.xzurge+50 && yenemigo<ZURGE.yzurge+50){  //muerte
         f=true;
         g=0;
-        xenemigo=850;
-        yenemigo=300;
+        xenemigo=random(850,width-60);
+        yenemigo=random(60,height-60);
+        count+=3;
       }
-      else{  //respawn
-        f=false;
-        g++;
-        //image(material,xenemigo,yenemigo);
-        //println(h);
+      else if(g>d){  //respawn
+        //f=false;
         }
+      else {
+        g+=0.1;
       }
-      }
-    }
-    
-    void bil(){
-      if(e==3){  //enemigo bil
-      if(d<g && f==false){  //vivo
-         if((t%5)==1 ){
-           bil.setXY(xenemigo,yenemigo);
-           bil.setFrameSequence(0,1,0.09,1);
+   }
+      
+      
+    else if(e==3 && count>20){  //enemigo bil
+      bil.setXY(xenemigo,yenemigo);
+        if(t>d && f==false){  //vivo
+           bil.setFrameSequence(0,3,1,1);
         }
-        else if((t%5)==0){
-           bil.setXY(xenemigo,yenemigo);
-           bil.setFrameSequence(1,2,0.09,1);
-        }
-        else{
-          bil.setXY(xenemigo,yenemigo);
-          bil.setFrameSequence(2,3,0.09,1);
-        }
+        else if(xenemigo>ZURGE.xzurge-50 && yenemigo>ZURGE.yzurge-50 && xenemigo<ZURGE.xzurge+50 && yenemigo<ZURGE.yzurge+50 && f==false){  //muerte
+          f=true;
+          g=0;
+          xenemigo=random(850,width-60);
+          yenemigo=random(60,height-60);
+          count+=5;
       }
-      if(xenemigo>ZURGE.xzurge-50 && yenemigo>ZURGE.yzurge-50 && xenemigo<ZURGE.xzurge+50 && yenemigo<ZURGE.yzurge+50){  //muerte
-        f=true;
-        g=0;
-        xenemigo=850;
-        yenemigo=300;
-      }
-      else{  //respawn
-        f=false;
-        g++;
-        //image(material,xenemigo,yenemigo);
-        //println(h);
+        else{  //respawn
+          f=false;
+          g++;
         }
       }
     }
-      
+   }   
       
     
-}
