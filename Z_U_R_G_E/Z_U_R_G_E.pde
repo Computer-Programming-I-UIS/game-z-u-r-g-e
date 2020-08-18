@@ -1,21 +1,28 @@
+import sprites.*;
+import sprites.maths.*;
+import sprites.utils.*;
+
+Sprite laser;
+Sprite zurge;
+Sprite bazooka;
+Sprite fusil;
+Sprite gus;
+Sprite bil;
+Sprite alien;
+Sprite laserbala;
+StopWatch sw = new StopWatch();
+
 float v=width,w=width*4/5,h=height*3/8,j=height/2;
 int stage;
 PFont fuente;
 PImage star;
-PImage armas[]=new PImage[4];
-PImage zurge[]=new PImage[2];
 PImage luna1;
 PImage luna2;
-PImage alien;
 PImage energia;
 PImage muni;
 PImage material;
-PImage laser[]=new PImage[4];
-PImage gus[]=new PImage[2];
-PImage bil[]=new PImage[3];
 Estrellas stars[]=new Estrellas[30];
 Zurge ZURGE;
-Enemigo aliens[]=new Enemigo[10];
 Enemigo guss;
 Enemigo BIL;
 cajas caja;
@@ -28,10 +35,18 @@ void setup(){
   star=loadImage("estrella.png");
   luna1=loadImage("luna1.png");
   luna2=loadImage("luna2.png");
-  alien=loadImage("Alien.png");
   energia=loadImage("energia.png");
   muni=loadImage("muni.png");
   material=loadImage("material.png");
+  
+  laser=new Sprite(this,"laser.png",2,2,20);
+  zurge=new Sprite(this,"zurge.png",3,3,20);
+  bazooka=new Sprite(this,"bazooka.png",2,3,20);
+  fusil=new Sprite(this,"fusil.png",2,2,20); 
+  gus=new Sprite(this,"gus.png",2,2,20);
+  bil=new Sprite(this,"bil.png",2,2,20);
+  alien=new Sprite(this,"alien.png",2,2,20);
+  laserbala=new Sprite(this,"laserbala.png",2,3,20);
   
   imageMode(CENTER);
   textAlign(CENTER);
@@ -45,18 +60,6 @@ void setup(){
     cont++;
 }
 
-  for(int j=0;j<laser.length;j++){
-    laser[j]=loadImage("laser"+j+".png");
-    armas[j]=loadImage("armas"+j+".png"); 
-    aliens[j]=new Enemigo (5,800,300,1,100);
-  }
-  for(int k=0;k<gus.length;k++){
-   gus[k]=loadImage("gus"+k+".png");
-   zurge[k]=loadImage("zurge"+k+".png");
-  }
-  for(int l=0;l<bil.length;l++){
-   bil[l]=loadImage("bil"+l+".png");
-  }
 }
 
 void draw(){
@@ -91,7 +94,15 @@ void draw(){
     for(int i=0;i<30;i++){  //estrellas
     stars[i].fondo();
     }
-    for(int j=0;j<laser.length;j++){
+    float elapsedTime = (float) sw.getElapsedTime();
+   S4P.updateSprites(elapsedTime);
+   S4P.drawSprites();
+   
+    bazooka.setXY(300,300);
+    bazooka.setFrameSequence(0,4,0.09,1);
+    fusil.setXY(500,400);
+    fusil.setFrameSequence(0,3,0.09,1);
+    /*for(int j=0;j<laser.length;j++){
     aliens[j].enemigos();
     aliens[j].movi();
     aliens[j].counter();
@@ -105,19 +116,20 @@ void draw(){
      else{
       image(laser[1],200,200);
       image(armas[1],300,300);
-      }
+      }*/
    
     
     ZURGE.movi();
-    ZURGE.fondo();
+    ZURGE.zurge();
+    guss.enemigos();
     caja.fondo();
     caja.movi();
     guss.movi();
-    guss.enemigos();
-    guss.gus();
+    //guss.enemigos();
+   // guss.gus();
     BIL.movi();
-    BIL.enemigos();
-    BIL.bil();
+    //BIL.enemigos();
+    //BIL.bil();
   
 }
 

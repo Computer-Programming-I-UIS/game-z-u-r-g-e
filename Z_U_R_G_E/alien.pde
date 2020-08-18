@@ -35,7 +35,8 @@ class Enemigo {
     t=second();
     if(e==1){  //Aliens
       if(d<g && f==false){  //vivos
-        image(alien,xenemigo,yenemigo);
+        alien.setXY(xenemigo,yenemigo);
+        alien.setFrameSequence(0,2,0.09,1);
       }
       if(xenemigo>ZURGE.xzurge-50 && yenemigo>ZURGE.yzurge-50 && xenemigo<ZURGE.xzurge+50 && yenemigo<ZURGE.yzurge+50){  //muerte
         f=true;
@@ -69,10 +70,12 @@ class Enemigo {
       if(e==2){  //enemigo gus
       if(d<g && f==false){  //vivo
          if((t%5)==0){
-           image(gus[1],xenemigo,yenemigo);
+           gus.setXY(xenemigo,yenemigo);
+           gus.setFrameSequence(0,1,0.09,1);
         }
         else{
-          image(gus[0],xenemigo,yenemigo);
+          gus.setXY(600,300);
+           gus.setFrameSequence(1,2,0.09,1);
         }
       }
       if(xenemigo>ZURGE.xzurge-50 && yenemigo>ZURGE.yzurge-50 && xenemigo<ZURGE.xzurge+50 && yenemigo<ZURGE.yzurge+50){  //muerte
@@ -95,13 +98,16 @@ class Enemigo {
       if(e==3){  //enemigo bil
       if(d<g && f==false){  //vivo
          if((t%5)==1 ){
-           image(bil[2],xenemigo,yenemigo);
+           bil.setXY(xenemigo,yenemigo);
+           bil.setFrameSequence(0,1,0.09,1);
         }
         else if((t%5)==0){
-           image(bil[1],xenemigo,yenemigo);
+           bil.setXY(xenemigo,yenemigo);
+           bil.setFrameSequence(1,2,0.09,1);
         }
         else{
-          image(bil[0],xenemigo,yenemigo);
+          bil.setXY(xenemigo,yenemigo);
+          bil.setFrameSequence(2,3,0.09,1);
         }
       }
       if(xenemigo>ZURGE.xzurge-50 && yenemigo>ZURGE.yzurge-50 && xenemigo<ZURGE.xzurge+50 && yenemigo<ZURGE.yzurge+50){  //muerte

@@ -47,18 +47,26 @@ class Zurge {
     }
   }
   
-  void fondo(){
+  void zurge(){
+   
+   zurge.setXY(xzurge,yzurge);
    if(mousePressed){
-    image(zurge[1],xzurge,yzurge);
+    zurge.setFrameSequence(1,3,0.09,1);
     if (a>10){
       mousePressed=false;
       a=0;
     }
-  }
-  else{
-    image(zurge[0],xzurge,yzurge);
+   }else{
+    zurge.setFrameSequence(0,0,0.09,1);
     //image(per, x, y);
   }
- 
+   
+    if(keyPressed&&(keyCode==LEFT||key=='a')){
+    zurge.setFrameSequence(4,4,0.09,1);
+    if(mousePressed){
+    zurge.setFrameSequence(5,7,0.09,1);
+    }
+  }
 }
+
 }
