@@ -4,8 +4,8 @@ import sprites.utils.*;
 
 Sprite laser;
 Sprite zurge;
-Sprite bazooka;
-Sprite fusil;
+Sprite balabazooka;
+Sprite balafusil;
 Sprite gus;
 Sprite bil;
 Sprite alien;
@@ -43,8 +43,8 @@ void setup(){
   
   laser=new Sprite(this,"laser.png",2,2,2);
   zurge=new Sprite(this,"zurge.png",4,4,2);
-  bazooka=new Sprite(this,"bazooka.png",2,3,2);
-  fusil=new Sprite(this,"fusil.png",2,2,2); 
+  balabazooka=new Sprite(this,"balabazooka.png",2,2,2);
+  balafusil=new Sprite(this,"balafusil.png",2,2,2); 
   gus=new Sprite(this,"gus.png",2,2,2);
   bil=new Sprite(this,"bil.png",2,2,2);
   alien=new Sprite(this,"alien.png",2,2,2);
@@ -53,7 +53,7 @@ void setup(){
   imageMode(CENTER);
   textAlign(CENTER);
   stage=0;
-  ZURGE=new Zurge (5,50,height/2);
+  ZURGE=new Zurge (8,2,50,height/2);
   guss=new Enemigo (5,random(850,width-60),random(60,height-60),2,200);
   BIL=new Enemigo (5,random(850,width-60),random(60,height-60),3,4000);
   caja=new cajas (3.5,width,random(0,height));
@@ -82,12 +82,30 @@ void draw(){
     text("¿Cómo se juega?",width/2,420);
     text("Créditos",width/2,490);
     stars[0].menu();
+    for(int i=0;i<30;i++){
+    stars[i].fondo();
+    }
+    
+    for(int a=0;a<50;a++){
+      stroke(230,240,30);
+      strokeWeight(3);
+      line(20*a-1,5,20*a+8,5);
+      line(5,20*a-1,5,20*a+8);
+      line(20*a-1,height-5,20*a+8,height-5);
+      line(width-5,20*a-1,width-5,20*a+8);
+    }
   }
 
   if(stage==1){
     clear();
     background(0);
-    text(count,500,200);
+    textSize(20);
+    text(count,width-50,50);
+    stroke(230,240,30);
+    line(5,5,5,height-5);
+    line(5,5,width-5,5);
+    line(width-5,height-5,width-5,5);
+    line(5,height-5,width-5,height-5);
      /*if(v<-500 ||   v>width+200){  //luna
       w=random(width,width+100);
       v=random(width,width+100);
@@ -104,17 +122,6 @@ void draw(){
     float elapsedTime = (float) sw.getElapsedTime();
    S4P.updateSprites(elapsedTime);
    S4P.drawSprites();
-   
-    /*bazooka.setXY(300,300);
-    bazooka.setFrameSequence(0,4,0.09,1);
-    fusil.setXY(500,400);
-    fusil.setFrameSequence(0,3,0.09,1);
-    for(int j=0;j<laser.length;j++){
-    aliens[j].enemigos();
-    aliens[j].movi();
-    aliens[j].counter();
-    
-    }*/
    
     aliens1.enemigo();
    // aliens0.enemigo();
@@ -139,6 +146,16 @@ void draw(){
 if(stage==2){
   clear();
   background(0);
+  for(int a=0;a<50;a++){
+      stroke(230,240,30);
+      line(20*a-1,5,20*a+8,5);
+      line(5,20*a-1,5,20*a+8);
+      line(20*a-1,height-5,20*a+8,height-5);
+      line(width-5,20*a-1,width-5,20*a+8);
+    }
+  for(int i=0;i<30;i++){
+  stars[i].fondo();
+  }
   textSize(12);
   text("Debes manejar a Z.U.R.G.E",200,200);
   text("Presiona cualquier tecla para volver a la pantalla de inicio",width/2,height-80);
@@ -150,6 +167,16 @@ if(stage==2){
 if(stage==3){
   clear();
   background(0);
+  for(int a=0;a<50;a++){
+      stroke(230,240,30);
+      line(20*a-1,5,20*a+8,5);
+      line(5,20*a-1,5,20*a+8);
+      line(20*a-1,height-5,20*a+8,height-5);
+      line(width-5,20*a-1,width-5,20*a+8);
+    }
+  for(int i=0;i<30;i++){
+  stars[i].fondo();
+  }
   textSize(12);
   text("Musica extraida de:",300,200);
   text("Presiona cualquier tecla para volver a la pantalla de inicio",width/2,height-80);

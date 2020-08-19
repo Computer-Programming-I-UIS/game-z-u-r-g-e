@@ -4,8 +4,10 @@ class Zurge {
   int xzurge;
   int yzurge;
   float vel;
+  float velbala;
   
-  Zurge(float speed,int tempxzurge, int tempyzurge){
+  Zurge(float speed,float speedbala,int tempxzurge, int tempyzurge){
+    velbala=speedbala;
     vel=speed;
     xzurge=tempxzurge;
     yzurge=tempyzurge;
@@ -66,10 +68,24 @@ class Zurge {
    if(keyPressed&&key=='e'){  //Coge el fusil
      zurge.setFrameSequence(8,8,0.9,1);
      zurge.setFrameSequence(11,11,2,1);
+     if(mousePressed){
+       balafusil.setXY(xzurge+10*velbala,yzurge);
+       balafusil.setFrameSequence(0,3,0.2,1);
+       velbala+=3;
+       velbala=constrain(velbala,0,(width-xzurge-50)/10);
+     }else{
+     }
      
    }else if(keyPressed&&key=='r'){   //Coge la bazooka
      zurge.setFrameSequence(12,12,0.9,1);
      zurge.setFrameSequence(14,14,2,1);
+     if(mousePressed){
+       balabazooka.setXY(xzurge+10*velbala,yzurge);
+       balabazooka.setFrameSequence(0,3,0.2,1);
+       velbala+=3;
+       velbala=constrain(velbala,0,(width-50)/10);
+     }else{
+     }
      
    }
      

@@ -37,7 +37,7 @@ class Enemigo //extends Sprite
       if(d<g && f==false){  //vivos
         alien.setFrameSequence(0,2,0.09,1);
       }
-      if(xenemigo>ZURGE.xzurge-50 && yenemigo>ZURGE.yzurge-50 && xenemigo<ZURGE.xzurge+50 && yenemigo<ZURGE.yzurge+50){  //muerte
+      if(xenemigo>ZURGE.xzurge-50 && yenemigo>ZURGE.yzurge-50 && xenemigo<ZURGE.xzurge+50 && yenemigo<ZURGE.yzurge+50||(ZURGE.xzurge+10*ZURGE.velbala>xenemigo-20&&ZURGE.xzurge+10*ZURGE.velbala<xenemigo+20)&&ZURGE.yzurge>yenemigo-50&&ZURGE.yzurge<yenemigo+50){  //muerte
         f=true;
         g=0;
         xenemigo=random(width-150,width-64)-random(-86,width-96);
