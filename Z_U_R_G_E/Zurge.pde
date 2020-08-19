@@ -49,6 +49,7 @@ class Zurge {
   
   void zurge(){
    
+
    zurge.setXY(xzurge,yzurge);
    if(keyPressed&&(keyCode==LEFT||key=='a')&&mousePressed==false){
      zurge.setFrameSequence(4,4,0.09,1);
@@ -56,14 +57,22 @@ class Zurge {
      zurge.setFrameSequence(5,7,0.09,1);
    }else if(mousePressed){
      zurge.setFrameSequence(1,3,0.09,1);
+   }else if(mouseX<xzurge){
+     zurge.setFrameSequence(4,4,0.09,1);
    }else{
      zurge.setFrameSequence(0,0,0.09,1);
    }
    
-   
-    
-   
-    //image(per, x, y);
-  
+   if(keyPressed&&key=='e'){  //Coge el fusil
+     zurge.setFrameSequence(8,8,0.9,1);
+     zurge.setFrameSequence(11,11,2,1);
+     
+   }else if(keyPressed&&key=='r'){   //Coge la bazooka
+     zurge.setFrameSequence(12,12,0.9,1);
+     zurge.setFrameSequence(14,14,2,1);
+     
+   }
+     
 }
+
 }

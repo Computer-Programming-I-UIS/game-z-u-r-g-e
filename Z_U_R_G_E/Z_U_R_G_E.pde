@@ -42,7 +42,7 @@ void setup(){
   material=loadImage("material.png");
   
   laser=new Sprite(this,"laser.png",2,2,2);
-  zurge=new Sprite(this,"zurge.png",3,3,2);
+  zurge=new Sprite(this,"zurge.png",4,4,2);
   bazooka=new Sprite(this,"bazooka.png",2,3,2);
   fusil=new Sprite(this,"fusil.png",2,2,2); 
   gus=new Sprite(this,"gus.png",2,2,2);
@@ -58,7 +58,7 @@ void setup(){
   BIL=new Enemigo (5,random(850,width-60),random(60,height-60),3,4000);
   caja=new cajas (3.5,width,random(0,height));
   aliens1=new Enemigo (5,800,300,1,1000000);
-  aliens0=new Enemigo (5,800,300,1,10200);
+  //aliens0=new Enemigo (5,800,300,1,10200);
   for(int i=0;i<30;i++){
     stars[i]=new Estrellas(random(0,width),random(0,height),3);
     
@@ -71,11 +71,16 @@ void draw(){
   if(stage==0){
     background(0);
     textFont(fuente);
-    text("Z.U.R.G.E",width/2,150);
+    stroke(230,240,30);
+    line(220,100,780,100);
+    line(220,230,780,230);
+    line(220,100,220,230);
+    line(780,100,780,230);
+    text("Z.U.R.G.E",width/2,200);
     textSize(30);
-    text("Jugar",width/2,250);
-    text("¿Cómo se juega?",width/2,320);
-    text("Créditos",width/2,390);
+    text("Jugar",width/2,350);
+    text("¿Cómo se juega?",width/2,420);
+    text("Créditos",width/2,490);
     stars[0].menu();
   }
 
@@ -83,7 +88,7 @@ void draw(){
     clear();
     background(0);
     text(count,500,200);
-     if(v<-500 ||   v>width+200){  //luna
+     /*if(v<-500 ||   v>width+200){  //luna
       w=random(width,width+100);
       v=random(width,width+100);
       h=random(0,height);
@@ -92,7 +97,7 @@ void draw(){
     else{
       image(luna1,w-=3,h);
       image(luna2,v-=3,j);
-      }
+      }*/
     for(int i=0;i<30;i++){  //estrellas
     stars[i].fondo();
     }
@@ -100,30 +105,21 @@ void draw(){
    S4P.updateSprites(elapsedTime);
    S4P.drawSprites();
    
-    bazooka.setXY(300,300);
+    /*bazooka.setXY(300,300);
     bazooka.setFrameSequence(0,4,0.09,1);
     fusil.setXY(500,400);
     fusil.setFrameSequence(0,3,0.09,1);
-    /*for(int j=0;j<laser.length;j++){
+    for(int j=0;j<laser.length;j++){
     aliens[j].enemigos();
     aliens[j].movi();
     aliens[j].counter();
     
-    }
-      if(mousePressed){
-        image(laser[3],200,200);
-        image(armas[3],300,300);
-    } 
-    
-     else{
-      image(laser[1],200,200);
-      image(armas[1],300,300);
-      }*/
+    }*/
    
     aliens1.enemigo();
-    aliens0.enemigo();
+   // aliens0.enemigo();
     aliens1.movi();
-    aliens0.movi();
+    //aliens0.movi();
     
     ZURGE.movi();
     ZURGE.zurge();
@@ -156,6 +152,7 @@ if(stage==3){
   background(0);
   textSize(12);
   text("Musica extraida de:",300,200);
+  text("Presiona cualquier tecla para volver a la pantalla de inicio",width/2,height-80);
     if(keyPressed){
     stage=0;
   }
