@@ -35,7 +35,7 @@ class Enemigo //extends Sprite
     if(e==1){  //Aliens
       alien.setXY(xenemigo,yenemigo);
       if(d<g && f==false){  //vivos
-        alien.setFrameSequence(0,1,1,1);
+        alien.setFrameSequence(0,2,0.09,1);
       }
       if(xenemigo>ZURGE.xzurge-50 && yenemigo>ZURGE.yzurge-50 && xenemigo<ZURGE.xzurge+50 && yenemigo<ZURGE.yzurge+50){  //muerte
         f=true;
@@ -54,7 +54,7 @@ class Enemigo //extends Sprite
     else if(e==2 && count>5){  //enemigo gus
       gus.setXY(xenemigo,yenemigo);
       if(g>d && f==false){  //vivo
-           gus.setFrameSequence(0,2,1,1);
+           gus.setFrameSequence(0,2,0.09,4);
         }
       else if(xenemigo>ZURGE.xzurge-50 && yenemigo>ZURGE.yzurge-50 && xenemigo<ZURGE.xzurge+50 && yenemigo<ZURGE.yzurge+50){  //muerte
         f=true;

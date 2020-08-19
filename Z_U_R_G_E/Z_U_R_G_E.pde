@@ -41,15 +41,15 @@ void setup(){
   muni=loadImage("muni.png");
   material=loadImage("material.png");
   
-  laser=new Sprite(this,"laser.png",2,2,20);
-  zurge=new Sprite(this,"zurge.png",3,3,20);
-  bazooka=new Sprite(this,"bazooka.png",2,3,20);
-  fusil=new Sprite(this,"fusil.png",2,2,20); 
-  gus=new Sprite(this,"gus.png",2,2,20);
-  bil=new Sprite(this,"bil.png",2,2,20);
-  alien=new Sprite(this,"Alien.png",2,2,20);
-  laserbala=new Sprite(this,"laserbala.png",2,3,20);
-  
+  laser=new Sprite(this,"laser.png",2,2,2);
+  zurge=new Sprite(this,"zurge.png",3,3,2);
+  bazooka=new Sprite(this,"bazooka.png",2,3,2);
+  fusil=new Sprite(this,"fusil.png",2,2,2); 
+  gus=new Sprite(this,"gus.png",2,2,2);
+  bil=new Sprite(this,"bil.png",2,2,2);
+  alien=new Sprite(this,"alien.png",2,2,2);
+  laserbala=new Sprite(this,"laserbala.png",2,3,2);
+  rectMode(CENTER);
   imageMode(CENTER);
   textAlign(CENTER);
   stage=0;
@@ -69,18 +69,14 @@ void setup(){
 
 void draw(){
   if(stage==0){
+    background(0);
     textFont(fuente);
     text("Z.U.R.G.E",width/2,150);
     textSize(30);
     text("Jugar",width/2,250);
     text("¿Cómo se juega?",width/2,320);
     text("Créditos",width/2,390);
-    textSize(20);
-    text("Presiona cualquier tecla para iniciar el juego",width/2,height-100);
     stars[0].menu();
-    if(keyPressed){
-      stage=1;
-    }
   }
 
   if(stage==1){
@@ -147,5 +143,22 @@ void draw(){
 if(stage==2){
   clear();
   background(0);
+  textSize(12);
+  text("Debes manejar a Z.U.R.G.E",200,200);
+  text("Presiona cualquier tecla para volver a la pantalla de inicio",width/2,height-80);
+  if(keyPressed){
+    stage=0;
+  }
 }
+
+if(stage==3){
+  clear();
+  background(0);
+  textSize(12);
+  text("Musica extraida de:",300,200);
+    if(keyPressed){
+    stage=0;
+  }
+}
+
 }

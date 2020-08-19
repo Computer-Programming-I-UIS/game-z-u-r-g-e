@@ -50,27 +50,20 @@ class Zurge {
   void zurge(){
    
    zurge.setXY(xzurge,yzurge);
-   if(mouseX>xzurge && mousePressed){
-    zurge.setFrameSequence(1,3,0.09,1);
-    /*if (a>10){
-      mousePressed=false;
-      a=0;
-    }*/
+   if(keyPressed&&(keyCode==LEFT||key=='a')&&mousePressed==false){
+     zurge.setFrameSequence(4,4,0.09,1);
+   }else if(keyPressed&&(keyCode==LEFT||key=='a')&&mousePressed){
+     zurge.setFrameSequence(5,7,0.09,1);
+   }else if(mousePressed){
+     zurge.setFrameSequence(1,3,0.09,1);
+   }else{
+     zurge.setFrameSequence(0,0,0.09,1);
    }
-   else if(mouseX<xzurge && mousePressed){
-      zurge.setFrameSequence(5,7,0.09,1);
-      /*if (a>10){
-        mousePressed=false;
-        a=0;
-        }*/
-    }
-   else if (mouseX<xzurge && mousePressed==false){
-        zurge.setFrameSequence(4,4,0.09,1); 
-    }
-    else{
-      zurge.setFrameSequence(0,0,0.09,1);
+   
+   
+    
+   
     //image(per, x, y);
-  }
+  
 }
-
 }
