@@ -54,11 +54,10 @@ void setup(){
   textAlign(CENTER);
   stage=0;
   ZURGE=new Zurge (8,2,50,height/2);
-  guss=new Enemigo (5,random(850,width-60),random(60,height-60),2,200);
-  BIL=new Enemigo (5,random(850,width-60),random(60,height-60),3,4000);
+  guss=new Enemigo (5,random(850,width-60),random(60,height-60),2,100);
+  BIL=new Enemigo (5,random(850,width-60),random(60,height-60),3,100);
   caja=new cajas (3.5,width,random(0,height));
   aliens1=new Enemigo (5,800,300,1,100);
-  //aliens0=new Enemigo (5,800,300,1,10200);
   for(int i=0;i<30;i++){
     stars[i]=new Estrellas(random(0,width),random(0,height),3);
     
@@ -107,6 +106,8 @@ void draw(){
     line(5,5,width-5,5);
     line(width-5,height-5,width-5,5);
     line(5,height-5,width-5,height-5);
+    rectMode(CORNER);
+    textSize(10);
      /*if(v<-500 ||   v>width+200){  //luna
       w=random(width,width+100);
       v=random(width,width+100);
@@ -139,9 +140,9 @@ void draw(){
    // guss.gus();
     BIL.movi();
     BIL.enemigo();
-    println(guss.f);
+    println(ZURGE.heal);
     //BIL.bil();
-  
+    
 }
 
 if(stage==2){

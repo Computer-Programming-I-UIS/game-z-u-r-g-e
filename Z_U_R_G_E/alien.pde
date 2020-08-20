@@ -38,15 +38,13 @@ class Enemigo //extends Sprite
         alien.setDead(false);
         alien.setFrameSequence(0,2,0.09,1);
       }
-      if (!alien.isDead()) {
-        if(alien.pp_collision(zurge)){  //muerte
+      if (!alien.isDead() && alien.pp_collision(zurge)) { //muerte
         f=true;
         xenemigo=random(width-150,width-64)-random(-86,width-96);
         yenemigo=random(height-150,height-64)-random(-86,height-96);
         count++;
         g=0;
         alien.setDead(true);
-        }
       }
       else {
         g++;
@@ -55,43 +53,37 @@ class Enemigo //extends Sprite
     }
     
     
-    else if(e==2 && count%5==0 && count!=0){  //enemigo gus
+    else if(e==2 && ((count%5==0 && count!=0) )){  //enemigo gus
       gus.setXY(xenemigo,yenemigo);
-      if(f==false && g>d ){  //vivos
+      if(f==false&& g>d  ){  //vivos
         gus.setDead(false);
         gus.setFrameSequence(0,2,0.09,4);
       }
-      /*if (!gus.isDead()) {
-        if(gus.pp_collision(balafusil)){  //muerte
+      if (!gus.isDead() && gus.pp_collision(zurge)) {  //muerte
           f=true;
           xenemigo=random(width-150,width-64)-random(-86,width-96);
           yenemigo=random(height-150,height-64)-random(-86,height-96);
           count++;
           g=0;
           gus.setDead(true);
-        }
       }
       else {
         g++;
         f=false;
-      }*/
+      }
     }
       
     else if(e==3 && count%10==0 && count!=0){  //enemigo bil
         bil.setXY(xenemigo,yenemigo);
-        if(f==false && g>d ){  //vivos
+        if(f==false && g>d ) {  //vivos
            bil.setDead(false);
            bil.setFrameSequence(0,2,1,1);
         }
-        if (!bil.isDead()) {
-          if(bil.pp_collision(zurge)){  //muerte
+        if (!bil.isDead() && bil.pp_collision(zurge)) { //muerte
             f=true;
-            xenemigo=random(width-150,width-64)-random(-86,width-96);
-            yenemigo=random(height-150,height-64)-random(-86,height-96);
             count++;
             g=0;
             bil.setDead(true);
-          }
         }
         else {
           g++;

@@ -5,6 +5,7 @@ class Zurge {
   int yzurge;
   float vel;
   float velbala;
+  float heal=width/3-80;
   
   Zurge(float speed,float speedbala,int tempxzurge, int tempyzurge){
     velbala=speedbala;
@@ -50,8 +51,8 @@ class Zurge {
   }
   
   void zurge(){
-   
-
+   heal=constrain(heal,0,width/3-80);
+   rect(50+width/100,97*height/100,heal,height/100);  //  indicador de vida
    zurge.setXY(xzurge,yzurge);
    if(keyPressed&&(keyCode==LEFT||key=='a')&&mousePressed==false){
      zurge.setFrameSequence(4,4,0.09,1);
@@ -94,7 +95,12 @@ class Zurge {
      }
      
    }
-   
+     if (!zurge.isDead()&& (zurge.pp_collision(alien) || zurge.pp_collision(gus) || zurge.pp_collision(bil))) {  //  daño a zurge
+       heal-=10;
+      }
+      /*else if(heal<20){
+        zurge.setDead(true);
+      }*/
      
 }
 

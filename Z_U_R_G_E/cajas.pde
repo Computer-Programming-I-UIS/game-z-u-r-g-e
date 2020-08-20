@@ -5,7 +5,6 @@ class cajas {
   float vel1,vel2;
   float lima=0;
   float limb=0;
-  float limc=0;
   
   cajas(float speed,float tempxcaja, float tempycaja){
     vel1=speed;
@@ -22,16 +21,16 @@ class cajas {
       a=int(random(1,3));
       b=0;
     }
-    else if (muni.pp_collision(zurge)){  //recolecta de las cajas
+    else if (!muni.isDead() && muni.pp_collision(zurge)){  //recolecta de las cajas
       a=int(random(1,3));
       b=0;
-      limc+=1;
+      lima+=100;
       muni.setDead(true);
     }
-    else if (energia.pp_collision(zurge)){  //recolecta de las cajas
+    else if (!energia.isDead() && energia.pp_collision(zurge)){  //recolecta de las cajas
       a=int(random(1,3));
       b=0;
-      limb+=1;
+      limb+=100;
       energia.setDead(true);
     }
     else{  //movimiento
@@ -41,15 +40,16 @@ class cajas {
   }
   
   void fondo(){
-    lima=constrain(lima,0,width/3-50);
-    limb=constrain(limb,0,width/3-50);
-    limc=constrain(limc,0,width/3-50);
-    text("heal",width/100,height/100);
-    rect(50+width/100,97*height/100,lima,height/100);
-    text("power",width/3,height/100);
-    rect(50+width/3,97*height/100,limb,height/100);
-    text("ammunition",2*width/3,height/100);
-    rect(50+2*width/3,97*height/100,limc,height/100);
+    lima=constrain(lima,0,width/3-80);
+    limb=constrain(limb,0,width/3-80);
+    rect(50+width/3,97*height/100,caja.limb,height/100);  //  indicador de power
+    rect(50+2*width/3,97*height/100,caja.lima,height/100);  //  indicador de muni
+    fill(155, 17, 30);
+    text("ammunition",5*width/6,height-20);
+    text("heal",width/6,height-20);
+    text("power",3*width/6,height-20);
+    fill(255);
+    
     if(a==1  &&  b>50){
       muni.setDead(false);
       muni.setXY(xcaja,ycaja);
