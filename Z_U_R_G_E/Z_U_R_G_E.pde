@@ -41,7 +41,7 @@ void setup(){
   energia=new Sprite(this,"energia.png",1,1,2);
   muni=new Sprite(this,"muni.png",1,1,2);
   laser=new Sprite(this,"laser.png",2,2,2);
-  zurge=new Sprite(this,"zurge.png",4,5,2);
+  zurge=new Sprite(this,"zurge.png",5,5,2);
   gus=new Sprite(this,"gus.png",2,2,2);
   gus.setDead(true);
   bil=new Sprite(this,"bil.png",3,3,2);
@@ -53,7 +53,7 @@ void setup(){
   imageMode(CENTER);
   textAlign(CENTER);
   stage=0;
-  ZURGE=new Zurge (8,2,50,height/2);
+  ZURGE=new Zurge (8,2,50,50,height/2);
   guss=new Enemigo (5,random(850,width-60),random(60,height-60),2,100);
   BIL=new Enemigo (5,random(850,width-60),random(60,height-60),3,100);
   caja=new cajas (3.5,width,random(0,height));
@@ -99,8 +99,9 @@ void draw(){
   if(stage==1){
     clear();
     background(0);
-    textSize(20);
-    text(count,width-50,50);
+    textSize(15);
+    text("Kills",width-90,30);
+    text(count,width-30,30);
     stroke(230,240,30);
     line(5,5,5,height-5);
     line(5,5,width-5,5);

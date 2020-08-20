@@ -5,9 +5,11 @@ class Zurge {
   int yzurge;
   float vel;
   float velbala;
+  float xbala;
   float heal=width/3-80;
   
-  Zurge(float speed,float speedbala,int tempxzurge, int tempyzurge){
+  Zurge(float speed,float speedbala, float tempxbala,int tempxzurge, int tempyzurge){
+    xbala=tempxbala;
     velbala=speedbala;
     vel=speed;
     xzurge=tempxzurge;
@@ -53,29 +55,60 @@ class Zurge {
   void zurge(){
    heal=constrain(heal,0,width/3-80);
    rect(50+width/100,97*height/100,heal,height/100);  //  indicador de vida
-   zurge.setXY(xzurge,yzurge);
    if(keyPressed&&(keyCode==LEFT||key=='a')&&mousePressed==false){
+     zurge.setXY(xzurge,yzurge);
      zurge.setFrameSequence(4,4,0.09,1);
    }else if(keyPressed&&(keyCode==LEFT||key=='a')&&mousePressed){
+     zurge.setXY(xzurge,yzurge);
      zurge.setFrameSequence(5,7,0.09,1);
    }else if(mousePressed){
+     zurge.setXY(xzurge,yzurge);
      zurge.setFrameSequence(1,3,0.09,1);
    }else if(mouseX<xzurge){
+     zurge.setXY(xzurge,yzurge);
      zurge.setFrameSequence(4,4,0.09,1);
    }else{
+     zurge.setXY(xzurge,yzurge);
      zurge.setFrameSequence(0,0,0.09,1);
    }
-   
-   if(keyPressed&&key=='e'){  //Coge el fusil
-     zurge.setFrameSequence(8,8,0.9,1);
-     zurge.setFrameSequence(11,11,2,1);
-     zurge.setFrameSequence(14,14,2,1);
-     if(mousePressed){
-       
-       zurge.setFrameSequence(14,14,2,1);
+   if(caja.limb==250){ //250 aprox = a width/3-80
+   if(keyPressed&&key=='q'){  //Embestida
+       velbala+=3;
+       velbala=constrain(velbala,0,(width-xzurge-40)/10);
+       zurge.setXY(xzurge,yzurge);
+     if(mousePressed&&mouseX>xzurge){
+       zurge.setFrameSequence(18,18,2,1);
+      // zurge.setFrameSequence(14,14,2,1);
        zurge.setXY(xzurge+=velbala,yzurge);
-       zurge.setFrameSequence(17,17,2,1);
-      
+       zurge.setFrameSequence(19,19,2,1);
+       //escudo=true;
+       //zurge.setFrameSequence(17,17,2,1);
+     }else if(mousePressed&&mouseX<xzurge){
+       zurge.setFrameSequence(18,18,2,1);
+      // zurge.setFrameSequence(14,14,2,1);
+       zurge.setXY(xzurge-=velbala,yzurge);
+       zurge.setFrameSequence(20,20,2,1);
+       xzurge=constrain(xzurge,150,width-150);
+      // escudo=false;
+       //zurge.setFrameSequence(17,17,2,1);
+     }
+   }
+   }
+       
+
+     
+   if(keyPressed&&key=='e'){  //Coge el fusil
+   zurge.setXY(xzurge,yzurge);
+     zurge.setFrameSequence(11,11,0.9,1);
+     //zurge.setFrameSequence(11,11,2,1);
+     
+     if(mousePressed){
+       zurge.setFrameSequence(11,11,2,1);
+      // zurge.setFrameSequence(14,14,2,1);
+       zurge.setXY(xbala,yzurge);
+       zurge.setFrameSequence(14,14,2,1);
+       //zurge.setFrameSequence(17,17,2,1);
+       xbala=xzurge+=velbala;
        velbala+=3;
        velbala=constrain(velbala,0,(width-xzurge-50)/10);
      }else{
@@ -83,25 +116,31 @@ class Zurge {
      
    }else if(keyPressed&&key=='r'){   //Coge la bazooka
      zurge.setFrameSequence(12,12,0.9,1);
-     zurge.setFrameSequence(15,15,2,1);
+     //zurge.setFrameSequence(15,15,2,1);
      
      if(mousePressed){
+       
        zurge.setFrameSequence(15,15,2,1);
-       zurge.setXY(xzurge+=velbala,yzurge);
+       //zurge.setFrameSequence(15,qqqqqqq15,2,1);
+       zurge.setXY(xbala,yzurge);
        zurge.setFrameSequence(16,16,2,1);
+       //zurge.setFrameSequence(16,16,2,1);
+       xbala=xzurge+=velbala;
        velbala+=3;
        velbala=constrain(velbala,0,(width-50)/10);
      }else{
      }
-     
    }
+     
+   
      if (!zurge.isDead()&& (zurge.pp_collision(alien) || zurge.pp_collision(gus) || zurge.pp_collision(bil))) {  //  daño a zurge
        heal-=10;
       }
+  }
       /*else if(heal<20){
         zurge.setDead(true);
       }*/
      
-}
+
 
 }

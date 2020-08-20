@@ -13,6 +13,7 @@ class cajas {
   }
   
   void movi(){
+    
     if(ycaja<-4 ||  ycaja>height+10){  //limites superior e inferior de cajas
       vel2*=-1;
       ycaja+=vel2;
@@ -24,19 +25,20 @@ class cajas {
     else if (!muni.isDead() && muni.pp_collision(zurge)){  //recolecta de las cajas
       a=int(random(1,3));
       b=0;
-      lima+=100;
+      lima+=50;
       muni.setDead(true);
     }
     else if (!energia.isDead() && energia.pp_collision(zurge)){  //recolecta de las cajas
       a=int(random(1,3));
       b=0;
-      limb+=100;
-      energia.setDead(true);
+      limb+=50;
+      energia.setDead(true);  
     }
     else{  //movimiento
       xcaja-=vel1;
       ycaja+=vel2;
     }
+    
   }
   
   void fondo(){
@@ -66,5 +68,9 @@ class cajas {
       xcaja=width;
       vel2=random(-3,3);
     }
+     if(limb>=250&&keyPressed&&key=='q'&&mousePressed){
+     limb=0;
+   }
+   
 }
 }
