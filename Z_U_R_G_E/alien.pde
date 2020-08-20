@@ -32,63 +32,72 @@ class Enemigo //extends Sprite
   }
   
   void enemigo(){
-    if(e==1){  //Aliens
+    if(e==1 && (count==0 || count%5!=0)){  //Aliens
       alien.setXY(xenemigo,yenemigo);
-      if(d<g && f==false){  //vivos
+      if(f==false && g>d ){  //vivos
+        alien.setDead(false);
         alien.setFrameSequence(0,2,0.09,1);
       }
-      if(xenemigo>ZURGE.xzurge-50 && yenemigo>ZURGE.yzurge-50 && xenemigo<ZURGE.xzurge+50 && yenemigo<ZURGE.yzurge+50||(ZURGE.xzurge+10*ZURGE.velbala>xenemigo-20&&ZURGE.xzurge+10*ZURGE.velbala<xenemigo+20)&&ZURGE.yzurge>yenemigo-50&&ZURGE.yzurge<yenemigo+50){  //muerte
+      if (!alien.isDead()) {
+        if(alien.pp_collision(zurge)){  //muerte
         f=true;
-        g=0;
         xenemigo=random(width-150,width-64)-random(-86,width-96);
         yenemigo=random(height-150,height-64)-random(-86,height-96);
         count++;
+        g=0;
+        alien.setDead(true);
+        }
       }
-      else{  //respawn
-        f=false;
+      else {
         g++;
+        f=false;
       }
     }
     
     
-    else if(e==2 && count>5){  //enemigo gus
+    else if(e==2 && count%5==0 && count!=0){  //enemigo gus
       gus.setXY(xenemigo,yenemigo);
-      if(g>d && f==false){  //vivo
-           gus.setFrameSequence(0,2,0.09,4);
-        }
-      else if(xenemigo>ZURGE.xzurge-50 && yenemigo>ZURGE.yzurge-50 && xenemigo<ZURGE.xzurge+50 && yenemigo<ZURGE.yzurge+50){  //muerte
-        f=true;
-        g=0;
-        xenemigo=random(850,width-60);
-        yenemigo=random(60,height-60);
-        count+=3;
+      if(f==false && g>d ){  //vivos
+        gus.setDead(false);
+        gus.setFrameSequence(0,2,0.09,4);
       }
-      else if(g>d){  //respawn
-        //f=false;
+      if (!gus.isDead()) {
+        if(gus.pp_collision(balafusil)){  //muerte
+          f=true;
+          xenemigo=random(width-150,width-64)-random(-86,width-96);
+          yenemigo=random(height-150,height-64)-random(-86,height-96);
+          count++;
+          g=0;
+          gus.setDead(true);
         }
+      }
       else {
-        g+=0.1;
+        g++;
+        f=false;
       }
-   }
+    }
       
-      
-    else if(e==3 && count>20){  //enemigo bil
-      bil.setXY(xenemigo,yenemigo);
-        if(t>d && f==false){  //vivo
+    else if(e==3 && count%10==0 && count!=0){  //enemigo bil
+        bil.setXY(xenemigo,yenemigo);
+        if(f==false && g>d ){  //vivos
+           bil.setDead(false);
            bil.setFrameSequence(0,3,1,1);
         }
-        else if(xenemigo>ZURGE.xzurge-50 && yenemigo>ZURGE.yzurge-50 && xenemigo<ZURGE.xzurge+50 && yenemigo<ZURGE.yzurge+50 && f==false){  //muerte
-          f=true;
-          g=0;
-          xenemigo=random(850,width-60);
-          yenemigo=random(60,height-60);
-          count+=5;
-      }
-        else{  //respawn
-          f=false;
-          g++;
+        if (!bil.isDead()) {
+          if(bil.pp_collision(zurge)){  //muerte
+            f=true;
+            xenemigo=random(width-150,width-64)-random(-86,width-96);
+            yenemigo=random(height-150,height-64)-random(-86,height-96);
+            count++;
+            g=0;
+            bil.setDead(true);
+          }
         }
-      }
+        else {
+          g++;
+          f=false;
+        }
+    }
     }
    }   
       

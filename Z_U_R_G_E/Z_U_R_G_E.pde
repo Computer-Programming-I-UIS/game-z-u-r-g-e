@@ -3,6 +3,8 @@ import sprites.maths.*;
 import sprites.utils.*;
 
 Sprite laser;
+Sprite muni;
+Sprite energia;
 Sprite zurge;
 Sprite balabazooka;
 Sprite balafusil;
@@ -11,15 +13,13 @@ Sprite bil;
 Sprite alien;
 Sprite laserbala;
 StopWatch sw = new StopWatch();
-
+boolean mouse;
 float v=width,w=width*4/5,h=height*3/8,j=height/2;
 int stage;
 PFont fuente;
 PImage star;
 PImage luna1;
 PImage luna2;
-PImage energia;
-PImage muni;
 PImage material;
 Estrellas stars[]=new Estrellas[30];
 Zurge ZURGE;
@@ -37,17 +37,23 @@ void setup(){
   star=loadImage("estrella.png");
   luna1=loadImage("luna1.png");
   luna2=loadImage("luna2.png");
-  energia=loadImage("energia.png");
-  muni=loadImage("muni.png");
+  
   material=loadImage("material.png");
   
+  energia=new Sprite(this,"energia.png",1,1,2);
+  muni=new Sprite(this,"muni.png",1,1,2);
   laser=new Sprite(this,"laser.png",2,2,2);
   zurge=new Sprite(this,"zurge.png",4,4,2);
   balabazooka=new Sprite(this,"balabazooka.png",2,2,2);
-  balafusil=new Sprite(this,"balafusil.png",2,2,2); 
+  balabazooka.setDead(true);
+  balafusil=new Sprite(this,"balafusil.png",2,2,2);
+  balafusil.setDead(true);
   gus=new Sprite(this,"gus.png",2,2,2);
+  gus.setDead(true);
   bil=new Sprite(this,"bil.png",2,2,2);
-  alien=new Sprite(this,"alien.png",2,2,2);
+  bil.setDead(true);
+  alien=new Sprite(this,"Alien.png",2,2,2);
+  alien.setDead(true);
   laserbala=new Sprite(this,"laserbala.png",2,3,2);
   rectMode(CENTER);
   imageMode(CENTER);
@@ -57,7 +63,7 @@ void setup(){
   guss=new Enemigo (5,random(850,width-60),random(60,height-60),2,200);
   BIL=new Enemigo (5,random(850,width-60),random(60,height-60),3,4000);
   caja=new cajas (3.5,width,random(0,height));
-  aliens1=new Enemigo (5,800,300,1,1000000);
+  aliens1=new Enemigo (5,800,300,1,100);
   //aliens0=new Enemigo (5,800,300,1,10200);
   for(int i=0;i<30;i++){
     stars[i]=new Estrellas(random(0,width),random(0,height),3);
@@ -68,6 +74,7 @@ void setup(){
 }
 
 void draw(){
+  println(ZURGE.yzurge);
   if(stage==0){
     background(0);
     textFont(fuente);
