@@ -58,10 +58,10 @@ class Zurge {
    if(keyPressed&&(keyCode==LEFT||key=='a')&&mousePressed==false){
      zurge.setXY(xzurge,yzurge);
      zurge.setFrameSequence(4,4,0.09,1);
-   }else if(keyPressed&&(keyCode==LEFT||key=='a')&&mouseX<xzurge){
+   }else if(keyPressed&&(keyCode==LEFT||key=='a')&&mousePressed){
      zurge.setXY(xzurge,yzurge);
      zurge.setFrameSequence(5,7,0.09,1);
-   }else if(mousePressed&&mouseX>xzurge){
+   }else if(mousePressed){
      zurge.setXY(xzurge,yzurge);
      zurge.setFrameSequence(1,3,0.09,1);
    }else if(mouseX<xzurge){
@@ -71,7 +71,7 @@ class Zurge {
      zurge.setXY(xzurge,yzurge);
      zurge.setFrameSequence(0,0,0.09,1);
    }
-   if(caja.limb>=250){ //250 aprox = a width/3-80
+   if(caja.limb==250){ //250 aprox = a width/3-80
    if(keyPressed&&key=='q'){  //Embestida
        velbala+=3;
        velbala=constrain(velbala,0,(width-xzurge-40)/10);
@@ -104,31 +104,44 @@ class Zurge {
      
      if(mousePressed){
        zurge.setFrameSequence(11,11,2,1);
+       balafusil.setDead(false);
       // zurge.setFrameSequence(14,14,2,1);
-       zurge.setXY(xbala,yzurge);
-       zurge.setFrameSequence(14,14,2,1);
+       balafusil.setXY(xbala,yzurge);
+       balafusil.setFrameSequence(0,0,2,1);
        //zurge.setFrameSequence(17,17,2,1);
-       xbala=xzurge+=velbala;
+       xbala+=velbala;
        velbala+=3;
        velbala=constrain(velbala,0,(width-xzurge-50)/10);
+       if(mouseX>xzurge){
+         xbala+=velbala;
+       }
+       else{
+         xbala-=velbala;
+       }
      }else{
+       xbala=xzurge;
+       balafusil.setDead(true);
      }
      
    }else if(keyPressed&&key=='r'){   //Coge la bazooka
-     zurge.setFrameSequence(12,12,0.9,1);
-     //zurge.setFrameSequence(15,15,2,1);
-     
+       //zurge.setFrameSequence(12,12,0.9,1);
      if(mousePressed){
-       
        zurge.setFrameSequence(15,15,2,1);
+       balabazooka.setDead(false);
        //zurge.setFrameSequence(15,qqqqqqq15,2,1);
-       zurge.setXY(xbala,yzurge);
-       zurge.setFrameSequence(16,16,2,1);
-       //zurge.setFrameSequence(16,16,2,1);
-       xbala=xzurge+=velbala;
+       balabazooka.setXY(xbala,yzurge);
+       balabazooka.setFrameSequence(0,0,2,1);
        velbala+=3;
        velbala=constrain(velbala,0,(width-50)/10);
+       if(mouseX>xzurge){
+         xbala+=velbala;
+       }
+       else{
+         xbala-=velbala;
+       }
      }else{
+       xbala=xzurge;
+       balabazooka.setDead(true);
      }
    }
      

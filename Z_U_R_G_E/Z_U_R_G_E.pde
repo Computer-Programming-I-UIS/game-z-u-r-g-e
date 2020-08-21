@@ -10,6 +10,8 @@ Sprite gus;
 Sprite bil;
 Sprite alien;
 Sprite laserbala;
+Sprite balabazooka;
+Sprite balafusil;
 StopWatch sw = new StopWatch();
 boolean mouse;
 float v=width,w=width*4/5,h=height*3/8,j=height/2;
@@ -35,9 +37,10 @@ void setup(){
   star=loadImage("estrella.png");
   luna1=loadImage("luna1.png");
   luna2=loadImage("luna2.png");
-  
   material=loadImage("material.png");
   
+  balabazooka=new Sprite(this,"balabazooka.png",1,1,2);
+  balafusil=new Sprite(this,"balabazooka.png",1,1,2);
   energia=new Sprite(this,"energia.png",1,1,2);
   muni=new Sprite(this,"muni.png",1,1,2);
   laser=new Sprite(this,"laser.png",2,2,2);

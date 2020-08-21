@@ -38,7 +38,7 @@ class Enemigo //extends Sprite
         alien.setDead(false);
         alien.setFrameSequence(0,2,0.09,1);
       }
-      if (!alien.isDead() && alien.pp_collision(zurge)) { //muerte
+      if (!alien.isDead() && (alien.pp_collision(balafusil) || alien.pp_collision(balafusil))) { //muerte
         f=true;
         xenemigo=random(width-150,width-64)-random(-86,width-96);
         yenemigo=random(height-150,height-64)-random(-86,height-96);
@@ -59,7 +59,7 @@ class Enemigo //extends Sprite
         gus.setDead(false);
         gus.setFrameSequence(0,2,0.09,4);
       }
-      if (!gus.isDead() && gus.pp_collision(zurge)) {  //muerte
+      if (!gus.isDead() && (gus.pp_collision(balafusil) || gus.pp_collision(balafusil))) {  //muerte
           f=true;
           xenemigo=random(width-150,width-64)-random(-86,width-96);
           yenemigo=random(height-150,height-64)-random(-86,height-96);
@@ -79,7 +79,7 @@ class Enemigo //extends Sprite
            bil.setDead(false);
            bil.setFrameSequence(0,2,1,1);
         }
-        if (!bil.isDead() && bil.pp_collision(zurge)) { //muerte
+        if (!bil.isDead() && (bil.pp_collision(balafusil) || bil.pp_collision(balafusil))) { //muerte
             f=true;
             count++;
             g=0;
