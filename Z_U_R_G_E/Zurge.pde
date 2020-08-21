@@ -58,10 +58,10 @@ class Zurge {
    if(keyPressed&&(keyCode==LEFT||key=='a')&&mousePressed==false){
      zurge.setXY(xzurge,yzurge);
      zurge.setFrameSequence(4,4,0.09,1);
-   }else if(keyPressed&&(keyCode==LEFT||key=='a')&&mousePressed){
+   }else if(keyPressed&&(keyCode==LEFT||key=='a')&&mouseX<xzurge){
      zurge.setXY(xzurge,yzurge);
      zurge.setFrameSequence(5,7,0.09,1);
-   }else if(mousePressed){
+   }else if(mousePressed&&mouseX>xzurge){
      zurge.setXY(xzurge,yzurge);
      zurge.setFrameSequence(1,3,0.09,1);
    }else if(mouseX<xzurge){
@@ -71,7 +71,7 @@ class Zurge {
      zurge.setXY(xzurge,yzurge);
      zurge.setFrameSequence(0,0,0.09,1);
    }
-   if(caja.limb==250){ //250 aprox = a width/3-80
+   if(caja.limb>=250){ //250 aprox = a width/3-80
    if(keyPressed&&key=='q'){  //Embestida
        velbala+=3;
        velbala=constrain(velbala,0,(width-xzurge-40)/10);
