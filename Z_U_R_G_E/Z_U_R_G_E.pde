@@ -1,7 +1,11 @@
+import ddf.minim.*;
 import sprites.*;
 import sprites.maths.*;
 import sprites.utils.*;
 
+Minim minim;
+AudioPlayer menu;
+AudioPlayer golpe;
 Sprite laser;
 Sprite muni;
 Sprite energia;
@@ -33,12 +37,14 @@ int count=0;
 void setup(){
   size(1000,600);
   background(0);
+  minim=new Minim(this);
+  menu=minim.loadFile("menu.mp3");
+  golpe=minim.loadFile("golpe.mp3");
   fuente=createFont("fuente.otf",70);
   star=loadImage("estrella.png");
   luna1=loadImage("luna1.png");
   luna2=loadImage("luna2.png");
-  material=loadImage("material.png");
-  
+  material=loadImage("material.png");  
   balabazooka=new Sprite(this,"balabazooka.png",1,1,2);
   balafusil=new Sprite(this,"balabazooka.png",1,1,2);
   energia=new Sprite(this,"energia.png",1,1,2);
@@ -73,6 +79,7 @@ void draw(){
   println(ZURGE.yzurge);
   if(stage==0){
     background(0);
+    menu.loop();
     textFont(fuente);
     stroke(230,240,30);
     line(220,100,780,100);
@@ -98,7 +105,6 @@ void draw(){
       line(width-5,20*a-1,width-5,20*a+8);
     }
   }
-
   if(stage==1){
     clear();
     background(0);
@@ -185,6 +191,7 @@ if(stage==3){
   }
   textSize(12);
   text("Musica extraida de:",300,200);
+  text("Canción del menú: Metal intro- Propiedad de Leonard B. Blaesing",300,300);
   text("Presiona cualquier tecla para volver a la pantalla de inicio",width/2,height-80);
     if(keyPressed){
     stage=0;

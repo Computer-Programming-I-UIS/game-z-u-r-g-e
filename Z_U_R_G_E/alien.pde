@@ -53,7 +53,7 @@ class Enemigo //extends Sprite
     }
     
     
-    else if(e==2 && ((count%5==0 && count!=0) )){  //enemigo gus
+    else if(e==2 && ((count==5) )){  //enemigo gus
       gus.setXY(xenemigo,yenemigo);
       if(f==false&& g>d  ){  //vivos
         gus.setDead(false);
@@ -73,7 +73,7 @@ class Enemigo //extends Sprite
       }
     }
       
-    else if(e==3 && count%10==0 && count!=0){  //enemigo bil
+    else if(e==3 && count==10){  //enemigo bil
         bil.setXY(xenemigo,yenemigo);
         if(f==false && g>d ) {  //vivos
            bil.setDead(false);
