@@ -7,7 +7,7 @@ Minim minim;
 AudioPlayer menu;
 AudioPlayer golpe;
 Sprite laser;
-Sprite cajas[]=new Sprite[4];
+Sprite cajas[]=new Sprite[5];
 Sprite zurge;
 Sprite enemigos[]=new Sprite[3];
 Sprite laserbala;
@@ -43,7 +43,7 @@ void setup(){
   luna2=loadImage("luna2.png");
   material=loadImage("material.png");  
   balabazooka=new Sprite(this,"balabazooka.png",1,1,2);
-  balafusil=new Sprite(this,"balabazooka.png",1,1,2);
+  balafusil=new Sprite(this,"balafusil.png",1,1,2);
   laser=new Sprite(this,"laser.png",2,2,2);
   zurge=new Sprite(this,"zurge.png",5,5,2);
   laserbala=new Sprite(this,"laserbala.png",2,3,2);
@@ -63,8 +63,8 @@ void setup(){
   enemigos[i]=new Sprite(this,"enemigos.png",4,4,2);    //  i=0  :alien;    i=1  :gus;    i=2  :bil
   enemigos[i].setDead(true);
 }
-  for(int i=0;i<4;i++){
-  cajas[i]=new Sprite(this,"cajas.png",2,2,2);    //  i=0  :energia;    i=1  :municion;    i=2  :orbe de bil;    i=3  :hacha de gus
+  for(int i=0;i<5;i++){
+  cajas[i]=new Sprite(this,"cajas.png",2,3,2);    //  i=0  :energia;    i=1  :municion;    i=2  :orbe de bil;    i=3  :hacha de gus
   cajas[i].setDead(true);
 }
   
@@ -75,6 +75,12 @@ void setup(){
 void draw(){
   println(l);
   if(l<360){
+    textSize(20);
+    text("Z.U.R.G.E se ecuentra en peligro, su sistema está fallando y debe recolectar",width/2,200);
+    text("un material que puede salvarl.Lo aterrador es que Z.U.R.G.E debe recorrer mundos muy",width/2,300);
+    text("macabros para obtenerlo, donde hay todo tipo de seres que no tienen ninguna intención de",width/2,400);
+    text(" permitir que Z.U.R.G.E consiga su objetivo. ¡Ayuda a Z.U.R.G.E a llegar a su salvación!",width/2,500);
+    
     l++;
   }
   if(l==360){

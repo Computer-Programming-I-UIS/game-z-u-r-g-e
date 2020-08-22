@@ -96,7 +96,7 @@ zurge.setXY(xzurge,yzurge);
      //zurge.setFrameSequence(11,11,2,1);
      
      if(mousePressed){
-       zurge.setFrameSequence(11,11,2,1);
+       zurge.setFrameSequence(14,14,2,1);
        balafusil.setDead(false);
       // zurge.setFrameSequence(14,14,2,1);
        balafusil.setXY(xbala,yzurge);
