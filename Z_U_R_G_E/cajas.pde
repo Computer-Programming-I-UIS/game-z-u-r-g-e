@@ -5,6 +5,7 @@ class cajas {
   float vel1,vel2;
   float lima=0;
   float limb=0;
+  int nmat;  //Contador de material
   
   cajas(float speed,float tempxcaja, float tempycaja){
     vel1=speed;
@@ -19,24 +20,25 @@ class cajas {
       ycaja+=vel2;
     }
     else if (xcaja<-50){  //no recolecta cajas
-      a=int(random(1,2));
+      a=int(random(1,3));
       b=0;
     }
-    else if (!cajas[0].isDead() && cajas[0].pp_collision(zurge)){  //recolecta de las cajas
-      a=2;
-      b=0;
-      lima+=50;
-      cajas[0].setDead(true);
-    }
-    else if (!cajas[1].isDead() && cajas[1].pp_collision(zurge)){  //recolecta de las cajas
-      a=1;
-      b=0;
-      limb+=50;
-      cajas[1].setDead(true);  
-    }else if (!cajas[4].isDead() && cajas[4].pp_collision(zurge)){  //recolecta de las cajas
+    else if (!cajas[0].isDead() && cajas[0].pp_collision(zurge)&&(a==1)){  //recolecta de las cajas
       a=3;
       b=0;
+      limb+=50;
+      cajas[0].setDead(true);
+    }
+    else if (!cajas[1].isDead() && cajas[1].pp_collision(zurge)&&(a==2)){  //recolecta de las cajas
+      a=1;
+      b=0;
+      lima+=50;
+      cajas[1].setDead(true);  
+    }else if (!cajas[4].isDead() && cajas[4].pp_collision(zurge)&&(a==3)){  //recolecta de las cajas
+      a=2;
+      b=0;
       cajas[4].setDead(true);  
+      nmat++;
     }
     else{  //movimiento
       xcaja-=vel1;
@@ -69,7 +71,7 @@ class cajas {
     }else if(a==3  &&  b>50){
       cajas[4].setDead(false);
       cajas[4].setXY(xcaja,ycaja);
-      cajas[4].setFrameSequence(1,1,1,1);
+      cajas[4].setFrameSequence(4,4,1,1);
     }
     else{
       b++;

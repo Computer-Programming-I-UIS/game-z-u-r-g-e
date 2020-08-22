@@ -35,23 +35,22 @@ void setup(){
   size(1000,600);
   background(0);
   minim=new Minim(this);
-  menu=minim.loadFile("menu.mp3");
+  //menu=minim.loadFile("menu.mp3");
   golpe=minim.loadFile("golpe.mp3");
   fuente=createFont("fuente.otf",70);
   star=loadImage("estrella.png");
-  luna1=loadImage("luna1.png");
-  luna2=loadImage("luna2.png");
-  material=loadImage("material.png");  
-  balabazooka=new Sprite(this,"balabazooka.png",1,1,2);
+  //luna1=loadImage("luna1.png");
+  //luna2=loadImage("luna2.png"); 
+  balabazooka=new Sprite(this,"balabazooka.png",1,2,2);
   balafusil=new Sprite(this,"balafusil.png",1,1,2);
-  laser=new Sprite(this,"laser.png",2,2,2);
+  //laser=new Sprite(this,"laser.png",2,2,2);
   zurge=new Sprite(this,"zurge.png",5,5,2);
-  laserbala=new Sprite(this,"laserbala.png",2,3,2);
+  //laserbala=new Sprite(this,"laserbala.png",2,3,2);
   rectMode(CENTER);
   imageMode(CENTER);
   textAlign(CENTER);
   stage=-1;
-  ZURGE=new Zurge (8,2,50,50,height/2);
+  ZURGE=new Zurge (8,10,50,50,height/2);
   guss=new Enemigo (5,random(width,width-60),random(0,height),2,120);
   BIL=new Enemigo (5,random(width,width-60),random(0,height),3,120);
   caja=new cajas (3.5,random(width,width-60),random(0,height));
@@ -64,7 +63,7 @@ void setup(){
   enemigos[i].setDead(true);
 }
   for(int i=0;i<5;i++){
-  cajas[i]=new Sprite(this,"cajas.png",2,3,2);    //  i=0  :energia;    i=1  :municion;    i=2  :orbe de bil;    i=3  :hacha de gus
+  cajas[i]=new Sprite(this,"cajas.png",2,3,2);    //  i=0  :energia;    i=1  :municion;    i=2  :orbe de bil;    i=3  :hacha de gus;    i=4   : material
   cajas[i].setDead(true);
 }
   
@@ -83,9 +82,9 @@ void draw(){
     
     l++;
   }
-  if(l==360){
+  if(l==160){
     stage=0;
-    l=380;
+    l=240;
   }
   if(stage==0){
     background(0);
@@ -121,6 +120,12 @@ void draw(){
     textSize(15);
     text("Kills",width-90,30);
     text(count,width-30,30);
+    textSize(10);
+    text("Material:",60,20);
+    text(caja.nmat,120,20);
+    if(caja.nmat>=2){
+      stage=4;
+    }
     stroke(230,240,30);
     line(5,5,5,height-5);
     line(5,5,width-5,5);
@@ -205,6 +210,16 @@ if(stage==3){
     if(keyPressed){
     stage=0;
   }
+}
+
+if(stage==4){
+  clear();
+  background(0);
+  textFont(fuente);
+  text("GANASTE",width/2,150);
+  textSize(40);
+  text("Has salvado a Z.U.R.G.E",width/2,250);
+  
 }
 
 }

@@ -80,6 +80,7 @@ class Enemigo //extends Sprite
           xproyec=height;
           yproyec=width;
           t=0;
+          
       }
       else {
         g++;
@@ -115,6 +116,7 @@ class Enemigo //extends Sprite
             xproyec=height;
             yproyec=width;
             t=0;
+           
         }
         else {
           g++;
