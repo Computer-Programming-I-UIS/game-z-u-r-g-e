@@ -7,9 +7,9 @@ Minim minim;
 AudioPlayer menu;
 AudioPlayer golpe;
 Sprite laser;
-Sprite cajas;
+Sprite cajas[]=new Sprite[4];
 Sprite zurge;
-Sprite enemigos;
+Sprite enemigos[]=new Sprite[3];
 Sprite laserbala;
 Sprite balabazooka;
 Sprite balafusil;
@@ -30,7 +30,7 @@ Enemigo aliens1;
 Enemigo aliens0;
 cajas caja;
 int count=0;
-
+int l=0;  //tiempo de la historia
 void setup(){
   size(1000,600);
   background(0);
@@ -44,41 +44,46 @@ void setup(){
   material=loadImage("material.png");  
   balabazooka=new Sprite(this,"balabazooka.png",1,1,2);
   balafusil=new Sprite(this,"balabazooka.png",1,1,2);
-  //energia=new Sprite(this,"energia.png",1,1,2);
-  //muni=new Sprite(this,"muni.png",1,1,2);
-  cajas=new Sprite(this,"caja.png",2,2,2);
   laser=new Sprite(this,"laser.png",2,2,2);
   zurge=new Sprite(this,"zurge.png",5,5,2);
-  enemigos=new Sprite(this,"enemigos.png",4,4,2);
-  /*gus=new Sprite(this,"gus.png",2,2,2);
-  gus.setDead(true);
-  bil=new Sprite(this,"bil.png",3,3,2);
-  bil.setDead(true);
-  alien=new Sprite(this,"Alien.png",2,2,2);
-  alien.setDead(true);*/
   laserbala=new Sprite(this,"laserbala.png",2,3,2);
   rectMode(CENTER);
   imageMode(CENTER);
   textAlign(CENTER);
-  stage=0;
+  stage=-1;
   ZURGE=new Zurge (8,2,50,50,height/2);
-  guss=new Enemigo (5,random(850,width-60),random(60,height-60),2,100);
-  BIL=new Enemigo (5,random(850,width-60),random(60,height-60),3,100);
-  caja=new cajas (3.5,width,random(0,height));
+  guss=new Enemigo (5,random(width,width-60),random(0,height),2,120);
+  BIL=new Enemigo (5,random(width,width-60),random(0,height),3,120);
+  caja=new cajas (3.5,random(width,width-60),random(0,height));
   aliens1=new Enemigo (5,800,300,1,100);
   for(int i=0;i<30;i++){
     stars[i]=new Estrellas(random(0,width),random(0,height),3);
-    
+}
+  for(int i=0;i<3;i++){
+  enemigos[i]=new Sprite(this,"enemigos.png",4,4,2);    //  i=0  :alien;    i=1  :gus;    i=2  :bil
+  enemigos[i].setDead(true);
+}
+  for(int i=0;i<4;i++){
+  cajas[i]=new Sprite(this,"cajas.png",2,2,2);    //  i=0  :energia;    i=1  :municion;    i=2  :orbe de bil;    i=3  :hacha de gus
+  cajas[i].setDead(true);
 }
   
+
   
 }
 
 void draw(){
-  println(ZURGE.yzurge);
+  println(l);
+  if(l<360){
+    l++;
+  }
+  if(l==360){
+    stage=0;
+    l=380;
+  }
   if(stage==0){
     background(0);
-    menu.loop();
+    //menu.loop();
     textFont(fuente);
     stroke(230,240,30);
     line(220,100,780,100);
@@ -142,14 +147,13 @@ void draw(){
     ZURGE.movi();
     ZURGE.zurge();
     guss.enemigo();
-   // caja.fondo();
-    //caja.movi();
+    caja.fondo();
+    caja.movi();
     guss.movi();
     //guss.enemigos();
    // guss.gus();
     BIL.movi();
     BIL.enemigo();
-    println(ZURGE.heal);
     //BIL.bil();
     
 }

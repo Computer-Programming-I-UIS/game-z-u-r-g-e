@@ -12,27 +12,27 @@ class cajas {
     ycaja=tempycaja;
   }
   
-  /*void movi(){
+  void movi(){
     
     if(ycaja<-4 ||  ycaja>height+10){  //limites superior e inferior de cajas
       vel2*=-1;
       ycaja+=vel2;
     }
     else if (xcaja<-50){  //no recolecta cajas
-      a=int(random(1,3));
+      a=int(random(1,2));
       b=0;
     }
-    else if (!cajas.isDead() && cajas.pp_collision(zurge)){  //recolecta de las cajas
-      a=int(random(1,3));
+    else if (!cajas[0].isDead() && cajas[0].pp_collision(zurge)){  //recolecta de las cajas
+      a=2;
       b=0;
       lima+=50;
-      cajas.setDead(true);
+      cajas[0].setDead(true);
     }
-    else if (!cajas.isDead() && cajas.pp_collision(zurge)){  //recolecta de las cajas
-      a=int(random(1,3));
+    else if (!cajas[1].isDead() && cajas[1].pp_collision(zurge)){  //recolecta de las cajas
+      a=1;
       b=0;
       limb+=50;
-      cajas.setDead(true);  
+      cajas[1].setDead(true);  
     }
     else{  //movimiento
       xcaja-=vel1;
@@ -53,14 +53,14 @@ class cajas {
     fill(255);
     
     if(a==1  &&  b>50){
-      cajas.setDead(false);
-      cajas.setXY(xcaja,ycaja);
-      cajas.setFrameSequence(1,1,1,1);
+      cajas[0].setDead(false);
+      cajas[0].setXY(xcaja,ycaja);
+      cajas[0].setFrameSequence(0,0,1,1);
     }
     else if(a==2  &&  b>50){
-      cajas.setDead(false);
-      cajas.setXY(xcaja,ycaja);
-      cajas.setFrameSequence(0,0,1,1);
+      cajas[1].setDead(false);
+      cajas[1].setXY(xcaja,ycaja);
+      cajas[1].setFrameSequence(1,1,1,1);
     }
     else{
       b++;
@@ -72,5 +72,5 @@ class cajas {
      //limb=0;
    //}
    
-}*/
+}
 }

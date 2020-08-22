@@ -102,7 +102,6 @@ zurge.setXY(xzurge,yzurge);
        balafusil.setXY(xbala,yzurge);
        balafusil.setFrameSequence(0,0,2,1);
        //zurge.setFrameSequence(17,17,2,1);
-       xbala+=velbala;
        velbala+=3;
        velbala=constrain(velbala,0,(width-xzurge-50)/10);
        if(mouseX>xzurge){
@@ -139,8 +138,28 @@ zurge.setXY(xzurge,yzurge);
    }
      
    
-     if (!zurge.isDead()&& (zurge.pp_collision(enemigos) || zurge.pp_collision(enemigos) || zurge.pp_collision(enemigos))) {  //  daño a zurge
+     if (!zurge.isDead()&& zurge.pp_collision(enemigos[0])) {  //  daño a zurge
        heal-=10;
+      }
+      if (!zurge.isDead()&& zurge.pp_collision(enemigos[1])) {  //  daño a zurge
+       heal-=10;
+      }
+      if (!zurge.isDead()&& zurge.pp_collision(enemigos[2])) {  //  daño a zurge
+       heal-=10;
+      }
+      if (!zurge.isDead()&& zurge.pp_collision(cajas[2])) {  //  daño a zurge
+       heal-=10;
+       cajas[2].setDead(true);
+       BIL.xproyec=height;
+       BIL.yproyec=width;
+       BIL.t=0;
+      }
+      if (!zurge.isDead()&& zurge.pp_collision(cajas[3])) {  //  daño a zurge
+       heal-=10;
+       cajas[3].setDead(true);
+       guss.xproyec=height;
+       guss.yproyec=width;
+       guss.t=0;
       }
   }
       /*else if(heal<20){
