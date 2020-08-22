@@ -59,7 +59,6 @@ class Enemigo //extends Sprite
       if(f==false&& g>d  ){  //vivos
         enemigos[1].setDead(false);
         enemigos[1].setFrameSequence(3,6,1,1);
-        t++;
         if(t>240){
           cajas[3].setDead(false);
           cajas[3].setXY(xproyec-=30,yproyec);

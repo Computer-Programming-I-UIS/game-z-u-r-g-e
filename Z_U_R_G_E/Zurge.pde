@@ -161,6 +161,18 @@ zurge.setXY(xzurge,yzurge);
        guss.yproyec=width;
        guss.t=0;
       }
+      if (!zurge.isDead()&& guss.xproyec<xzurge){
+        guss.xproyec=height;
+        guss.yproyec=width;
+        guss.t=0;
+        cajas[3].setDead(true);
+      }
+      if (!zurge.isDead()&& BIL.xproyec<xzurge){
+        BIL.xproyec=height;
+        BIL.yproyec=width;
+        BIL.t=0;
+        cajas[2].setDead(true);
+      }
   }
       /*else if(heal<20){
         zurge.setDead(true);
