@@ -12,7 +12,7 @@ class cajas {
     ycaja=tempycaja;
   }
   
-  void movi(){
+  /*void movi(){
     
     if(ycaja<-4 ||  ycaja>height+10){  //limites superior e inferior de cajas
       vel2*=-1;
@@ -22,17 +22,17 @@ class cajas {
       a=int(random(1,3));
       b=0;
     }
-    else if (!muni.isDead() && muni.pp_collision(zurge)){  //recolecta de las cajas
+    else if (!cajas.isDead() && cajas.pp_collision(zurge)){  //recolecta de las cajas
       a=int(random(1,3));
       b=0;
       lima+=50;
-      muni.setDead(true);
+      cajas.setDead(true);
     }
-    else if (!energia.isDead() && energia.pp_collision(zurge)){  //recolecta de las cajas
+    else if (!cajas.isDead() && cajas.pp_collision(zurge)){  //recolecta de las cajas
       a=int(random(1,3));
       b=0;
       limb+=50;
-      energia.setDead(true);  
+      cajas.setDead(true);  
     }
     else{  //movimiento
       xcaja-=vel1;
@@ -53,14 +53,14 @@ class cajas {
     fill(255);
     
     if(a==1  &&  b>50){
-      muni.setDead(false);
-      muni.setXY(xcaja,ycaja);
-      muni.setFrameSequence(0,0,1,1);
+      cajas.setDead(false);
+      cajas.setXY(xcaja,ycaja);
+      cajas.setFrameSequence(1,1,1,1);
     }
     else if(a==2  &&  b>50){
-      energia.setDead(false);
-      energia.setXY(xcaja,ycaja);
-      energia.setFrameSequence(0,0,1,1);
+      cajas.setDead(false);
+      cajas.setXY(xcaja,ycaja);
+      cajas.setFrameSequence(0,0,1,1);
     }
     else{
       b++;
@@ -72,5 +72,5 @@ class cajas {
      //limb=0;
    //}
    
-}
+}*/
 }

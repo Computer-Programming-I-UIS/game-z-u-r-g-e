@@ -33,18 +33,18 @@ class Enemigo //extends Sprite
   
   void enemigo(){
     if(e==1 && (count==0 || count%5!=0)){  //Aliens
-      alien.setXY(xenemigo,yenemigo);
+      enemigos.setXY(xenemigo,yenemigo);
       if(f==false && g>d ){  //vivos
-        alien.setDead(false);
-        alien.setFrameSequence(0,2,0.09,1);
+        enemigos.setDead(false);
+        enemigos.setFrameSequence(0,2,0.09,1);
       }
-      if (!alien.isDead() && (alien.pp_collision(balafusil) || alien.pp_collision(balafusil))) { //muerte
+      if (!enemigos.isDead() && (enemigos.pp_collision(balafusil) || enemigos.pp_collision(balafusil))) { //muerte
         f=true;
         xenemigo=random(width-150,width-64)-random(-86,width-96);
         yenemigo=random(height-150,height-64)-random(-86,height-96);
         count++;
         g=0;
-        alien.setDead(true);
+        enemigos.setDead(true);
       }
       else {
         g++;
@@ -54,18 +54,18 @@ class Enemigo //extends Sprite
     
     
     else if(e==2 && ((count==5) )){  //enemigo gus
-      gus.setXY(xenemigo,yenemigo);
+      enemigos.setXY(xenemigo,yenemigo);
       if(f==false&& g>d  ){  //vivos
-        gus.setDead(false);
-        gus.setFrameSequence(0,2,0.09,4);
+        enemigos.setDead(false);
+        enemigos.setFrameSequence(3,5,0.09,4);
       }
-      if (!gus.isDead() && (gus.pp_collision(balafusil) || gus.pp_collision(balafusil))) {  //muerte
+      if (!enemigos.isDead() && (enemigos.pp_collision(balafusil) || enemigos.pp_collision(balafusil))) {  //muerte
           f=true;
           xenemigo=random(width-150,width-64)-random(-86,width-96);
           yenemigo=random(height-150,height-64)-random(-86,height-96);
           count++;
           g=0;
-          gus.setDead(true);
+          enemigos.setDead(true);
       }
       else {
         g++;
@@ -74,16 +74,16 @@ class Enemigo //extends Sprite
     }
       
     else if(e==3 && count==10){  //enemigo bil
-        bil.setXY(xenemigo,yenemigo);
+        enemigos.setXY(xenemigo,yenemigo);
         if(f==false && g>d ) {  //vivos
-           bil.setDead(false);
-           bil.setFrameSequence(0,2,1,1);
+           enemigos.setDead(false);
+           enemigos.setFrameSequence(7,12,1,1);
         }
-        if (!bil.isDead() && (bil.pp_collision(balafusil) || bil.pp_collision(balafusil))) { //muerte
+        if (!enemigos.isDead() && (enemigos.pp_collision(balafusil) ||enemigos.pp_collision(balafusil))) { //muerte
             f=true;
             count++;
             g=0;
-            bil.setDead(true);
+            enemigos.setDead(true);
         }
         else {
           g++;

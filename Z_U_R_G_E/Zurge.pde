@@ -139,7 +139,7 @@ zurge.setXY(xzurge,yzurge);
    }
      
    
-     if (!zurge.isDead()&& (zurge.pp_collision(alien) || zurge.pp_collision(gus) || zurge.pp_collision(bil))) {  //  daño a zurge
+     if (!zurge.isDead()&& (zurge.pp_collision(enemigos) || zurge.pp_collision(enemigos) || zurge.pp_collision(enemigos))) {  //  daño a zurge
        heal-=10;
       }
   }
