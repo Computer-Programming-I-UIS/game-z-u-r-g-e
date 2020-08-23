@@ -26,8 +26,7 @@ Estrellas stars[]=new Estrellas[30];
 Zurge ZURGE;
 Enemigo guss;
 Enemigo BIL;
-Enemigo aliens1;
-Enemigo aliens0;
+Enemigo aliens;
 cajas caja;
 int count=0;
 int l=0;  //tiempo de la historia
@@ -54,7 +53,7 @@ void setup(){
   guss=new Enemigo (5,random(width,width-60),random(0,height),2,120);
   BIL=new Enemigo (5,random(width,width-60),random(0,height),3,120);
   caja=new cajas (3.5,random(width,width-60),random(0,height));
-  aliens1=new Enemigo (5,800,300,1,100);
+  aliens=new Enemigo (5,800,300,1,100);
   for(int i=0;i<30;i++){
     stars[i]=new Estrellas(random(0,width),random(0,height),3);
 }
@@ -76,7 +75,7 @@ void draw(){
   if(l<360){
     textSize(20);
     text("Z.U.R.G.E se ecuentra en peligro, su sistema está fallando y debe recolectar",width/2,200);
-    text("un material que puede salvarl.Lo aterrador es que Z.U.R.G.E debe recorrer mundos muy",width/2,300);
+    text("un material que puede salvarl. Lo aterrador es que Z.U.R.G.E debe recorrer mundos muy",width/2,300);
     text("macabros para obtenerlo, donde hay todo tipo de seres que no tienen ninguna intención de",width/2,400);
     text(" permitir que Z.U.R.G.E consiga su objetivo. ¡Ayuda a Z.U.R.G.E a llegar a su salvación!",width/2,500);
     
@@ -133,16 +132,6 @@ void draw(){
     line(5,height-5,width-5,height-5);
     rectMode(CORNER);
     textSize(10);
-     /*if(v<-500 ||   v>width+200){  //luna
-      w=random(width,width+100);
-      v=random(width,width+100);
-      h=random(0,height);
-      j=random(0,height);
-    }
-    else{
-      image(luna1,w-=3,h);
-      image(luna2,v-=3,j);
-      }*/
     for(int i=0;i<30;i++){  //estrellas
     stars[i].fondo();
     }
@@ -150,9 +139,9 @@ void draw(){
    S4P.updateSprites(elapsedTime);
    S4P.drawSprites();
    
-    aliens1.enemigo();
+    aliens.enemigo();
    // aliens0.enemigo();
-    aliens1.movi();
+    aliens.movi();
     //aliens0.movi();
     
     ZURGE.movi();

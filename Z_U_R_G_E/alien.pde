@@ -17,9 +17,9 @@ class Enemigo //extends Sprite
   }
   
   void movi(){
-    a++;
-    xenemigo=constrain(xenemigo,width-60,width);
+    xenemigo=constrain(xenemigo,0,width);
     yenemigo=constrain(yenemigo,60,height-60);
+    a++;
     if(a<40){
       xenemigo+=vel*b;
       yenemigo+=vel*c;
@@ -32,7 +32,6 @@ class Enemigo //extends Sprite
   }
   
   void enemigo(){
-    
     if(e==1 && (count==0 || count%5!=0)){  //Aliens
       enemigos[0].setXY(xenemigo,yenemigo);
       if(f==false && g>d ){  //vivos
@@ -41,8 +40,6 @@ class Enemigo //extends Sprite
       }
       if (!enemigos[0].isDead() && (enemigos[0].pp_collision(balafusil) || enemigos[0].pp_collision(balabazooka))) { //muerte
         f=true;
-        xenemigo=random(width,width-64);
-        yenemigo=random(0,height);
         count++;
         g=0;
         enemigos[0].setDead(true);
@@ -54,7 +51,7 @@ class Enemigo //extends Sprite
     }
     
     
-    else if(e==2){ //gus   && count==5
+    else if(e==2 && count==5){ //gus   
       enemigos[1].setXY(xenemigo,yenemigo);
       if(f==false&& g>d  ){  //vivos
         enemigos[1].setDead(false);
@@ -69,7 +66,7 @@ class Enemigo //extends Sprite
         if(t==120){
           xproyec=xenemigo;
           yproyec=yenemigo;
-        }  
+        }
       }
       if (!enemigos[1].isDead() && (enemigos[1].pp_collision(balafusil) || enemigos[1].pp_collision(balabazooka))) {  //muerte
           f=true;
@@ -91,7 +88,7 @@ class Enemigo //extends Sprite
     }
       
     
-    else if(e==3){  //bil   && count==10
+    else if(e==3 && count==10){  //bil   
         enemigos[2].setXY(xenemigo,yenemigo);
         if(f==false && g>d ) {  //vivos
            enemigos[2].setDead(false);

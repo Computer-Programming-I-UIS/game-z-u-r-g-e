@@ -151,49 +151,58 @@ zurge.setXY(xzurge,yzurge);
      }
    }
      
-   
+     //  daños que recibe zurge
      if (!zurge.isDead()&& zurge.pp_collision(enemigos[0])) {  //  daño por chocar con alien a zurge
-       heal-=10;
-       enemigos[0].setDead(false);
+       heal-=20;
+       enemigos[0].setDead(true);
+       aliens.g=0;
+       aliens.xenemigo=random(width,width-64);
+       aliens.yenemigo=random(0,height);
       }
       if (!zurge.isDead()&& zurge.pp_collision(enemigos[1])) {  //  daño por chocar con gus a zurge
-       heal-=10;
-       enemigos[1].setDead(false);
+       heal-=40;
+       enemigos[1].setDead(true);
+       guss.g=0;
+       guss.xenemigo=random(width,width-64);
+       guss.yenemigo=random(0,height);
+       cajas[3].setDead(true);
       }
       if (!zurge.isDead()&& zurge.pp_collision(enemigos[2])) {  //  daño por chocar con bil a zurge
-       heal-=10;
-       enemigos[2].setDead(false);
+       heal-=60;
+       enemigos[2].setDead(true);
+       BIL.g=0;
+       BIL.xenemigo=random(width,width-64);
+       BIL.yenemigo=random(0,height);
+       cajas[2].setDead(true);
       }
       if (!zurge.isDead()&& zurge.pp_collision(cajas[2])) {  //  daño por chocar con hacha de gus a zurge
-       heal-=10;
+       cajas[2].setXY(width,height);
        cajas[2].setDead(true);
-       BIL.xproyec=height;
-       BIL.yproyec=width;
+       heal-=20;
        BIL.t=0;
       }
       if (!zurge.isDead()&& zurge.pp_collision(cajas[3])) {  //  daño por chocar con orbe de bil a zurge
-       heal-=10;
+       cajas[3].setXY(width,height);
        cajas[3].setDead(true);
-       guss.xproyec=height;
-       guss.yproyec=width;
+       heal-=20;
        guss.t=0;
       }  
       if (!zurge.isDead()&& guss.xproyec<0){  //  el hacha no golpeo
-        guss.xproyec=height;
-        guss.yproyec=width;
         guss.t=0;
         cajas[3].setDead(true);
       }
       if (!zurge.isDead()&& BIL.xproyec<0){  //  el orbe no golpeo
-        BIL.xproyec=height;
-        BIL.yproyec=width;
         BIL.t=0;
         cajas[2].setDead(true);
       }
-  }
-      /*else if(heal<20){
+      else if(heal<20){
         zurge.setDead(true);
-      }*/
+        textSize(50);
+        text("GAME OVER",width/2,height/2);
+        textSize(15);
+      }
+  }
+      
      
   
 

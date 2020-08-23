@@ -54,9 +54,9 @@ class cajas {
     rect(50+width/3,97*height/100,caja.limb,height/100);  //  indicador de power
     rect(50+2*width/3,97*height/100,caja.lima,height/100);  //  indicador de muni
     fill(155, 17, 30);
-    text("ammunition",5*width/6,height-20);
-    text("heal",width/6,height-20);
-    text("power",3*width/6,height-20);
+    text("Municion",5*width/6,height-20);
+    text("Vida",width/6,height-20);
+    text("Energia",3*width/6,height-20);
     fill(255);
     
     if(a==1  &&  b>50){
