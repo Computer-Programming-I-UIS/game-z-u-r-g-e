@@ -7,6 +7,7 @@ Minim minim;
 AudioPlayer menu;
 AudioPlayer golpe;
 Sprite laser;
+Sprite caras;
 Sprite cajas[]=new Sprite[5];
 Sprite zurge;
 Sprite enemigos[]=new Sprite[3];
@@ -38,6 +39,9 @@ void setup(){
   golpe=minim.loadFile("golpe.mp3");
   fuente=createFont("fuente.otf",70);
   star=loadImage("estrella.png");
+  caras=new Sprite(this,"caraszurge.png",1,2,2);
+  caras.setDead(true);
+  caras.setXY(400,500);
   //luna1=loadImage("luna1.png");
   //luna2=loadImage("luna2.png"); 
   balabazooka=new Sprite(this,"balabazooka.png",1,2,2);
@@ -48,7 +52,7 @@ void setup(){
   rectMode(CENTER);
   imageMode(CENTER);
   textAlign(CENTER);
-  stage=-1;
+  stage=-2;
   ZURGE=new Zurge (8,10,50,50,height/2);
   guss=new Enemigo (5,random(width,width-60),random(0,height),2,120);
   BIL=new Enemigo (5,random(width,width-60),random(0,height),3,120);
@@ -71,7 +75,6 @@ void setup(){
 }
 
 void draw(){
-  println(BIL.t);
   if(l<360){
     textSize(20);
     text("Z.U.R.G.E se ecuentra en peligro, su sistema está fallando y debe recolectar",width/2,200);
@@ -84,6 +87,13 @@ void draw(){
   if(l==160){
     stage=0;
     l=240;
+  }
+  if(stage==-1){
+    background(0);
+    caras.setDead(false);
+    caras.setFrameSequence(0,0,1,1);
+    textSize(50);
+    text("GAME OVER",width/2,height/2);
   }
   if(stage==0){
     background(0);
@@ -204,11 +214,12 @@ if(stage==3){
 if(stage==4){
   clear();
   background(0);
+  caras.setDead(false);
+  caras.setFrameSequence(1,1,1,1);
   textFont(fuente);
   text("GANASTE",width/2,150);
   textSize(40);
   text("Has salvado a Z.U.R.G.E",width/2,250);
-  
 }
 
 }

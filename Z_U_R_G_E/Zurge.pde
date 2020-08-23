@@ -196,9 +196,8 @@ zurge.setXY(xzurge,yzurge);
         cajas[2].setDead(true);
       }
       else if(heal<20){
+        stage=-1;
         zurge.setDead(true);
-        textSize(50);
-        text("GAME OVER",width/2,height/2);
         textSize(15);
       }
   }
