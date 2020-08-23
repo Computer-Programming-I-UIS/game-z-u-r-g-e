@@ -43,6 +43,7 @@ class Enemigo //extends Sprite
         count++;
         g=0;
         enemigos[0].setDead(true);
+        caja.c-=1;
       }
       else {
         g++;
@@ -79,7 +80,7 @@ class Enemigo //extends Sprite
           xproyec=height;
           yproyec=width;
           t=0;
-          
+          caja.c-=1;
       }
       else {
         g++;
@@ -116,7 +117,7 @@ class Enemigo //extends Sprite
             xproyec=height;
             yproyec=width;
             t=0;
-           
+            caja.c-=1;
         }
         else {
           g++;

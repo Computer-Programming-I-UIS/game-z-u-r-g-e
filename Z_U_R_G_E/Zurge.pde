@@ -100,9 +100,11 @@ zurge.setXY(xzurge,yzurge);
      }
    }
    }
+   
+   //disparo con fusil
 
    if(keyPressed&& key=='e' ){  //Coge el fusil
-     if(mousePressed&&b==1){
+     if(mousePressed&&b==1&&caja.c>0){
       // zurge.setFrameSequence(13,13,2,1);
        balafusil.setDead(false);
       // zurge.setFrameSequence(14,14,2,1);
@@ -115,27 +117,33 @@ zurge.setXY(xzurge,yzurge);
          zurge.setFrameSequence(13,13,2,1);
          xbala+=velbala;
        }
+       else if(xbala<0 || xbala>=500){
+         caja.c-=1;
+         xbala=xzurge;
+         balabazooka.setDead(true);
+         balafusil.setDead(true);
+       }
        else{
          zurge.setFrameSequence(15,15,2,1);
          balafusil.setXY(xbala-60,yzurge-5);
          xbala-=velbala;
-         balafusil.setDead(true);
        }
      }
      else {
        xbala=xzurge;
        balafusil.setDead(true);
      }
-     
      if(mouseX>xzurge){
        zurge.setFrameSequence(8,8,0.9,1);
      }else{
        zurge.setFrameSequence(9,9,0.9,1);
      }
 
+  //disparo con bazooka
+
    }else if(keyPressed&&key=='r'){   //Coge la bazooka
        //zurge.setFrameSequence(10,10,0.9,1);
-     if(mousePressed&&b==1){
+     if(mousePressed&&b==1&&caja.c>0){
        balabazooka.setDead(false);
        //zurge.setFrameSequence(15,15,2,1);
        balabazooka.setXY(xbala+75,yzurge-20);
@@ -144,27 +152,40 @@ zurge.setXY(xzurge,yzurge);
        velbala=constrain(velbala,0,(width-50)/10);
        if(mouseX>xzurge){
          zurge.setFrameSequence(14,14,2,1);
-         zurge.setFrameSequence(10,10,0.9,1);
          xbala+=velbala;
+       }
+       else if(xbala<0){
+         caja.c-=1;
+         xbala=xzurge;
+         balabazooka.setDead(true);
+         balafusil.setDead(true);
+       }
+       else if(xbala>=500){
+         caja.c-=1;
+         xbala=xzurge;
+         balabazooka.setDead(true);
+         balafusil.setDead(true);
        }
        else{
          zurge.setFrameSequence(16,16,2,1);
          balabazooka.setXY(xbala-75,yzurge-20);
          balabazooka.setFrameSequence(1,1,2,1);
          xbala-=velbala;
-         balabazooka.setDead(true);
-         zurge.setFrameSequence(11,11,0.9,1);
        }
      }
-     else{
-       xbala=xzurge;
-       balabazooka.setDead(true);
-     }
-   }
-   else{
+     else {
+     xbala=xzurge;
      balabazooka.setDead(true);
      balafusil.setDead(true);
    }
+   if(mouseX>xzurge){
+       zurge.setFrameSequence(10,10,0.9,1);
+     }else{
+       zurge.setFrameSequence(11,11,0.9,1);
+     }
+   }
+   
+   
      
      //  daños que recibe zurge
      if (!zurge.isDead()&& zurge.pp_collision(enemigos[0])) {  //  daño por chocar con alien a zurge

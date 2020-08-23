@@ -31,6 +31,8 @@ Enemigo aliens;
 cajas caja;
 int count=0;
 int l=0;  //tiempo de la historia
+
+
 void setup(){
   size(1000,600);
   background(0);
@@ -125,6 +127,7 @@ void draw(){
   }
   if(stage==1){
     clear();
+    println(ZURGE.xbala);
     background(0);
     textSize(15);
     text("Kills",width-90,30);
