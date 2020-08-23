@@ -152,36 +152,39 @@ zurge.setXY(xzurge,yzurge);
    }
      
    
-     if (!zurge.isDead()&& zurge.pp_collision(enemigos[0])) {  //  daño a zurge
+     if (!zurge.isDead()&& zurge.pp_collision(enemigos[0])) {  //  daño por chocar con alien a zurge
        heal-=10;
+       enemigos[0].setDead(false);
       }
-      if (!zurge.isDead()&& zurge.pp_collision(enemigos[1])) {  //  daño a zurge
+      if (!zurge.isDead()&& zurge.pp_collision(enemigos[1])) {  //  daño por chocar con gus a zurge
        heal-=10;
+       enemigos[1].setDead(false);
       }
-      if (!zurge.isDead()&& zurge.pp_collision(enemigos[2])) {  //  daño a zurge
+      if (!zurge.isDead()&& zurge.pp_collision(enemigos[2])) {  //  daño por chocar con bil a zurge
        heal-=10;
+       enemigos[2].setDead(false);
       }
-      if (!zurge.isDead()&& zurge.pp_collision(cajas[2])) {  //  daño a zurge
+      if (!zurge.isDead()&& zurge.pp_collision(cajas[2])) {  //  daño por chocar con hacha de gus a zurge
        heal-=10;
        cajas[2].setDead(true);
        BIL.xproyec=height;
        BIL.yproyec=width;
        BIL.t=0;
       }
-      if (!zurge.isDead()&& zurge.pp_collision(cajas[3])) {  //  daño a zurge
+      if (!zurge.isDead()&& zurge.pp_collision(cajas[3])) {  //  daño por chocar con orbe de bil a zurge
        heal-=10;
        cajas[3].setDead(true);
        guss.xproyec=height;
        guss.yproyec=width;
        guss.t=0;
-      }
-      if (!zurge.isDead()&& guss.xproyec<xzurge){
+      }  
+      if (!zurge.isDead()&& guss.xproyec<0){  //  el hacha no golpeo
         guss.xproyec=height;
         guss.yproyec=width;
         guss.t=0;
         cajas[3].setDead(true);
       }
-      if (!zurge.isDead()&& BIL.xproyec<xzurge){
+      if (!zurge.isDead()&& BIL.xproyec<0){  //  el orbe no golpeo
         BIL.xproyec=height;
         BIL.yproyec=width;
         BIL.t=0;

@@ -20,21 +20,21 @@ class cajas {
       ycaja+=vel2;
     }
     else if (xcaja<-50){  //no recolecta cajas
-      a=int(random(1,3));
+      a=round(random(1,3));
       b=0;
     }
-    else if (!cajas[0].isDead() && cajas[0].pp_collision(zurge)&&(a==1)){  //recolecta de las cajas
+    else if (!cajas[0].isDead() && cajas[0].pp_collision(zurge)&&(a==1)){  //recolecta de las cajas de energia
       a=3;
       b=0;
-      limb+=50;
+      lima+=50;
       cajas[0].setDead(true);
     }
-    else if (!cajas[1].isDead() && cajas[1].pp_collision(zurge)&&(a==2)){  //recolecta de las cajas
+    else if (!cajas[1].isDead() && cajas[1].pp_collision(zurge)&&(a==2)){  //recolecta de las cajas de municion
       a=1;
       b=0;
-      lima+=50;
+      limb+=50;
       cajas[1].setDead(true);  
-    }else if (!cajas[4].isDead() && cajas[4].pp_collision(zurge)&&(a==3)){  //recolecta de las cajas
+    }else if (!cajas[4].isDead() && cajas[4].pp_collision(zurge)&&(a==3)){  //recolecta del mineral
       a=2;
       b=0;
       cajas[4].setDead(true);  

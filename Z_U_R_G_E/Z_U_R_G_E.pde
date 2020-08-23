@@ -72,7 +72,7 @@ void setup(){
 }
 
 void draw(){
-  println(l);
+  println(BIL.t);
   if(l<360){
     textSize(20);
     text("Z.U.R.G.E se ecuentra en peligro, su sistema está fallando y debe recolectar",width/2,200);
