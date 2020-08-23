@@ -1,6 +1,6 @@
 
 class Zurge {
-  float a;
+  float a,b=1;
   int xzurge;
   int yzurge;
   float vel;
@@ -23,29 +23,40 @@ class Zurge {
       switch(key){
         case 'w':
         yzurge-=vel;
+        b=0;
         break;
         case 's':
         yzurge+=vel;
+        b=0;
         break;
         case 'a':
         xzurge-=vel;
+        b=0;
         break;
         case 'd':
         xzurge+=vel;
+        b=0;
         break;
         default:
         switch(keyCode){
           case UP:
           yzurge-=vel;
+          b=0;
           break;
           case DOWN:
           yzurge+=vel;
+          b=0;
           break;
           case LEFT:
           xzurge-=vel;
+          b=0;
           break;
           case RIGHT:
           xzurge+=vel;
+          b=0;
+          break;
+          default:
+          b=1;
           break;
         }
       }
@@ -67,7 +78,7 @@ zurge.setXY(xzurge,yzurge);
      zurge.setFrameSequence(4,4,0.09,1);
    }
    if(caja.limb>=250){ //250 aprox = a width/3-80
-   if(keyPressed&&key=='q'){  //Embestida
+   if(keyPressed&&key=='q'&&b==1){  //Embestida
        velbala+=3;
        velbala=constrain(velbala,0,(width-xzurge-40)/10);
        zurge.setXY(xzurge,yzurge);
@@ -90,8 +101,8 @@ zurge.setXY(xzurge,yzurge);
    }
    }
 
-   if(keyPressed&&key=='e'){  //Coge el fusil
-     if(mousePressed){
+   if(keyPressed&& key=='e' ){  //Coge el fusil
+     if(mousePressed&&b==1){
       // zurge.setFrameSequence(13,13,2,1);
        balafusil.setDead(false);
       // zurge.setFrameSequence(14,14,2,1);
@@ -108,8 +119,10 @@ zurge.setXY(xzurge,yzurge);
          zurge.setFrameSequence(15,15,2,1);
          balafusil.setXY(xbala-60,yzurge-5);
          xbala-=velbala;
+         balafusil.setDead(true);
        }
-     }else {
+     }
+     else {
        xbala=xzurge;
        balafusil.setDead(true);
      }
@@ -122,7 +135,7 @@ zurge.setXY(xzurge,yzurge);
 
    }else if(keyPressed&&key=='r'){   //Coge la bazooka
        //zurge.setFrameSequence(10,10,0.9,1);
-     if(mousePressed){
+     if(mousePressed&&b==1){
        balabazooka.setDead(false);
        //zurge.setFrameSequence(15,15,2,1);
        balabazooka.setXY(xbala+75,yzurge-20);
@@ -131,6 +144,7 @@ zurge.setXY(xzurge,yzurge);
        velbala=constrain(velbala,0,(width-50)/10);
        if(mouseX>xzurge){
          zurge.setFrameSequence(14,14,2,1);
+         zurge.setFrameSequence(10,10,0.9,1);
          xbala+=velbala;
        }
        else{
@@ -138,17 +152,18 @@ zurge.setXY(xzurge,yzurge);
          balabazooka.setXY(xbala-75,yzurge-20);
          balabazooka.setFrameSequence(1,1,2,1);
          xbala-=velbala;
+         balabazooka.setDead(true);
+         zurge.setFrameSequence(11,11,0.9,1);
        }
-     }else{
+     }
+     else{
        xbala=xzurge;
        balabazooka.setDead(true);
      }
-     
-     if(mouseX>xzurge){
-       zurge.setFrameSequence(10,10,0.9,1);
-     }else{
-       zurge.setFrameSequence(11,11,0.9,1);
-     }
+   }
+   else{
+     balabazooka.setDead(true);
+     balafusil.setDead(true);
    }
      
      //  daños que recibe zurge
