@@ -20,11 +20,11 @@ class cajas {
       ycaja+=2*vel2;
     }
     else if (xcaja<-50){  //no recolecta cajas
-      a=round(random(1,3));
+      a=round(random(1,2));
       b=0;
     }
     else if (!cajas[0].isDead() && cajas[0].pp_collision(zurge)&&(a==1)){  //recolecta de las cajas de energia
-      a=3;
+      a=2;
       b=0;
       limb+=51;
       cajas[0].setDead(true);
@@ -41,8 +41,8 @@ class cajas {
       nmat++;
     }
     else{  //movimiento
-      xcaja-=3*vel1;
-      ycaja+=2*vel2;
+      xcaja-=vel1;
+      ycaja+=vel2;
     }
     
     
@@ -50,7 +50,7 @@ class cajas {
   
   void fondo(){
     c=constrain(c,0,20);
-    limb=constrain(limb,0,63.75);
+    limb=constrain(limb,0,width/3-80);
     rect(50+width/3,97*height/100,limb,height/100);  //  indicador de power
     rect(50+2*width/3,97*height/100,lima*(c),height/100);  //  indicador de muni
     fill(155, 17, 30);
@@ -60,19 +60,21 @@ class cajas {
     text("Energia",3*width/6,height-20);
     fill(255);
     
-    if(a==1  &&  b>60){
+    if(a==1  &&  b>180){
       cajas[0].setDead(false);
       cajas[0].setXY(xcaja,ycaja);
       cajas[0].setFrameSequence(0,0,1,1);
     }
-    else if(a==2  &&  b>60){
+    else if(a==2  &&  b>180){
       cajas[1].setDead(false);
       cajas[1].setXY(xcaja,ycaja);
       cajas[1].setFrameSequence(1,1,1,1);
-    }else if(a==3  &&  b>60){
+    }else if(a==3){
       cajas[4].setDead(false);
       cajas[4].setXY(xcaja,ycaja);
       cajas[4].setFrameSequence(4,4,1,1);
+      cajas[0].setDead(true);
+      cajas[1].setDead(true);
     }
     else{
       b++;
