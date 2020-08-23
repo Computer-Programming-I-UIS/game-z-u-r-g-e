@@ -42,8 +42,8 @@ void setup(){
   fuente=createFont("fuente.otf",70);
   star=loadImage("estrella.png");
   caras=new Sprite(this,"caraszurge.png",1,2,2);
-  caras.setDead(true);
-  caras.setXY(400,500);
+ // caras.setDead(true);
+  //caras.setXY(400,500);
   //luna1=loadImage("luna1.png");
   //luna2=loadImage("luna2.png"); 
   balabazooka=new Sprite(this,"balabazooka.png",1,2,2);
@@ -80,9 +80,9 @@ void draw(){
   if(l<360){
     textSize(20);
     text("Z.U.R.G.E se ecuentra en peligro, su sistema está fallando y debe recolectar",width/2,200);
-    text("un material que puede salvarl. Lo aterrador es que Z.U.R.G.E debe recorrer mundos muy",width/2,300);
-    text("macabros para obtenerlo, donde hay todo tipo de seres que no tienen ninguna intención de",width/2,400);
-    text(" permitir que Z.U.R.G.E consiga su objetivo. ¡Ayuda a Z.U.R.G.E a llegar a su salvación!",width/2,500);
+    text("un material que puede salvarl. Lo aterrador es que Z.U.R.G.E debe recorrer mundos muy",width/2,250);
+    text("macabros para obtenerlo, donde hay todo tipo de seres que no tienen ninguna intención de",width/2,300);
+    text(" permitir que Z.U.R.G.E consiga su objetivo. ¡Ayuda a Z.U.R.G.E a llegar a su salvación!",width/2,350);
     
     l++;
   }
@@ -92,7 +92,7 @@ void draw(){
   }
   if(stage==-1){
     background(0);
-    caras.setDead(false);
+    caras.setXY(width/2,height/2);
     caras.setFrameSequence(0,0,1,1);
     textSize(50);
     text("GAME OVER",width/2,height/2);
@@ -101,6 +101,7 @@ void draw(){
     background(0);
     //menu.loop();
     textFont(fuente);
+    textAlign(CENTER);
     stroke(230,240,30);
     line(220,100,780,100);
     line(220,230,780,230);
@@ -135,7 +136,7 @@ void draw(){
     textSize(10);
     text("Material:",60,20);
     text(caja.nmat,120,20);
-    if(caja.nmat>=2){
+    if(caja.nmat>=3){
       stage=4;
     }
     stroke(230,240,30);
@@ -184,9 +185,44 @@ if(stage==2){
   for(int i=0;i<30;i++){
   stars[i].fondo();
   }
-  textSize(12);
-  text("Debes manejar a Z.U.R.G.E",200,200);
-  text("Presiona cualquier tecla para volver a la pantalla de inicio",width/2,height-80);
+  textSize(10);
+  textAlign(CORNER);
+  text("Debes manejar a Z.U.R.G.E, puedes moverlo usando las flechas o las teclas wasd",50,50);
+   //wasd
+  rect(200,100,30,30);
+  rect(170,130,30,30);
+  rect(200,130,30,30);
+  rect(230,130,30,30);
+  //flechas
+  rect(400,100,30,30);
+  rect(370,130,30,30);
+  rect(400,130,30,30);
+  rect(430,130,30,30);
+   // teclas e y r
+  rect(575,240,30,30);
+  rect(625,290,30,30);
+  
+  fill(0);
+  text("w",195,105);
+  text("a",165,135);
+  text("s",195,135);
+  text("d",225,135);
+   //wasd
+  text("e",570,245);
+  text("r",620,295);
+   
+  
+  fill(255);
+  text("Puedes disparar un fusil presionando la tecla                    y haciendo click",50,250);
+  text("o puedes disparar una bazooka presionando la tecla                 y haciendo click",50,300);
+  text("Puedes dar golpes presionando click en la dirección que quieras, pero cuidado, si tocas",50,350);
+  text("a los enemigos tu vida va a disminuir. ¡Mejor usa tus armas!",50,370);
+  text("Puedes recolectar cajas de energía y munición, y materiales, solo con tocarlos",50,420);
+  text("¡Recolecta materiales para ganar!",50,440);
+  text("¡Ten cuidado con los ataques de GUS y BIL, que pueden matarte si te impactan!",50,490);
+
+  textSize(5);
+  text("Presiona cualquier tecla para volver a la pantalla de inicio",350,height-50);
   if(keyPressed){
     stage=0;
   }
@@ -205,10 +241,15 @@ if(stage==3){
   for(int i=0;i<30;i++){
   stars[i].fondo();
   }
-  textSize(12);
-  text("Musica extraida de:",300,200);
-  text("Canción del menú: Metal intro- Propiedad de Leonard B. Blaesing",300,300);
-  text("Presiona cualquier tecla para volver a la pantalla de inicio",width/2,height-80);
+  
+  textAlign(CORNER);
+  textSize(15);
+  text("Musica extraida de:",50,50);
+  textSize(10);
+  text("Menú: Metal intro- Propiedad de Leonard B. Blaesing",50,100);
+  text("Sonido de disparos: Heavy Techno Kick- Propiedad de Leonarf B. Blaesing",50,130);
+  textSize(5);
+  text("Presiona cualquier tecla para volver a la pantalla de inicio",50,height-80);
     if(keyPressed){
     stage=0;
   }
@@ -217,7 +258,8 @@ if(stage==3){
 if(stage==4){
   clear();
   background(0);
-  caras.setDead(false);
+  //caras.setDead(false);
+  caras.setXY(width/2,height/2);
   caras.setFrameSequence(1,1,1,1);
   textFont(fuente);
   text("GANASTE",width/2,150);

@@ -1,5 +1,5 @@
 class cajas {
-  float a=1,b; int c=1;  //  c=contador de balas    b=tiempo de reaparicion de las cajas
+  float a=1,b; int c=5;  //  c=contador de balas    b=tiempo de reaparicion de las cajas
   float xcaja;
   float ycaja;
   float vel1,vel2;
@@ -16,15 +16,15 @@ class cajas {
   void movi(){
     
     if(ycaja<-4 ||  ycaja>height+10){  //limites superior e inferior de cajas
-      vel2*=-1;
-      ycaja+=vel2;
+      vel2*=-2;
+      ycaja+=2*vel2;
     }
     else if (xcaja<-50){  //no recolecta cajas
       a=round(random(1,3));
       b=0;
     }
     else if (!cajas[0].isDead() && cajas[0].pp_collision(zurge)&&(a==1)){  //recolecta de las cajas de energia
-      a=2;
+      a=3;
       b=0;
       limb+=51;
       cajas[0].setDead(true);
@@ -41,8 +41,8 @@ class cajas {
       nmat++;
     }
     else{  //movimiento
-      xcaja-=vel1;
-      ycaja+=vel2;
+      xcaja-=3*vel1;
+      ycaja+=2*vel2;
     }
     
     

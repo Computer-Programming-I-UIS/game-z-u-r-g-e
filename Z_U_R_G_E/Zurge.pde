@@ -116,18 +116,12 @@ zurge.setXY(xzurge,yzurge);
        if(mouseX>xzurge){
          zurge.setFrameSequence(13,13,2,1);
          xbala+=velbala;
-       }
-       else if(xbala<0 || xbala>=500){
-         caja.c-=1;
-         xbala=xzurge;
-         balabazooka.setDead(true);
-         balafusil.setDead(true);
-       }
-       else{
+       }else{
          zurge.setFrameSequence(15,15,2,1);
          balafusil.setXY(xbala-60,yzurge-5);
          xbala-=velbala;
        }
+      
      }
      else {
        xbala=xzurge;
@@ -138,7 +132,13 @@ zurge.setXY(xzurge,yzurge);
      }else{
        zurge.setFrameSequence(9,9,0.9,1);
      }
-
+        /*if(xbala<=0 || xbala>=width){
+         xbala=constrain(xbala,0,width);
+         caja.c--;
+         xbala=xzurge;
+         balabazooka.setDead(true);
+         balafusil.setDead(true);
+       }*/
   //disparo con bazooka
 
    }else if(keyPressed&&key=='r'){   //Coge la bazooka
@@ -154,18 +154,8 @@ zurge.setXY(xzurge,yzurge);
          zurge.setFrameSequence(14,14,2,1);
          xbala+=velbala;
        }
-       else if(xbala<0){
-         caja.c-=1;
-         xbala=xzurge;
-         balabazooka.setDead(true);
-         balafusil.setDead(true);
-       }
-       else if(xbala>=500){
-         caja.c-=1;
-         xbala=xzurge;
-         balabazooka.setDead(true);
-         balafusil.setDead(true);
-       }
+       
+       
        else{
          zurge.setFrameSequence(16,16,2,1);
          balabazooka.setXY(xbala-75,yzurge-20);
@@ -182,8 +172,16 @@ zurge.setXY(xzurge,yzurge);
        zurge.setFrameSequence(10,10,0.9,1);
      }else{
        zurge.setFrameSequence(11,11,0.9,1);
-     }
    }
+   }
+   
+   if(xbala<=0 || xbala>=width){
+         xbala=constrain(xbala,0,width);
+         caja.c--;
+         xbala=xzurge;
+         balabazooka.setDead(true);
+         balafusil.setDead(true);
+       }
    
    
      
@@ -214,13 +212,13 @@ zurge.setXY(xzurge,yzurge);
       if (!zurge.isDead()&& zurge.pp_collision(cajas[2])) {  //  daño por chocar con hacha de gus a zurge
        cajas[2].setXY(width,height);
        cajas[2].setDead(true);
-       heal-=20;
+       heal-=40;
        BIL.t=0;
       }
       if (!zurge.isDead()&& zurge.pp_collision(cajas[3])) {  //  daño por chocar con orbe de bil a zurge
        cajas[3].setXY(width,height);
        cajas[3].setDead(true);
-       heal-=20;
+       heal-=80;
        guss.t=0;
       }  
       if (!zurge.isDead()&& guss.xproyec<0){  //  el hacha no golpeo
@@ -231,7 +229,7 @@ zurge.setXY(xzurge,yzurge);
         BIL.t=0;
         cajas[2].setDead(true);
       }
-      else if(heal<20){
+      else if(heal<10){
         stage=-1;
         zurge.setDead(true);
         textSize(15);
