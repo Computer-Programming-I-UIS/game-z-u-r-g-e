@@ -85,7 +85,7 @@ class Zurge {
    if(keyPressed&&key=='q'){  //Embestida
        velbala=20;
        zurge.setXY(xzurge,yzurge);
-     if(mousePressed&&c==1){
+     if(mousePressed&&mouseX>xzurge){
        zurge.setFrameSequence(18,18,2,1);
       // zurge.setFrameSequence(14,14,2,1);
        zurge.setXY(xzurge+=velbala,yzurge);
@@ -93,7 +93,7 @@ class Zurge {
        if(xzurge>=950){
        caja.limb=0;  
        }
-     }else if(mousePressed&&c==-1){
+     }else if(mousePressed&&mouseX<xzurge){
        zurge.setFrameSequence(18,18,2,1);
       // zurge.setFrameSequence(14,14,2,1);
        zurge.setXY(xzurge-=velbala,yzurge);

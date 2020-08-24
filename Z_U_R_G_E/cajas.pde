@@ -1,5 +1,5 @@
 class cajas {
-  float a=1,b; int c=5;  //  c=contador de balas    b=tiempo de reaparicion de las cajas
+  float a=1,b; int c=10;  //  c=contador de balas    b=tiempo de reaparicion de las cajas
   float xcaja;
   float ycaja;
   float vel1,vel2;
