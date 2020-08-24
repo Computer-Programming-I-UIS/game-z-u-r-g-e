@@ -30,14 +30,14 @@ Enemigo BIL;
 Enemigo aliens;
 cajas caja;
 int count=0;
-int l=0;  //tiempo de la historia
+int l=0,k=0;  //tiempo de la historia
 
 
 void setup(){
   size(1000,600);
   background(0);
   minim=new Minim(this);
-  //menu=minim.loadFile("menu.mp3");
+  menu=minim.loadFile("menu.mp3");
   golpe=minim.loadFile("golpe.mp3");
   fuente=createFont("fuente.otf",70);
   star=loadImage("estrella.png");
@@ -75,12 +75,19 @@ void setup(){
 }
 
 void draw(){
+  println(l);
   if(l<360){
     textSize(20);
     text("Z.U.R.G.E se ecuentra en peligro, su sistema está fallando y debe recolectar",width/2,200);
     text("un material que puede salvarl. Lo aterrador es que Z.U.R.G.E debe recorrer mundos muy",width/2,250);
     text("macabros para obtenerlo, donde hay todo tipo de seres que no tienen ninguna intención de",width/2,300);
     text(" permitir que Z.U.R.G.E consiga su objetivo. ¡Ayuda a Z.U.R.G.E a llegar a su salvación!",width/2,350);
+    stroke(230,240,30);
+    line(50,100,950,100);
+    line(50,100,50,450);
+    line(50,450,950,450);
+    line(950,100,950,450);
+    
     
     l++;
   }
@@ -96,8 +103,11 @@ void draw(){
     text("GAME OVER",width/2,height/2);
   }
   if(stage==0){
+    l++;
     background(0);
-   // menu.loop();
+    if(l%100!=0){
+    menu.play();
+    }
     textFont(fuente);
     textAlign(CENTER);
     stroke(230,240,30);
@@ -126,7 +136,7 @@ void draw(){
   }
   if(stage==1){
     clear();
-    println(ZURGE.xbala);
+   // println(ZURGE.xbala);
     background(0);
     textSize(15);
     text("Kills",width-90,30);
@@ -245,7 +255,7 @@ if(stage==3){
   text("Menú: Metal intro- Propiedad de Leonard B. Blaesing",50,100);
   text("Sonido de disparos: Heavy Techno Kick- Propiedad de Leonarf B. Blaesing",50,130);
   textSize(5);
-  text("Presiona cualquier tecla para volver a la pantalla de inicio",50,height-80);
+  text("Presiona cualquier tecla para volver a la pantalla de inicio",400,height-80);
     if(keyPressed){
     stage=0;
   }
@@ -261,6 +271,58 @@ if(stage==4){
   text("GANASTE",width/2,150);
   textSize(40);
   text("Has salvado a Z.U.R.G.E",width/2,250);
+}
+if(stage==5){
+  k++;
+  if(k<600){
+  background(0);
+  textFont(fuente);
+  text("NIVEL 2",width/2,150);
+  textSize(20);
+  text("Ahora tendrás que lidiar con los aliens",width/2,300);
+  text("y con más individuos como GUS",width/2,350);
+  }
+  if(k>=600){
+   k++;
+  clear();
+  background(0);
+  textSize(15);
+    text("Kills",width-90,30);
+    text(count,width-30,30);
+    textSize(10);
+    text("Material:",60,20);
+    text(caja.nmat,120,20);
+    if(caja.nmat>=3){
+      stage=4;
+    }
+    stroke(230,240,30);
+    line(5,5,5,height-5);
+    line(5,5,width-5,5);
+    line(width-5,height-5,width-5,5);
+    line(5,height-5,width-5,height-5);
+    rectMode(CORNER);
+    textSize(10);
+    for(int i=0;i<30;i++){  //estrellas
+    stars[i].fondo();
+    }
+    float elapsedTime = (float) sw.getElapsedTime();
+   S4P.updateSprites(elapsedTime);
+   S4P.drawSprites();
+   
+   ZURGE.movi();
+   ZURGE.zurge();
+   caja.fondo();
+    caja.movi();
+   if(k>=800){
+    aliens.enemigo2lvl();
+    aliens.movi();
+    guss.enemigo2lvl();
+    guss.movi();
+    BIL.movi();
+    BIL.enemigo2lvl();
+   }
+  }
+
 }
 
 }
