@@ -18,7 +18,7 @@ class Enemigo //extends Sprite
   }
   
   void movi(){
-    xenemigo=constrain(xenemigo,0,width-60);
+    xenemigo=constrain(xenemigo,100,width-60);
     yenemigo=constrain(yenemigo,60,height-60);
     a++;
     if(a<40){
@@ -92,8 +92,8 @@ class Enemigo //extends Sprite
           yproyec=width;
           t=0;
           caja.a=3;
+          caja.b=150;
           vid=5;
-          stage=5;
       }
       else {
         g++;
@@ -194,7 +194,6 @@ class Enemigo //extends Sprite
       if (!enemigos[1].isDead() && (enemigos[1].pp_collision(balafusil) || enemigos[1].pp_collision(balabazooka))) {  //muerte
           vid-=1;
           caja.c-=1;
-          stage=5;
           ZURGE.xbala=ZURGE.xzurge;
       }
       if(vid==0){
@@ -209,6 +208,7 @@ class Enemigo //extends Sprite
           yproyec=width;
           t=0;
           caja.a=3;
+          caja.b=150;
           vid=5;
       }
       else {
@@ -252,6 +252,7 @@ class Enemigo //extends Sprite
             yproyec=width;
             t=0;
             caja.a=3;
+            caja.b=150;
             vid=5;
             
         }

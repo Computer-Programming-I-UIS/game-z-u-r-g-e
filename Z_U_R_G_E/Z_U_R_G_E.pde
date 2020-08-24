@@ -144,7 +144,9 @@ void draw(){
     textSize(10);
     text("Material:",60,20);
     text(caja.nmat,120,20);
-    if(caja.nmat>=3){
+    if(caja.nmat==1){
+      stage=5;
+    }if(caja.nmat>=15){
       stage=4;
     }
     stroke(230,240,30);
