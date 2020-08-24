@@ -106,13 +106,12 @@ class Zurge {
    }
    
    //disparo con fusil
-
    if(keyPressed&& key=='e' ){  //Coge el fusil
+       balafusil.setXY(xbala+60,yzurge-5);
      if(mousePressed&&b==0&&caja.c>0){
       // zurge.setFrameSequence(13,13,2,1);
        balafusil.setDead(false);
       // zurge.setFrameSequence(14,14,2,1);
-       balafusil.setXY(xbala+60,yzurge-5);
        balafusil.setFrameSequence(0,0,2,1);
        //zurge.setFrameSequence(17,17,2,1);
        velbala+=3;
@@ -146,11 +145,11 @@ class Zurge {
   //disparo con bazooka
 
    }else if(keyPressed&&key=='r'){   //Coge la bazooka
+       balabazooka.setXY(xbala+75,yzurge-20);
        //zurge.setFrameSequence(10,10,0.9,1);
      if(mousePressed&&b==0&&caja.c>0){
        balabazooka.setDead(false);
        //zurge.setFrameSequence(15,15,2,1);
-       balabazooka.setXY(xbala+75,yzurge-20);
        balabazooka.setFrameSequence(0,0,2,1);
        velbala+=3;
        velbala=constrain(velbala,0,(width-50)/10);
@@ -182,7 +181,6 @@ class Zurge {
          balabazooka.setDead(true);
          balafusil.setDead(true);
    }
-   
    if(xbala<=0 || xbala>=width){
          xbala=constrain(xbala,0,width);
          caja.c--;
@@ -190,6 +188,7 @@ class Zurge {
          balabazooka.setDead(true);
          balafusil.setDead(true);
        }
+   
    
    
      

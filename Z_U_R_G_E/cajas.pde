@@ -5,7 +5,7 @@ class cajas {
   float vel1,vel2;
   float lima=12.75;
   float limb=0;
-  int nmat;  //Contador de material
+  int nmat=0;  //Contador de material
   
   cajas(float speed,float tempxcaja, float tempycaja){
     vel1=speed;
@@ -38,7 +38,7 @@ class cajas {
       a=2;
       b=0;
       cajas[4].setDead(true);  
-      nmat++;
+      nmat+=1;
     }
     else{  //movimiento
       xcaja-=vel1;
@@ -69,7 +69,7 @@ class cajas {
       cajas[1].setDead(false);
       cajas[1].setXY(xcaja,ycaja);
       cajas[1].setFrameSequence(1,1,1,1);
-    }else if(a==3){
+    }else if(a==3 && b>180){
       cajas[4].setDead(false);
       cajas[4].setXY(xcaja,ycaja);
       cajas[4].setFrameSequence(4,4,1,1);

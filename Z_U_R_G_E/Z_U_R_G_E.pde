@@ -56,9 +56,9 @@ void setup(){
   textAlign(CENTER);
   stage=-2;
   ZURGE=new Zurge (8,10,50,50,height/2);
-  guss=new Enemigo (8,random(width,width-60),random(0,height),2,120);
-  BIL=new Enemigo (8,random(width,width-60),random(0,height),3,120);
-  aliens=new Enemigo (12,random(width,width-60),random(0,height),1,100);
+  guss=new Enemigo (8,random(width,width-60),random(0,height),2,120,5);
+  BIL=new Enemigo (8,random(width,width-60),random(0,height),3,120,5);
+  aliens=new Enemigo (12,random(width,width-60),random(0,height),1,100,2);
   caja=new cajas (5,random(width,width-60),random(0,height));
   for(int i=0;i<30;i++){
     stars[i]=new Estrellas(random(0,width),random(0,height),3);
@@ -97,7 +97,7 @@ void draw(){
   }
   if(stage==0){
     background(0);
-    menu.loop();
+   // menu.loop();
     textFont(fuente);
     textAlign(CENTER);
     stroke(230,240,30);
@@ -126,7 +126,7 @@ void draw(){
   }
   if(stage==1){
     clear();
-    println(guss.xproyec);
+    println(ZURGE.xbala);
     background(0);
     textSize(15);
     text("Kills",width-90,30);

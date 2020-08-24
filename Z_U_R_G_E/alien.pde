@@ -7,13 +7,14 @@ class Enemigo //extends Sprite
   float xenemigo,xproyec;
   float yenemigo,yproyec;
   float vel;
-  
-  Enemigo(float speed,float tempxenemigo, float tempyenemigo, float elec, float temparicion){
+  int vid;
+  Enemigo(float speed,float tempxenemigo, float tempyenemigo, float elec, float temparicion,int vida){
     vel=speed;
     xenemigo=tempxenemigo;
     yenemigo=tempyenemigo;
     e=elec;
     d=temparicion;
+    vid=vida;
   }
   
   void movi(){
@@ -39,11 +40,15 @@ class Enemigo //extends Sprite
         enemigos[0].setFrameSequence(0,2,1,1);
       }
       if (!enemigos[0].isDead() && (enemigos[0].pp_collision(balafusil) || enemigos[0].pp_collision(balabazooka))) { //muerte
+        vid-=1;
+        caja.c-=1;
+      }
+      if(vid==0){
         f=true;
         count++;
         g=0;
         enemigos[0].setDead(true);
-        caja.c-=1;
+        vid=2;
       }
       else {
         g++;
@@ -70,8 +75,12 @@ class Enemigo //extends Sprite
         }
       }
       if (!enemigos[1].isDead() && (enemigos[1].pp_collision(balafusil) || enemigos[1].pp_collision(balabazooka))) {  //muerte
+          vid-=1;
+          caja.c-=1;
+      }
+      if(vid==0){
           f=true;
-          xenemigo=random(60,width-64);
+          xenemigo=random(width-64,width);
           yenemigo=random(0,height);
           count++;
           g=0;
@@ -80,8 +89,8 @@ class Enemigo //extends Sprite
           xproyec=height;
           yproyec=width;
           t=0;
-          caja.c-=1;
           caja.a=3;
+          vid=5;
       }
       else {
         g++;
@@ -108,6 +117,11 @@ class Enemigo //extends Sprite
             }
         }
         if (!enemigos[2].isDead() && (enemigos[2].pp_collision(balafusil) ||enemigos[2].pp_collision(balabazooka))) { //muerte
+            caja.c-=1;
+            vid-=1;
+            ZURGE.xbala=ZURGE.xzurge;
+        }
+        if(vid==0){
             f=true;
             count++;
             xenemigo=random(width,width-64);
@@ -118,8 +132,8 @@ class Enemigo //extends Sprite
             xproyec=height;
             yproyec=width;
             t=0;
-            caja.c-=1;
             caja.a=3;
+            vid=5;
         }
         else {
           g++;
