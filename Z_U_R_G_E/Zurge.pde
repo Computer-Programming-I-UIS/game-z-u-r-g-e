@@ -24,18 +24,22 @@ class Zurge {
         case 'w':
         yzurge-=vel;
         b=1;
+        xbala=xzurge;
         break;
         case 's':
         yzurge+=vel;
+        xbala=xzurge;
         b=1;
         break;
         case 'a':
         xzurge-=vel;
+        xbala=xzurge;
         c=-1;
         b=1;
         break;
         case 'd':
         xzurge+=vel;
+        xbala=xzurge;
         c=1;
         b=1;
         break;
@@ -43,19 +47,23 @@ class Zurge {
         switch(keyCode){
           case UP:
           yzurge-=vel;
+          xbala=xzurge;
           b=1;
           break;
           case DOWN:
           yzurge+=vel;
+          xbala=xzurge;
           b=1;
           break;
           case LEFT:
           xzurge-=vel;
+          xbala=xzurge;
           c=-1;
           b=1;
           break;
           case RIGHT:
           xzurge+=vel;
+          xbala=xzurge;
           c=1;
           b=1;
           break;
@@ -114,12 +122,13 @@ class Zurge {
       // zurge.setFrameSequence(14,14,2,1);
        balafusil.setFrameSequence(0,0,2,1);
        //zurge.setFrameSequence(17,17,2,1);
-       velbala+=3;
-       velbala=constrain(velbala,0,(width-xzurge-50)/10);
+       velbala=constrain(velbala,0,(width-50)/10);
        if(mouseX>xzurge){
+       velbala+=3;
          zurge.setFrameSequence(13,13,2,1);
          xbala+=velbala;
        }else{
+       velbala+=3;
          zurge.setFrameSequence(15,15,2,1);
          balafusil.setXY(xbala-60,yzurge-5);
          xbala-=velbala;
@@ -157,8 +166,6 @@ class Zurge {
          zurge.setFrameSequence(14,14,2,1);
          xbala+=velbala;
        }
-       
-       
        else{
          zurge.setFrameSequence(16,16,2,1);
          balabazooka.setXY(xbala-75,yzurge-20);
