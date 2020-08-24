@@ -33,7 +33,7 @@ class Enemigo //extends Sprite
   }
   
   void enemigo(){
-    if(e==1 && (count==0 || count%2!=0)){  //Aliens
+    if(e==1 ){  //Aliens
       enemigos[0].setXY(xenemigo,yenemigo);
       if(f==false && g>d ){  //vivos
         enemigos[0].setDead(false);
@@ -58,7 +58,7 @@ class Enemigo //extends Sprite
     }
     
     
-    else if(e==2&&count==2){ //gus   && count==5
+    else if(e==2&&count>=5){ //gus   && count==5
       enemigos[1].setXY(xenemigo,yenemigo);
       if(f==false&& g>d  ){  //vivos
         enemigos[1].setDead(false);
@@ -84,7 +84,7 @@ class Enemigo //extends Sprite
           f=true;
           xenemigo=random(width-120,width-60);
           yenemigo=random(0,height);
-          count++;
+          count+=3;
           g=0;
           enemigos[1].setDead(true);
           cajas[3].setDead(true);
@@ -149,7 +149,7 @@ class Enemigo //extends Sprite
     
     
     void enemigo2lvl(){
-    if(e==1 && (count==0 || count%5!=0)){  //Aliens
+    if(e==1 && (count==0 || count%2!=0)){  //Aliens
       enemigos[0].setXY(xenemigo,yenemigo);
       if(f==false && g>d ){  //vivos
         enemigos[0].setDead(false);
@@ -174,7 +174,7 @@ class Enemigo //extends Sprite
     }
     
     
-    else if(e==2 && count%5!=0){ //gus   && count==5
+    else if(e==2 && count%4!=0){ //gus   && count==5
       enemigos[1].setXY(xenemigo,yenemigo);
       if(f==false&& g>d  ){  //vivos
         enemigos[1].setDead(false);
@@ -200,7 +200,7 @@ class Enemigo //extends Sprite
           f=true;
           xenemigo=random(width-120,width-60);
           yenemigo=random(0,height);
-          count++;
+          count+=3;
           g=0;
           enemigos[1].setDead(true);
           cajas[3].setDead(true);
@@ -218,7 +218,7 @@ class Enemigo //extends Sprite
     }
       
     
-    else if(e==3 && (count==5 || count%4==0)){  //bil   
+    else if(e==3 &&count>=21){  //bil   
         enemigos[2].setXY(xenemigo,yenemigo);
         if(f==false && g>d ) {  //vivos
            enemigos[2].setDead(false);
@@ -242,7 +242,7 @@ class Enemigo //extends Sprite
         }
         if(vid==0){
             f=true;
-            count++;
+            count+=5;
             xenemigo=random(width,width-64);
             yenemigo=random(0,height);
             g=0;

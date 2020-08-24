@@ -144,7 +144,7 @@ void draw(){
     textSize(10);
     text("Material:",60,20);
     text(caja.nmat,120,20);
-    if(caja.nmat==1){
+    if(caja.nmat==3){
       stage=5;
     }if(caja.nmat>=15){
       stage=4;
