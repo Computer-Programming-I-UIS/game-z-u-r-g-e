@@ -215,7 +215,7 @@ class Enemigo //extends Sprite
     }
       
     
-    else if(e==3 && count==5){  //bil   
+    else if(e==3 && count==5 || count%4==0){  //bil   
         enemigos[2].setXY(xenemigo,yenemigo);
         if(f==false && g>d ) {  //vivos
            enemigos[2].setDead(false);
@@ -250,6 +250,7 @@ class Enemigo //extends Sprite
             t=0;
             caja.a=3;
             vid=5;
+            
         }
         else {
           g++;

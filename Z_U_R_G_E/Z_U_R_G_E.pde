@@ -271,6 +271,7 @@ if(stage==4){
   text("GANASTE",width/2,150);
   textSize(40);
   text("Has salvado a Z.U.R.G.E",width/2,250);
+  
 }
 if(stage==5){
   k++;
@@ -281,6 +282,11 @@ if(stage==5){
   textSize(20);
   text("Ahora tendrás que lidiar con los aliens",width/2,300);
   text("y con más individuos como GUS",width/2,350);
+  stroke(230,240,30);
+  line(100,100,800,100);
+  line(100,100,800,200);
+  line(100,100,100,200);
+  line(800,100,800,200);
   }
   if(k>=600){
    k++;
