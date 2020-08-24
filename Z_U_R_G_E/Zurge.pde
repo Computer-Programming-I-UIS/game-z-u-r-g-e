@@ -17,7 +17,7 @@ class Zurge {
   }
   
   void movi(){
-    xzurge=constrain(xzurge,50,width-50);
+    xzurge=constrain(xzurge,100,width-50);
     yzurge=constrain(yzurge,50,height-50);
     if(keyPressed){
       switch(key){
@@ -98,7 +98,7 @@ class Zurge {
       // zurge.setFrameSequence(14,14,2,1);
        zurge.setXY(xzurge-=velbala,yzurge);
        zurge.setFrameSequence(21,21,2,1);
-       if(xzurge<=50){
+       if(xzurge<=200){
          caja.limb=0;  
          }
      }

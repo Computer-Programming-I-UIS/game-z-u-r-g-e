@@ -56,10 +56,10 @@ void setup(){
   textAlign(CENTER);
   stage=-2;
   ZURGE=new Zurge (8,10,50,50,height/2);
-  guss=new Enemigo (8,random(width,width-60),random(0,height),2,120,5);
-  BIL=new Enemigo (8,random(width,width-60),random(0,height),3,120,5);
-  aliens=new Enemigo (0,random(width,width-60),random(0,height),1,100,2);
-  caja=new cajas (5,random(width,width-60),random(0,height));
+  guss=new Enemigo (0,random(width-120,width-60),random(0,height),2,120,5);
+  BIL=new Enemigo (8,random(width-120,width-60),random(0,height),3,120,5);
+  aliens=new Enemigo (0,random(width-120,width-60),random(0,height),1,100,2);
+  caja=new cajas (5,random(width-120,width),random(0,height));
   for(int i=0;i<30;i++){
     stars[i]=new Estrellas(random(0,width),random(0,height),3);
 }
@@ -93,7 +93,7 @@ void draw(){
   }
   if(l==160){
     stage=0;
-    l=240;
+    l=270;;
   }
   if(stage==-1){
     background(0);
@@ -105,8 +105,8 @@ void draw(){
   if(stage==0){
     l++;
     background(0);
-    if(l%100!=0){
-    menu.play();
+    if(l%270==0){
+    //menu.loop();
     }
     textFont(fuente);
     textAlign(CENTER);
@@ -284,7 +284,7 @@ if(stage==5){
   text("y con más individuos como GUS",width/2,350);
   stroke(230,240,30);
   line(100,100,800,100);
-  line(100,100,800,200);
+  line(100,200,800,200);
   line(100,100,100,200);
   line(800,100,800,200);
   }

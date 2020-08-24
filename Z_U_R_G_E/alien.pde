@@ -18,7 +18,7 @@ class Enemigo //extends Sprite
   }
   
   void movi(){
-    xenemigo=constrain(xenemigo,0,width);
+    xenemigo=constrain(xenemigo,0,width-60);
     yenemigo=constrain(yenemigo,60,height-60);
     a++;
     if(a<40){
@@ -42,6 +42,7 @@ class Enemigo //extends Sprite
       if (!enemigos[0].isDead() && (enemigos[0].pp_collision(balafusil) || enemigos[0].pp_collision(balabazooka))) { //muerte
         vid-=1;
         caja.c-=1;
+        ZURGE.xbala=ZURGE.xzurge;
       }
       if(vid==0){
         f=true;
@@ -77,11 +78,11 @@ class Enemigo //extends Sprite
       if (!enemigos[1].isDead() && (enemigos[1].pp_collision(balafusil) || enemigos[1].pp_collision(balabazooka))) {  //muerte
           vid-=1;
           caja.c-=1;
-          
+          ZURGE.xbala=ZURGE.xzurge;
       }
       if(vid==0){
           f=true;
-          xenemigo=random(width-64,width);
+          xenemigo=random(width-120,width-60);
           yenemigo=random(0,height);
           count++;
           g=0;
@@ -157,6 +158,7 @@ class Enemigo //extends Sprite
       if (!enemigos[0].isDead() && (enemigos[0].pp_collision(balafusil) || enemigos[0].pp_collision(balabazooka))) { //muerte
         vid-=1;
         caja.c-=1;
+        ZURGE.xbala=ZURGE.xzurge;
       }
       if(vid==0){
         f=true;
@@ -193,10 +195,11 @@ class Enemigo //extends Sprite
           vid-=1;
           caja.c-=1;
           stage=5;
+          ZURGE.xbala=ZURGE.xzurge;
       }
       if(vid==0){
           f=true;
-          xenemigo=random(width-64,width);
+          xenemigo=random(width-120,width-60);
           yenemigo=random(0,height);
           count++;
           g=0;
@@ -215,7 +218,7 @@ class Enemigo //extends Sprite
     }
       
     
-    else if(e==3 && count==5 || count%4==0){  //bil   
+    else if(e==3 && (count==5 || count%4==0)){  //bil   
         enemigos[2].setXY(xenemigo,yenemigo);
         if(f==false && g>d ) {  //vivos
            enemigos[2].setDead(false);
