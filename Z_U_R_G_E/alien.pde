@@ -33,7 +33,7 @@ class Enemigo //extends Sprite
   }
   
   void enemigo(){
-    if(e==1 ){  //Aliens
+    if(e==1 && count==0 || count%2!=0){  //Aliens
       enemigos[0].setXY(xenemigo,yenemigo);
       if(f==false && g>d ){  //vivos
         enemigos[0].setDead(false);
@@ -58,7 +58,7 @@ class Enemigo //extends Sprite
     }
     
     
-    else if(e==2&&count>=5){ //gus   && count==5
+    else if(e==2&&count==2){ //gus   && count==5
       enemigos[1].setXY(xenemigo,yenemigo);
       if(f==false&& g>d  ){  //vivos
         enemigos[1].setDead(false);
@@ -79,12 +79,13 @@ class Enemigo //extends Sprite
           vid-=1;
           caja.c-=1;
           ZURGE.xbala=ZURGE.xzurge;
+
       }
       if(vid==0){
           f=true;
           xenemigo=random(width-120,width-60);
           yenemigo=random(0,height);
-          count+=3;
+          count++;
           g=0;
           enemigos[1].setDead(true);
           cajas[3].setDead(true);
@@ -94,6 +95,7 @@ class Enemigo //extends Sprite
           caja.a=3;
           caja.b=150;
           vid=5;
+          stage=5;
       }
       else {
         g++;
@@ -101,55 +103,10 @@ class Enemigo //extends Sprite
       }
     }
   }
-      
-    
-    /*else if(e==3 && count==10){  ee//bil   
-        enemigos[2].setXY(xenemigo,yenemigo);
-        if(f==false && g>d ) {  //vivos
-           enemigos[2].setDead(false);
-           enemigos[2].setFrameSequence(7,12,0.25,1);
-           t++;
-           if(t>90){
-             cajas[2].setDead(false);
-             cajas[2].setXY(xproyec-=30,yproyec);
-             cajas[2].setFrameSequence(2,2,1,1);
-             enemigos[2].setFrameSequence(12,12,1,1);
-           }
-           else{
-              xproyec=xenemigo;
-              yproyec=yenemigo;
-            }
-        }
-        if (!enemigos[2].isDead() && (enemigos[2].pp_collision(balafusil) ||enemigos[2].pp_collision(balabazooka))) { //muerte
-            caja.c-=1;
-            vid-=1;
-            ZURGE.xbala=ZURGE.xzurge;
-        }
-        if(vid==0){
-            f=true;
-            count++;
-            xenemigo=random(width,width-64);
-            yenemigo=random(0,height);
-            g=0;
-            enemigos[2].setDead(true);
-            cajas[2].setDead(true);
-            xproyec=height;
-            yproyec=width;
-            t=0;
-            caja.a=3;
-            vid=5;
-        }
-        else {
-          g++;
-          f=false;
-        }*/
-    
-    
-  
-    
+
     
     void enemigo2lvl(){
-    if(e==1 && (count==0 || count%2!=0)){  //Aliens
+    if(e==1 &&  count%5!=0){  //Aliens
       enemigos[0].setXY(xenemigo,yenemigo);
       if(f==false && g>d ){  //vivos
         enemigos[0].setDead(false);
@@ -174,7 +131,7 @@ class Enemigo //extends Sprite
     }
     
     
-    else if(e==2 && count%4!=0){ //gus   && count==5
+      else if(e==2 && count%5!=0){ //gus   && count==5
       enemigos[1].setXY(xenemigo,yenemigo);
       if(f==false&& g>d  ){  //vivos
         enemigos[1].setDead(false);
@@ -200,7 +157,7 @@ class Enemigo //extends Sprite
           f=true;
           xenemigo=random(width-120,width-60);
           yenemigo=random(0,height);
-          count+=3;
+          count++;
           g=0;
           enemigos[1].setDead(true);
           cajas[3].setDead(true);
@@ -209,16 +166,17 @@ class Enemigo //extends Sprite
           t=0;
           caja.a=3;
           caja.b=150;
-          vid=5;
+          vid=2;
       }
       else {
         g++;
         f=false;
       }
-    }
+      }
+    
       
     
-    else if(e==3 &&count>=21){  //bil   
+    else if(e==3 &&count==5){  //bil   
         enemigos[2].setXY(xenemigo,yenemigo);
         if(f==false && g>d ) {  //vivos
            enemigos[2].setDead(false);
@@ -228,6 +186,7 @@ class Enemigo //extends Sprite
              cajas[2].setDead(false);
              cajas[2].setXY(xproyec-=30,yproyec);
              cajas[2].setFrameSequence(2,2,1,1);
+             orbe.loop();
              enemigos[2].setFrameSequence(12,12,1,1);
            }
            else{

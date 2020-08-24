@@ -80,7 +80,6 @@ class Zurge {
    rect(50+width/100,97*height/100,heal,height/100);  //  indicador de vida
    zurge.setXY(xzurge,yzurge);
    if(mouseX>xzurge&&mousePressed){
-     golpe.play();
      zurge.setFrameSequence(1,3,0.09,1);
    }else if(mouseX<xzurge&&mousePressed){
      zurge.setFrameSequence(5,7,0.09,1);
@@ -117,6 +116,7 @@ class Zurge {
    if(keyPressed&& key=='e' ){  //Coge el fusil
        balafusil.setXY(xbala+60,yzurge-5);
      if(mousePressed&&b==0&&caja.c>0){
+       golpe.play();
       // zurge.setFrameSequence(13,13,2,1);
        balafusil.setDead(false);
       // zurge.setFrameSequence(14,14,2,1);

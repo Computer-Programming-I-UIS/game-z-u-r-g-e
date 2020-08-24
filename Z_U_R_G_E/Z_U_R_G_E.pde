@@ -6,6 +6,9 @@ import sprites.utils.*;
 Minim minim;
 AudioPlayer menu;
 AudioPlayer golpe;
+AudioPlayer orbe;
+AudioPlayer win;
+AudioPlayer loose;
 Sprite laser;
 Sprite caras;
 Sprite cajas[]=new Sprite[5];
@@ -39,6 +42,9 @@ void setup(){
   minim=new Minim(this);
   menu=minim.loadFile("menu.mp3");
   golpe=minim.loadFile("golpe.mp3");
+  orbe=minim.loadFile("orbe.mp3");
+  win=minim.loadFile("win.mp3");
+  loose=minim.loadFile("loose.mp3");
   fuente=createFont("fuente.otf",70);
   star=loadImage("estrella.png");
   caras=new Sprite(this,"caraszurge.png",1,2,2);
@@ -79,7 +85,7 @@ void draw(){
   if(l<360){
     textSize(20);
     text("Z.U.R.G.E se ecuentra en peligro, su sistema está fallando y debe recolectar",width/2,200);
-    text("un material que puede salvarl. Lo aterrador es que Z.U.R.G.E debe recorrer mundos muy",width/2,250);
+    text("un material que puede salvarlo. Lo aterrador es que Z.U.R.G.E debe recorrer mundos muy",width/2,250);
     text("macabros para obtenerlo, donde hay todo tipo de seres que no tienen ninguna intención de",width/2,300);
     text(" permitir que Z.U.R.G.E consiga su objetivo. ¡Ayuda a Z.U.R.G.E a llegar a su salvación!",width/2,350);
     stroke(230,240,30);
@@ -93,14 +99,15 @@ void draw(){
   }
   if(l==160){
     stage=0;
-    l=270;;
+    l=270;
   }
   if(stage==-1){
     background(0);
+    loose.play();
     caras.setXY(width/2,height/2);
     caras.setFrameSequence(0,0,1,1);
     textSize(50);
-    text("GAME OVER",width/2,height/2);
+    text("PERDISTE",width/2,height/2);
   }
   if(stage==0){
     l++;
@@ -139,14 +146,14 @@ void draw(){
    // println(ZURGE.xbala);
     background(0);
     textSize(15);
-    text("Kills",width-90,30);
+    text("Kills:",width-90,30);
     text(count,width-30,30);
-    textSize(10);
-    text("Material:",60,20);
-    text(caja.nmat,120,20);
-    if(caja.nmat==3){
-      stage=5;
-    }if(caja.nmat>=15){
+    textSize(15);
+    text("Material:",90,30);
+    text(caja.nmat,180,30);
+    //if(caja.nmat==3){
+      //stage=5;
+    if(caja.nmat>=2){
       stage=4;
     }
     stroke(230,240,30);
@@ -218,16 +225,34 @@ if(stage==2){
    //wasd
   text("e",570,245);
   text("r",620,295);
-   
+  //flechas
+   stroke(0);
+  line(400,95,400,110);
+  line(360,130,380,130);
+  line(400,120,400,135);
+  line(420,130,440,130);
+  line(360,130,370,125);
+  line(360,130,370,135); //izquierda
+  line(390,100,400,95);
+  line(400,95,410,100); //arriba
+  line(390,130,400,135);
+  line(400,135,410,130); //abajo
+  line(430,125,440,130);
+  line(430,135,440,130); //derecha
+  noStroke();
   
   fill(255);
+  text("Recolecta energía. Cuando llenes la barra, podrás usar una embestida mientras tienes un",50,180);
+  text("escudo y serás inmune a los enemigos en ese momento. ¡Solo se activa al llenar la barra!",50,200);
   text("Puedes disparar un fusil presionando la tecla                    y haciendo click",50,250);
   text("o puedes disparar una bazooka presionando la tecla                 y haciendo click",50,300);
   text("Puedes dar golpes presionando click en la dirección que quieras, pero cuidado, si tocas",50,350);
   text("a los enemigos tu vida va a disminuir. ¡Mejor usa tus armas!",50,370);
   text("Puedes recolectar cajas de energía y munición, y materiales, solo con tocarlos",50,420);
+  fill(#F6FF05);
   text("¡Recolecta materiales para ganar!",50,440);
   text("¡Ten cuidado con los ataques de GUS y BIL, que pueden matarte si te impactan!",50,490);
+  fill(255);
 
   textSize(5);
   text("Presiona cualquier tecla para volver a la pantalla de inicio",350,height-50);
@@ -252,12 +277,15 @@ if(stage==3){
   
   textAlign(CORNER);
   textSize(15);
-  text("Musica extraida de:",50,50);
+  text("Musica extraida de:",50,100);
   textSize(10);
-  text("Menú: Metal intro- Propiedad de Leonard B. Blaesing",50,100);
-  text("Sonido de disparos: Heavy Techno Kick- Propiedad de Leonarf B. Blaesing",50,130);
+  text("Menú: Metal intro- Propiedad de Leonard B. Blaesing",50,150);
+  text("Sonido de disparos: Heavy Techno Kick- Propiedad de Leonarf B. Blaesing",50,200);
+  text("Sonido del orbe de Bil: Game FX sounds- Propiedad de Daniel Lukaz",50,250);
+  text("Sonido de ganar: Level Complete- Propiedad de jivatma07",50,300);
+  text("Sonido de perder: Powering Down- Sin derechos de autor",50,350);
   textSize(5);
-  text("Presiona cualquier tecla para volver a la pantalla de inicio",400,height-80);
+  text("Presiona cualquier tecla para volver a la pantalla de inicio",350,height-80);
     if(keyPressed){
     stage=0;
   }
@@ -269,6 +297,7 @@ if(stage==4){
   //caras.setDead(false);
   caras.setXY(width/2,height/2);
   caras.setFrameSequence(1,1,1,1);
+  win.play();
   textFont(fuente);
   text("GANASTE",width/2,150);
   textSize(40);
@@ -284,11 +313,12 @@ if(stage==5){
   textSize(20);
   text("Ahora tendrás que lidiar con los aliens",width/2,300);
   text("y con más individuos como GUS",width/2,350);
+  text("¡Cuidado con Bil y su orbe!",width/2,430);
   stroke(230,240,30);
-  line(100,100,800,100);
-  line(100,200,800,200);
-  line(100,100,100,200);
-  line(800,100,800,200);
+  line(200,50,790,50);
+  line(200,170,790,170);
+  line(200,50,200,170);
+  line(790,50,790,170);
   }
   if(k>=600){
    k++;
