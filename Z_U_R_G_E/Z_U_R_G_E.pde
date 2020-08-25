@@ -64,9 +64,9 @@ void setup(){
   textAlign(CENTER);
   stage=-2;
   ZURGE=new Zurge (8,10,50,50,height/2);
-  guss=new Enemigo (8,random(width-120,width-60),random(0,height),2,120,5);
-  BIL=new Enemigo (8,random(width-120,width-60),random(0,height),3,120,5);
-  aliens=new Enemigo (12,random(width-120,width-60),random(0,height),1,100,2);
+  guss=new Enemigo (8,random(width-60,width),random(0,height),2,120,5);
+  BIL=new Enemigo (8,random(width-60,width),random(0,height),3,120,5);
+  aliens=new Enemigo (12,random(width-60,width),random(0,height),1,100,2);
   caja=new cajas (10,random(width-120,width),random(0,height));
   for(int i=0;i<30;i++){
     stars[i]=new Estrellas(random(0,width),random(0,height),3);
@@ -112,11 +112,14 @@ void draw(){
     textSize(50);
     text("PERDISTE",width/2,height/2);
     l++;
+    ZURGE.heal=width/3-80;
+    caja.nmat=0;
     if(l>180){
       stage=0;
     }
   }
   if(stage==0){
+    zurge.setDead(false);
     l++;
     background(0);
     if(l%270==0){
@@ -149,6 +152,7 @@ void draw(){
     }
   }
   if(stage==1){
+    menu.setPan(5);
     l=0;
     clear();
    // println(ZURGE.xbala);
@@ -183,6 +187,7 @@ void draw(){
     
     ZURGE.movi();
     ZURGE.zurge();
+    ZURGE.heridas();
     guss.enemigo();
     caja.fondo();
     caja.movi();
@@ -358,6 +363,7 @@ if(stage==5){
    
    ZURGE.movi();
    ZURGE.zurge();
+   ZURGE.heridas();
    caja.fondo();
     caja.movi();
    if(k>=800){
