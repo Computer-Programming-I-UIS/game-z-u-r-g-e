@@ -64,6 +64,10 @@ class Enemigo //extends Sprite
         enemigos[1].setDead(false);
         enemigos[1].setFrameSequence(3,6,0.25,1);
         t++;
+         menu.pause();
+        if(l%20==0){ //Arreglar esta condicion
+        boss.loop();
+        }
         if(t>60){
           cajas[3].setDead(false);
           cajas[3].setXY(xproyec-=30,yproyec);
@@ -101,6 +105,7 @@ class Enemigo //extends Sprite
         f=false;
       }
     }
+ 
   }
 
     

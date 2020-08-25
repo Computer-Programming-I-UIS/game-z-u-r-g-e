@@ -10,6 +10,7 @@ AudioPlayer orbe;
 AudioPlayer win;
 AudioPlayer loose;
 AudioPlayer alert;
+AudioPlayer boss;
 Sprite laser;
 Sprite caras;
 Sprite cajas[]=new Sprite[5];
@@ -47,6 +48,7 @@ void setup(){
   win=minim.loadFile("win.mp3");
   loose=minim.loadFile("loose.mp3");
   alert=minim.loadFile("alert.mp3");
+  boss=minim.loadFile("boss.mp3");
   fuente=createFont("fuente.otf",70);
   star=loadImage("estrella.png");
   caras=new Sprite(this,"caraszurge.png",1,2,2);
@@ -152,7 +154,7 @@ void draw(){
     }
   }
   if(stage==1){
-    menu.setPan(5);
+    menu.setPan(0.8);
     l=0;
     clear();
    // println(ZURGE.xbala);
@@ -290,7 +292,7 @@ if(stage==3){
   
   textAlign(CORNER);
   textSize(15);
-  text("Musica extraida de:",50,100);
+  text("Musica extraida de",370,100);
   textSize(10);
   text("Menú: Metal intro- Propiedad de Leonard B. Blaesing",50,150);
   text("Sonido de disparos: Game Style-Shot - Sin derechos de autor",50,200);
@@ -298,6 +300,7 @@ if(stage==3){
   text("Sonido de ganar: Level Complete- Propiedad de jivatma07",50,300);
   text("Sonido de perder: Powering Down- Sin derechos de autor",50,350);
   text("Sonido de alerta: ¡Alert Alert Alert!- Propiedad de ProjectsU012",50,400);
+  text("Música contra los jefes: Boss Battle Loop #3- Propiedad de Sirkoto51",50,450);
   textSize(5);
   text("Presiona cualquier tecla para volver a la pantalla de inicio",350,height-80);
     if(keyPressed){
@@ -307,6 +310,8 @@ if(stage==3){
 
 if(stage==4){
   clear();
+  menu.pause();
+  orbe.pause();
   background(0);
   //caras.setDead(false);
   caras.setXY(width/2,height/2);
