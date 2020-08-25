@@ -84,7 +84,7 @@ void setup(){
 
 void draw(){
   println(l);
-  if(l<360){
+  if(l<360&&stage==-2){
     textSize(20);
     text("Z.U.R.G.E se ecuentra en peligro, su sistema está fallando y debe recolectar",width/2,200);
     text("un material que puede salvarlo. Lo aterrador es que Z.U.R.G.E debe recorrer mundos muy",width/2,250);
@@ -101,9 +101,10 @@ void draw(){
   }
   if(l==260){
     stage=0;
-    l=270;
+    l=261;
   }
   if(stage==-1){
+    menu.pause();
     background(0);
     loose.play();
     caras.setXY(width/2,height/2);
@@ -114,7 +115,9 @@ void draw(){
   if(stage==0){
     l++;
     background(0);
-    menu.loop();
+    if(l%270==0){
+      menu.loop();
+    }
     textFont(fuente);
     textAlign(CENTER);
     stroke(230,240,30);
@@ -142,6 +145,7 @@ void draw(){
     }
   }
   if(stage==1){
+    l=0;
     clear();
    // println(ZURGE.xbala);
     background(0);

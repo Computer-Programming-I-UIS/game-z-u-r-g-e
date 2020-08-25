@@ -79,7 +79,6 @@ class Enemigo //extends Sprite
           vid-=1;
           caja.c-=1;
           ZURGE.xbala=ZURGE.xzurge;
-
       }
       if(vid==0){
           f=true;

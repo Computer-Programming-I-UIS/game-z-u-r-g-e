@@ -188,6 +188,7 @@ class Zurge {
    else{
          balabazooka.setDead(true);
          balafusil.setDead(true);
+         xbala=xzurge;
    }
    if(xbala<=0 || xbala>=width){
          xbala=constrain(xbala,0,width);
@@ -204,7 +205,7 @@ class Zurge {
      if (!zurge.isDead()&& zurge.pp_collision(enemigos[0])) {  //  daño por chocar con alien a zurge
        enemigos[0].setDead(true);
        aliens.g=0;
-       aliens.xenemigo=random(width,width-64);
+       aliens.xenemigo=random(width-64,width);
        aliens.yenemigo=random(0,height);
          if(key=='q'){
          }
@@ -213,29 +214,27 @@ class Zurge {
          }
       }
       if (!zurge.isDead()&& zurge.pp_collision(enemigos[1])) {  //  daño por chocar con gus a zurge
-       heal-=80;
        enemigos[1].setDead(true);
        guss.g=0;
-       guss.xenemigo=random(width,width-64);
+       guss.xenemigo=random(width-64,width);
        guss.yenemigo=random(0,height);
        cajas[3].setDead(true);
          if(key=='q'){
          }
          else{
-          heal-=40;
+          heal-=80;
          }
       }
       if (!zurge.isDead()&& zurge.pp_collision(enemigos[2])) {  //  daño por chocar con bil a zurge
-       heal-=120;
        enemigos[2].setDead(true);
        BIL.g=0;
-       BIL.xenemigo=random(width,width-64);
+       BIL.xenemigo=random(width-64,width);
        BIL.yenemigo=random(0,height);
        cajas[2].setDead(true);
          if(key=='q'){
          }
          else{
-          heal-=40;
+          heal-=120;
          }
       }
       if (!zurge.isDead()&& zurge.pp_collision(cajas[2])) {  //  daño por chocar con hacha de gus a zurge
@@ -262,6 +261,7 @@ class Zurge {
       if (!zurge.isDead()&& guss.xproyec<0){  //  el hacha no golpeo
         guss.t=0;
         cajas[3].setDead(true);
+        cajas[3].setXY(width,height);    
       }
       if (!zurge.isDead()&& BIL.xproyec<0){  //  el orbe no golpeo
         BIL.t=0;
