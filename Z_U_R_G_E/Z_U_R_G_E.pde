@@ -114,9 +114,7 @@ void draw(){
   if(stage==0){
     l++;
     background(0);
-    if(l%270==0){
-    //menu.loop();
-    }
+    menu.loop();
     textFont(fuente);
     textAlign(CENTER);
     stroke(230,240,30);
