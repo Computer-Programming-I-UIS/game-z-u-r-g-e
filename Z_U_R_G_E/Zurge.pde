@@ -116,7 +116,7 @@ class Zurge {
    if(keyPressed&& key=='e' ){  //Coge el fusil
        balafusil.setXY(xbala+60,yzurge-5);
      if(mousePressed&&b==0&&caja.c>0){
-       golpe.play();
+       shot.play();
       // zurge.setFrameSequence(13,13,2,1);
        balafusil.setDead(false);
       // zurge.setFrameSequence(14,14,2,1);
@@ -157,6 +157,7 @@ class Zurge {
        balabazooka.setXY(xbala+75,yzurge-20);
        //zurge.setFrameSequence(10,10,0.9,1);
      if(mousePressed&&b==0&&caja.c>0){
+       shot.play();
        balabazooka.setDead(false);
        //zurge.setFrameSequence(15,15,2,1);
        balabazooka.setFrameSequence(0,0,2,1);
@@ -271,6 +272,9 @@ class Zurge {
         stage=-1;
         zurge.setDead(true);
         textSize(15);
+      }
+      if(heal<40){
+        alert.play();
       }
   }
       

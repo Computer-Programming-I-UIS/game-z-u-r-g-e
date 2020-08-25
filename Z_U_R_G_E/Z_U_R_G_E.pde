@@ -5,10 +5,11 @@ import sprites.utils.*;
 
 Minim minim;
 AudioPlayer menu;
-AudioPlayer golpe;
+AudioPlayer shot;
 AudioPlayer orbe;
 AudioPlayer win;
 AudioPlayer loose;
+AudioPlayer alert;
 Sprite laser;
 Sprite caras;
 Sprite cajas[]=new Sprite[5];
@@ -41,10 +42,11 @@ void setup(){
   background(0);
   minim=new Minim(this);
   menu=minim.loadFile("menu.mp3");
-  golpe=minim.loadFile("golpe.mp3");
+  shot=minim.loadFile("shot.mp3");
   orbe=minim.loadFile("orbe.mp3");
   win=minim.loadFile("win.mp3");
   loose=minim.loadFile("loose.mp3");
+  alert=minim.loadFile("alert.mp3");
   fuente=createFont("fuente.otf",70);
   star=loadImage("estrella.png");
   caras=new Sprite(this,"caraszurge.png",1,2,2);
@@ -97,7 +99,7 @@ void draw(){
     
     l++;
   }
-  if(l==160){
+  if(l==260){
     stage=0;
     l=270;
   }
@@ -152,8 +154,8 @@ void draw(){
     text("Material:",90,30);
     text(caja.nmat,180,30);
     //if(caja.nmat==3){
-      //stage=5;
-    if(caja.nmat>=2){
+     // stage=5;
+    if(caja.nmat>=1){
       stage=4;
     }
     stroke(230,240,30);
@@ -280,10 +282,11 @@ if(stage==3){
   text("Musica extraida de:",50,100);
   textSize(10);
   text("Menú: Metal intro- Propiedad de Leonard B. Blaesing",50,150);
-  text("Sonido de disparos: Heavy Techno Kick- Propiedad de Leonarf B. Blaesing",50,200);
+  text("Sonido de disparos: Game Style-Shot - Sin derechos de autor",50,200);
   text("Sonido del orbe de Bil: Game FX sounds- Propiedad de Daniel Lukaz",50,250);
   text("Sonido de ganar: Level Complete- Propiedad de jivatma07",50,300);
   text("Sonido de perder: Powering Down- Sin derechos de autor",50,350);
+  text("Sonido de alerta: ¡Alert Alert Alert!- Propiedad de ProjectsU012",50,400);
   textSize(5);
   text("Presiona cualquier tecla para volver a la pantalla de inicio",350,height-80);
     if(keyPressed){

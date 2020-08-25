@@ -24,6 +24,7 @@ class Estrellas {
      xstars=0;
     } 
   }
+    
   
   void menu(){
     
