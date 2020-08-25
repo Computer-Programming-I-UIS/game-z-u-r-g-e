@@ -111,6 +111,10 @@ void draw(){
     caras.setFrameSequence(0,0,1,1);
     textSize(50);
     text("PERDISTE",width/2,height/2);
+    l++;
+    if(l>180){
+      stage=0;
+    }
   }
   if(stage==0){
     l++;
