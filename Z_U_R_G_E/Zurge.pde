@@ -113,10 +113,13 @@ class Zurge {
    }
    
    //disparo con fusil
+   if(keyPressed&key=='e'&& mousePressed ||keyPressed&key=='r'&& mousePressed){
+     //shot.play();
+     shot.play(-10);
+   }
    if(keyPressed&& key=='e' ){  //Coge el fusil
        balafusil.setXY(xbala+60,yzurge-5);
      if(mousePressed&&b==0&&caja.c>0){
-       shot.play();
       // zurge.setFrameSequence(13,13,2,1);
        balafusil.setDead(false);
       // zurge.setFrameSequence(14,14,2,1);
@@ -274,8 +277,11 @@ class Zurge {
         textSize(15);
       }
       if(heal<40){
+        if(l%270==0) //Falta la del nviel 2, que k% en un numero sea ==0
+        menu.setGain(-10);
         alert.play();
       }
+  
   }
       
      

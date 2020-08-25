@@ -65,7 +65,7 @@ class Enemigo //extends Sprite
         enemigos[1].setFrameSequence(3,6,0.25,1);
         t++;
          menu.pause();
-        if(l%20==0){ //Arreglar esta condicion
+        if(t%60==0){ //Arreglar esta condicion
         boss.loop();
         }
         if(t>60){
@@ -99,18 +99,23 @@ class Enemigo //extends Sprite
           caja.b=150;
           vid=5;
           stage=5;
+          boss.pause();
       }
       else {
         g++;
         f=false;
       }
     }
+    
+      
+    
+      
  
   }
 
     
     void enemigo2lvl(){
-    if(e==1 ){  //Aliens
+    if(e==1 && count%5!=0 ){  //Aliens
       enemigos[0].setXY(xenemigo,yenemigo);
       if(f==false && g>d ){  //vivos
         enemigos[0].setDead(false);
@@ -135,7 +140,7 @@ class Enemigo //extends Sprite
     }
     
     
-      else if(e==2 && count>=5){ //gus   && count==5
+      else if(e==2 && count%5!=0){ //gus   && count==5
       enemigos[1].setXY(xenemigo,yenemigo);
       if(f==false&& g>d  ){  //vivos
         enemigos[1].setDead(false);
@@ -182,10 +187,14 @@ class Enemigo //extends Sprite
     
     else if(e==3 &&count==5){  //bil   
         enemigos[2].setXY(xenemigo,yenemigo);
+        if(t%90==0){ //Arreglar esta condicion
+              boss.loop();
+           }
         if(f==false && g>d ) {  //vivos
            enemigos[2].setDead(false);
            enemigos[2].setFrameSequence(7,12,0.25,1);
            t++;
+           menu.pause();
            if(t>90){
              cajas[2].setDead(false);
              cajas[2].setXY(xproyec-=30,yproyec);
@@ -205,7 +214,7 @@ class Enemigo //extends Sprite
         }
         if(vid==0){
             f=true;
-            count+=5;
+            count+=3;
             xenemigo=random(width,width-64);
             yenemigo=random(0,height);
             g=0;
@@ -217,6 +226,8 @@ class Enemigo //extends Sprite
             caja.a=3;
             caja.b=150;
             vid=5;
+            boss.pause();
+            orbe.pause();
             
         }
         else {
@@ -225,9 +236,10 @@ class Enemigo //extends Sprite
         }
     }
     
-  
     }
     
-   }   
+    
+    
+   }  
   
     

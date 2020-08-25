@@ -342,6 +342,9 @@ if(stage==5){
   if(k>=600){
    k++;
   clear();
+  if(k%270==0){
+    menu.loop();
+  }
   background(0);
   textSize(15);
     text("Kills",width-90,30);
