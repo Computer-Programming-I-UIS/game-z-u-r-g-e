@@ -115,7 +115,7 @@ class Zurge {
    //disparo con fusil
    if(keyPressed&key=='e'&& mousePressed ||keyPressed&key=='r'&& mousePressed){
      //shot.play();
-     shot.play(-10);
+     //shot.play(-10);
    }
    if(keyPressed&& key=='e' ){  //Coge el fusil
        balafusil.setXY(xbala+60,yzurge-5);
@@ -199,13 +199,14 @@ class Zurge {
          xbala=xzurge;
          balabazooka.setDead(true);
          balafusil.setDead(true);
+         shot.play(-10);
        }
    
   }
    
   void heridas(){   
      //  daños que recibe zurge
-     if (!zurge.isDead() && enemigos[0].oo_collision(zurge,40)&&!enemigos[0].isDead()) {  //  daño por chocar con alien a zurge
+     if (!zurge.isDead() && enemigos[0].oo_collision(zurge,20)&&!enemigos[0].isDead()) {  //  daño por chocar con alien a zurge
        enemigos[0].setDead(true);
        aliens.g=0;
        aliens.xenemigo=random(width-64,width);
@@ -275,6 +276,7 @@ class Zurge {
         stage=-1;
         zurge.setDead(true);
         textSize(15);
+        l=261;
       }
       if(heal<40){
         if(l%270==0) //Falta la del nviel 2, que k% en un numero sea ==0

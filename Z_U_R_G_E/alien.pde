@@ -2,7 +2,7 @@
 class Enemigo //extends Sprite
 {
   boolean f=false;
-  float a,b,c,d,e,g=0,t=0;
+  float a,b,c,d,e,g=0,t=0, tm=1010;
   //int count=0;
   float xenemigo,xproyec;
   float yenemigo,yproyec;
@@ -43,6 +43,7 @@ class Enemigo //extends Sprite
         vid-=1;
         caja.c-=1;
         ZURGE.xbala=ZURGE.xzurge;
+        shot.play(-10);
       }
       if(vid==0){
         f=true;
@@ -64,8 +65,9 @@ class Enemigo //extends Sprite
         enemigos[1].setDead(false);
         enemigos[1].setFrameSequence(3,6,0.25,1);
         t++;
+        tm++;
          menu.pause();
-        if(t%60==0){ //Arreglar esta condicion
+        if(tm%1020==0){ //Arreglar esta condicion
         boss.loop();
         }
         if(t>60){
@@ -83,6 +85,7 @@ class Enemigo //extends Sprite
           vid-=1;
           caja.c-=1;
           ZURGE.xbala=ZURGE.xzurge;
+          shot.play(-10);
       }
       if(vid==0){
           f=true;
@@ -95,6 +98,7 @@ class Enemigo //extends Sprite
           xproyec=height;
           yproyec=width;
           t=0;
+          tm=0;
           caja.a=3;
           caja.b=150;
           vid=5;
@@ -125,6 +129,7 @@ class Enemigo //extends Sprite
         vid-=1;
         caja.c-=1;
         ZURGE.xbala=ZURGE.xzurge;
+        shot.play(-10);
       }
       if(vid==0){
         f=true;
@@ -161,6 +166,7 @@ class Enemigo //extends Sprite
           vid-=1;
           caja.c-=1;
           ZURGE.xbala=ZURGE.xzurge;
+          shot.play(-10);
       }
       if(vid==0){
           f=true;
@@ -187,7 +193,7 @@ class Enemigo //extends Sprite
     
     else if(e==3 &&count==5){  //bil   
         enemigos[2].setXY(xenemigo,yenemigo);
-        if(t%90==0){ //Arreglar esta condicion
+        if(tm%1020==0){ //Arreglar esta condicion
               boss.loop();
            }
         if(f==false && g>d ) {  //vivos
@@ -195,11 +201,12 @@ class Enemigo //extends Sprite
            enemigos[2].setFrameSequence(7,12,0.25,1);
            t++;
            menu.pause();
+           tm++;
            if(t>90){
              cajas[2].setDead(false);
              cajas[2].setXY(xproyec-=30,yproyec);
              cajas[2].setFrameSequence(2,2,1,1);
-             orbe.loop();
+             orbe.play();
              enemigos[2].setFrameSequence(12,12,1,1);
            }
            else{
@@ -211,6 +218,7 @@ class Enemigo //extends Sprite
             caja.c-=1;
             vid-=1;
             ZURGE.xbala=ZURGE.xzurge;
+            shot.play(-10);
         }
         if(vid==0){
             f=true;
@@ -223,6 +231,7 @@ class Enemigo //extends Sprite
             xproyec=height;
             yproyec=width;
             t=0;
+            tm=0;
             caja.a=3;
             caja.b=150;
             vid=5;

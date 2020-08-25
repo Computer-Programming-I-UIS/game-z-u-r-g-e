@@ -87,6 +87,7 @@ void setup(){
 void draw(){
   println(l);
   if(l<360&&stage==-2){
+    background(0);
     textSize(20);
     text("Z.U.R.G.E se ecuentra en peligro, su sistema está fallando y debe recolectar",width/2,200);
     text("un material que puede salvarlo. Lo aterrador es que Z.U.R.G.E debe recorrer mundos muy",width/2,250);
@@ -107,22 +108,29 @@ void draw(){
   }
   if(stage==-1){
     menu.pause();
+    boss.pause();
     background(0);
     loose.play();
     caras.setXY(width/2,height/2);
     caras.setFrameSequence(0,0,1,1);
     textSize(50);
     text("PERDISTE",width/2,height/2);
-    l++;
     ZURGE.heal=width/3-80;
     caja.nmat=0;
-    if(l>180){
-      stage=0;
+    l++;
+    if(l>440){
+      l=260;
     }
   }
   if(stage==0){
+    k=0;
+    for(int i=0;i<3;i++){
+  enemigos[i].setDead(true);
+}
+    caja.c=10;
     zurge.setDead(false);
     l++;
+    count=0;
     background(0);
     if(l%270==0){
       menu.loop();
@@ -155,9 +163,9 @@ void draw(){
   }
   if(stage==1){
     menu.setPan(0.8);
-    l=0;
+    l=520;
     clear();
-   // println(ZURGE.xbala);
+    println(guss.tm);
     background(0);
     textSize(15);
     text("Kills:",width-90,30);
@@ -167,9 +175,9 @@ void draw(){
     text(caja.nmat,180,30);
     //if(caja.nmat==3){
      // stage=5;
-    if(caja.nmat>=1){
+    /*if(caja.nmat>=1){
       stage=4;
-    }
+    }*/
     stroke(230,240,30);
     line(5,5,5,height-5);
     line(5,5,width-5,5);
@@ -310,6 +318,7 @@ if(stage==3){
 
 if(stage==4){
   clear();
+  boss.pause();
   menu.pause();
   orbe.pause();
   background(0);
@@ -326,6 +335,9 @@ if(stage==4){
 if(stage==5){
   k++;
   if(k<600){
+    for(int i=0;i<3;i++){
+  enemigos[i].setDead(true);
+}
   background(0);
   textFont(fuente);
   text("NIVEL 2",width/2,150);
@@ -342,7 +354,8 @@ if(stage==5){
   if(k>=600){
    k++;
   clear();
-  if(k%270==0){
+  l++;
+  if(l%270==0){
     menu.loop();
   }
   background(0);
