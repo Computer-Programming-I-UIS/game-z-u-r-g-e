@@ -131,7 +131,7 @@ void draw(){
     textSize(50);
     text("PERDISTE",width/2,height/2);
     ZURGE.heal=width/3-80;
-    caja.nmat=0;
+    //caja.nmat=0;
     l++;
     if(l>600){
       l=260;
@@ -389,7 +389,7 @@ void draw(){
       textSize(10);
       text("Material:",60,20);
       text(caja.nmat,120,20);
-      if(caja.nmat>=9){
+      if(caja.nmat>=3){
         stage=4;
       }
       stroke(230,240,30);
