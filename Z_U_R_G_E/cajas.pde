@@ -83,9 +83,7 @@ class cajas {
       xcaja=width;
       vel2=random(-3,3);
     }
-     //if(limb>=250&&keyPressed&&key=='q'&&mousePressed){
-     //limb=0;
-   //}
+     
    
 }
 }

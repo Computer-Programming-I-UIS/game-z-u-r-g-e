@@ -7,7 +7,7 @@ class Zurge {
   float velbala;
   float xbala;
   float heal=width/3-80;
-  
+  int p=0;  //1.carga hacia la derecha  -1.carga hacia la izquierda (q)
   Zurge(float speed,float speedbala, float tempxbala,int tempxzurge, int tempyzurge){
     xbala=tempxbala;
     velbala=speedbala;
@@ -89,24 +89,28 @@ class Zurge {
      zurge.setFrameSequence(4,4,0.09,1);
    }
    if(caja.limb>=250){ //250 aprox = a width/3-80
-   if(keyPressed&&key=='q'){  //Embestida
+   if((keyPressed&&key=='q')||(p==1||p==-1)){  //Embestida
        velbala=20;
        zurge.setXY(xzurge,yzurge);
-     if(mousePressed&&mouseX>xzurge){
+     if((mousePressed&&mouseX>xzurge&&p!=-1)||p==1){
+       p=1;
        zurge.setFrameSequence(18,18,2,1);
       // zurge.setFrameSequence(14,14,2,1);
        zurge.setXY(xzurge+=velbala,yzurge);
        zurge.setFrameSequence(20,20,2,1);
        if(xzurge>=950){
-       caja.limb=0;  
+       caja.limb=0; 
+       p=0;
        }
-     }else if(mousePressed&&mouseX<xzurge){
+     }else if((mousePressed&&mouseX<xzurge&&p!=1)||p==-1){
+       p=-1;
        zurge.setFrameSequence(18,18,2,1);
       // zurge.setFrameSequence(14,14,2,1);
        zurge.setXY(xzurge-=velbala,yzurge);
        zurge.setFrameSequence(21,21,2,1);
        if(xzurge<=200){
          caja.limb=0;  
+         p=0;
          }
      }
      }
@@ -222,6 +226,7 @@ class Zurge {
       if (!zurge.isDead()&& enemigos[1].oo_collision(zurge,40)&&!enemigos[1].isDead()) {  //  daño por chocar con gus a zurge
        enemigos[1].setDead(true);
        guss.g=0;
+       guss.vid=0;
        guss.xenemigo=random(width-64,width);
        guss.yenemigo=random(0,height);
        cajas[3].setDead(true);
@@ -230,11 +235,13 @@ class Zurge {
          }
          else{
           heal-=80;
+          count--;
          }
       }
       if (!zurge.isDead()&& enemigos[2].oo_collision(zurge,40)&&!enemigos[2].isDead()) {  //  daño por chocar con bil a zurge
        enemigos[2].setDead(true);
        BIL.g=0;
+       BIL.vid=0;
        BIL.xenemigo=random(width-64,width);
        BIL.yenemigo=random(0,height);
        cajas[2].setDead(true);
@@ -242,7 +249,8 @@ class Zurge {
            caja.limb=0;
          }
          else{
-          heal-=120;
+          heal=0;
+          count--;
          }
       }
       if (!zurge.isDead()&& cajas[2].oo_collision(zurge,40)&&!cajas[2].isDead() ) {  //  daño por chocar con orbe de bil a zurge

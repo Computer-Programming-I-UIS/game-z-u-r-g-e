@@ -1,7 +1,7 @@
 
 class Enemigo //extends Sprite
 {
-  boolean f=false;
+  boolean f=false,h=true;
   float a,b,c,d,e,g=0,t=0, tm=1010;
   //int count=0;
   float xenemigo,xproyec;
@@ -33,23 +33,25 @@ class Enemigo //extends Sprite
   }
   
   void enemigo(){
-    if(e==1 && count==0 || count%5!=0){  //Aliens
-      enemigos[0].setXY(xenemigo,yenemigo);
-      if(f==false && g>d ){  //vivos
+    if(e==1 && (count==0 || count%5!=0)){  //Aliens
+      enemigos[0].setXY(xenemigo,yenemigo);g++;
+      if(f==false && g>d && vid>0){  //vivos
         enemigos[0].setDead(false);
         enemigos[0].setFrameSequence(0,2,1,1);
       }
-      if (!enemigos[0].isDead() && (enemigos[0].cc_collision(balafusil) || enemigos[0].cc_collision(balabazooka))&& (!balafusil.isDead()||!balabazooka.isDead())) { //muerte
+      if (!enemigos[0].isDead() && vid>0 && (enemigos[0].cc_collision(balafusil) || enemigos[0].cc_collision(balabazooka))&& (!balafusil.isDead()||!balabazooka.isDead())) { //muerte
         vid-=1;
         caja.c-=1;
         ZURGE.xbala=ZURGE.xzurge;
         shot.play(-10);
       }
-      if(vid==0){
+      else if(vid==0){
+        enemigos[0].setDead(true);
         f=true;
         count++;
         g=0;
-        enemigos[0].setDead(true);
+        xenemigo=random(width-64,width);
+        yenemigo=random(0,height);
         vid=2;
       }
       else {
@@ -110,8 +112,11 @@ class Enemigo //extends Sprite
         f=false;
       }
     }
-    if(count%3==0&&count!=0){
-      ZURGE.heal+=10;
+    if(count%3==0&&count!=0&&h==true){
+      ZURGE.heal+=40;
+      h=false;
+    }else if(count%3!=0){
+      h=true;
     }
     
       
@@ -122,7 +127,7 @@ class Enemigo //extends Sprite
 
     
     void enemigo2lvl(){
-    if(e==1 && count%7!=0 ){  //Aliens
+    if(e==1 && (count%7!=0||!enemigos[0].isDead())){  //Aliens
       enemigos[0].setXY(xenemigo,yenemigo);
       if(f==false && g>d ){  //vivos
         enemigos[0].setDead(false);
@@ -148,7 +153,7 @@ class Enemigo //extends Sprite
     }
     
     
-      else if(e==2 && count%7!=0){ //gus   && count==5
+      else if(e==2 && (count%7!=0||!enemigos[1].isDead())){ //gus   && count==5
       enemigos[1].setXY(xenemigo,yenemigo);
       if(f==false&& g>d  ){  //vivos
         enemigos[1].setDead(false);
@@ -194,7 +199,7 @@ class Enemigo //extends Sprite
     
       
     
-    else if(e==3 &&count==7){  //bil   
+    else if(e==3 && (count==7||!enemigos[2].isDead())){  //bil   
         enemigos[2].setXY(xenemigo,yenemigo);
         if(tm%1020==0){ //Arreglar esta condicion
               boss.loop();
@@ -227,7 +232,7 @@ class Enemigo //extends Sprite
         }
         if(vid==0){
             f=true;
-            count+=3;
+            count++;
             xenemigo=random(width,width-64);
             yenemigo=random(0,height);
             g=0;
@@ -249,8 +254,12 @@ class Enemigo //extends Sprite
           f=false;
         }
     }
-    if(count%3==0){
-      ZURGE.heal+=10;
+    if(count%3==0&&h==true){
+      ZURGE.heal+=40;
+      h=false;
+    }
+    else if(count%3!=0){
+      h=true;
     }
     
     }

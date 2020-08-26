@@ -33,6 +33,8 @@ float v=width,w=width*4/5,h=height*3/8,j=height/2;
 int stage;
 PFont fuente;
 PImage star;
+PImage edad;
+PImage edadd;
 PImage luna1;
 PImage luna2;
 PImage material;
@@ -59,6 +61,8 @@ void setup(){
   boss=minim.loadFile("boss.mp3");        //Declaración de los audios
   fuente=createFont("fuente.otf",70);     //Fuente
   star=loadImage("estrella.png");      //Imagen de unica estrella
+  edad=loadImage("clasificacion.jpg");
+  edadd=loadImage("clasificacion2.jpg");
   caras=new Sprite(this,"caraszurge.png",1,2,2);
   caras.setDead(true);
   //caras.setXY(400,500);
@@ -76,7 +80,7 @@ void setup(){
   ZURGE=new Zurge (8,10,50,50,height/2);
   guss=new Enemigo (8,random(width-60,width),random(0,height),2,120,5);
   BIL=new Enemigo (8,random(width-60,width),random(0,height),3,120,5);
-  aliens=new Enemigo (12,random(width-60,width),random(0,height),1,100,2);
+  aliens=new Enemigo (12,random(width-60,width),random(0,height),1,200,2);
   caja=new cajas (10,random(width-120,width),random(0,height));
   for(int i=0;i<30;i++){
     stars[i]=new Estrellas(random(0,width),random(0,height),3);    //Estrellas
@@ -107,12 +111,15 @@ void draw(){
     line(50,100,50,450);
     line(50,450,950,450);
     line(950,100,950,450);
- 
+    textSize(13);
+    image(edad,width-155,55,90,90);
+    image(edadd,width-55,55,90,90);
     l++;
+    textSize(20);
   }
   if(l==360){
     stage=0;
-    l=361;
+    l=530;
   }
   if(stage==-1){   //Pantalla de perdiste
     menu.pause();
@@ -144,6 +151,8 @@ void draw(){
     if(l%270==0){    //Cancion del menu
       menu.loop();
     }
+    image(edad,width-155,55,90,90);
+    image(edadd,width-55,55,90,90);
     textFont(fuente);
     textAlign(CENTER);
     stroke(230,240,30);
@@ -175,7 +184,7 @@ void draw(){
     menu.setPan(0.8);    //Bajada de volumen
     l=520;
     clear();
-    println(guss.tm);
+    println(aliens.vid);
     background(0);
     textSize(15);
     text("Kills:",width-90,30);
@@ -220,6 +229,7 @@ void draw(){
 
   if(stage==2){     //Fase de como jugar
     clear();
+  rectMode(CENTER);
     background(0);
     for(int a=0;a<50;a++){    //Margenes
       stroke(230,240,30);
@@ -313,7 +323,7 @@ void draw(){
     
     textAlign(CORNER);
     textSize(15);
-    text("Musica extraida de",370,100);
+    text("Musica extraida de: freesound.com",370,100);
     textSize(10);
     text("Menú: Metal intro- Propiedad de Leonard B. Blaesing",50,150);
     text("Sonido de disparos: Game Style-Shot - Sin derechos de autor",50,200);
@@ -346,7 +356,7 @@ void draw(){
     text("Has salvado a Z.U.R.G.E",width/2,250);
     
   }
-  if(stage==5){        //Fase del nivel 2
+  if(stage==5&&ZURGE.heal>=5){        //Fase del nivel 2
     k++;
     if(k<600){
       for(int i=0;i<3;i++){
@@ -379,7 +389,7 @@ void draw(){
       textSize(10);
       text("Material:",60,20);
       text(caja.nmat,120,20);
-      if(caja.nmat>=3){
+      if(caja.nmat>=9){
         stage=4;
       }
       stroke(230,240,30);
