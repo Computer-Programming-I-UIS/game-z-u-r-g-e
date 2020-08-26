@@ -33,13 +33,13 @@ class Enemigo //extends Sprite
   }
   
   void enemigo(){
-    if(e==1 && count==0 || count%2!=0){  //Aliens
+    if(e==1 && count==0 || count%5!=0){  //Aliens
       enemigos[0].setXY(xenemigo,yenemigo);
       if(f==false && g>d ){  //vivos
         enemigos[0].setDead(false);
         enemigos[0].setFrameSequence(0,2,1,1);
       }
-      if (!enemigos[0].isDead() && (enemigos[0].cc_collision(balafusil) || enemigos[0].cc_collision(balabazooka))&& (!balafusil.isDead()||!balafusil.isDead())) { //muerte
+      if (!enemigos[0].isDead() && (enemigos[0].cc_collision(balafusil) || enemigos[0].cc_collision(balabazooka))&& (!balafusil.isDead()||!balabazooka.isDead())) { //muerte
         vid-=1;
         caja.c-=1;
         ZURGE.xbala=ZURGE.xzurge;
@@ -59,7 +59,7 @@ class Enemigo //extends Sprite
     }
     
     
-    else if(e==2&&count==2){ //gus   && count==5
+    else if(e==2&&count==5){ //gus   && count==5
       enemigos[1].setXY(xenemigo,yenemigo);
       if(f==false&& g>d  ){  //vivos
         enemigos[1].setDead(false);
@@ -81,7 +81,7 @@ class Enemigo //extends Sprite
           yproyec=yenemigo;
         }
       }
-      if (!enemigos[1].isDead() && (enemigos[1].cc_collision(balafusil) || enemigos[1].cc_collision(balabazooka))&& (!balafusil.isDead()||!balafusil.isDead())) {  //muerte
+      if (!enemigos[1].isDead() && (enemigos[1].cc_collision(balafusil) || enemigos[1].cc_collision(balabazooka))&& (!balafusil.isDead()||!balabazooka.isDead())) {  //muerte
           vid-=1;
           caja.c-=1;
           ZURGE.xbala=ZURGE.xzurge;
@@ -110,6 +110,9 @@ class Enemigo //extends Sprite
         f=false;
       }
     }
+    if(count%3==0&&count!=0){
+      ZURGE.heal+=10;
+    }
     
       
     
@@ -119,13 +122,13 @@ class Enemigo //extends Sprite
 
     
     void enemigo2lvl(){
-    if(e==1 && count%5!=0 ){  //Aliens
+    if(e==1 && count%7!=0 ){  //Aliens
       enemigos[0].setXY(xenemigo,yenemigo);
       if(f==false && g>d ){  //vivos
         enemigos[0].setDead(false);
         enemigos[0].setFrameSequence(0,2,1,1);
       }
-      if (!enemigos[0].isDead() && (enemigos[0].cc_collision(balafusil) || enemigos[0].cc_collision(balabazooka))&& (!balafusil.isDead()||!balafusil.isDead())) { //muerte
+      if (!enemigos[0].isDead() && (enemigos[0].cc_collision(balafusil) || enemigos[0].cc_collision(balabazooka))&& (!balafusil.isDead()||!balabazooka.isDead())) { //muerte
         vid-=1;
         caja.c-=1;
         ZURGE.xbala=ZURGE.xzurge;
@@ -145,7 +148,7 @@ class Enemigo //extends Sprite
     }
     
     
-      else if(e==2 && count%5!=0){ //gus   && count==5
+      else if(e==2 && count%7!=0){ //gus   && count==5
       enemigos[1].setXY(xenemigo,yenemigo);
       if(f==false&& g>d  ){  //vivos
         enemigos[1].setDead(false);
@@ -162,7 +165,7 @@ class Enemigo //extends Sprite
           yproyec=yenemigo;
         }
       }
-      if (!enemigos[1].isDead() && (enemigos[1].cc_collision(balafusil) || enemigos[1].cc_collision(balabazooka))&& (!balafusil.isDead()||!balafusil.isDead())) {  //muerte
+      if (!enemigos[1].isDead() && (enemigos[1].cc_collision(balafusil) || enemigos[1].cc_collision(balabazooka))&& (!balafusil.isDead()||!balabazooka.isDead())) {  //muerte
           vid-=1;
           caja.c-=1;
           ZURGE.xbala=ZURGE.xzurge;
@@ -191,7 +194,7 @@ class Enemigo //extends Sprite
     
       
     
-    else if(e==3 &&count==5){  //bil   
+    else if(e==3 &&count==7){  //bil   
         enemigos[2].setXY(xenemigo,yenemigo);
         if(tm%1020==0){ //Arreglar esta condicion
               boss.loop();
@@ -206,7 +209,9 @@ class Enemigo //extends Sprite
              cajas[2].setDead(false);
              cajas[2].setXY(xproyec-=30,yproyec);
              cajas[2].setFrameSequence(2,2,1,1);
-             orbe.play();
+             if(t%90==0){
+             orbe.loop();
+             }
              enemigos[2].setFrameSequence(12,12,1,1);
            }
            else{
@@ -214,7 +219,7 @@ class Enemigo //extends Sprite
               yproyec=yenemigo;
             }
         }
-        if (!enemigos[2].isDead() && (enemigos[2].cc_collision(balafusil) ||enemigos[2].cc_collision(balabazooka))&& (!balafusil.isDead()||!balafusil.isDead())) { //muerte
+        if (!enemigos[2].isDead() && (enemigos[2].cc_collision(balafusil) ||enemigos[2].cc_collision(balabazooka))&& (!balafusil.isDead()||!balabazooka.isDead())) { //muerte
             caja.c-=1;
             vid-=1;
             ZURGE.xbala=ZURGE.xzurge;
@@ -243,6 +248,9 @@ class Enemigo //extends Sprite
           g++;
           f=false;
         }
+    }
+    if(count%3==0){
+      ZURGE.heal+=10;
     }
     
     }

@@ -19,10 +19,10 @@ class Estrellas {
    xstars-=vel;
    if(xstars<=0){
      xstars=width;
-    }
+   }
    else if(xstars>=width){
      xstars=0;
-    } 
+   } 
   }
     
   

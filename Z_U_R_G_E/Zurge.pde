@@ -186,6 +186,7 @@ class Zurge {
        zurge.setFrameSequence(10,10,0.9,1);
      }else{
        zurge.setFrameSequence(11,11,0.9,1);
+     
    }
    }
    else{
@@ -206,12 +207,13 @@ class Zurge {
    
   void heridas(){   
      //  daños que recibe zurge
-     if (!zurge.isDead() && enemigos[0].oo_collision(zurge,20)&&!enemigos[0].isDead()) {  //  daño por chocar con alien a zurge
+     if (!zurge.isDead() && enemigos[0].oo_collision(zurge,40)&&!enemigos[0].isDead()) {  //  daño por chocar con alien a zurge
        enemigos[0].setDead(true);
        aliens.g=0;
        aliens.xenemigo=random(width-64,width);
        aliens.yenemigo=random(0,height);
          if(key=='q'){
+           caja.limb=0;
          }
          else{
           heal-=40;
@@ -224,6 +226,7 @@ class Zurge {
        guss.yenemigo=random(0,height);
        cajas[3].setDead(true);
          if(key=='q'){
+           caja.limb=0;
          }
          else{
           heal-=80;
@@ -236,6 +239,7 @@ class Zurge {
        BIL.yenemigo=random(0,height);
        cajas[2].setDead(true);
          if(key=='q'){
+           caja.limb=0;
          }
          else{
           heal-=120;
@@ -272,16 +276,20 @@ class Zurge {
         cajas[2].setDead(true);
         cajas[2].setXY(width,height);    
       }
-      else if(heal<10){
+      else if(heal<5){
         stage=-1;
         zurge.setDead(true);
         textSize(15);
         l=261;
       }
       if(heal<40){
+        fill(#FF0015);
+        textSize(20);
+        text("¡ALERTA: VIDA BAJA!",width/2,50);
         if(l%270==0) //Falta la del nviel 2, que k% en un numero sea ==0
         menu.setGain(-10);
         alert.play();
+        fill(255);
       }
   
   }
