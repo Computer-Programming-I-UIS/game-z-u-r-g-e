@@ -199,7 +199,7 @@ class Enemigo //extends Sprite
     
       
     
-    else if(e==3 && (count==7||!enemigos[2].isDead())){  //bil   
+    else if(e==3 && (count%7==0||!enemigos[2].isDead())){  //bil   
         enemigos[2].setXY(xenemigo,yenemigo);
         if(tm%1020==0){ //Arreglar esta condicion
               boss.loop();
