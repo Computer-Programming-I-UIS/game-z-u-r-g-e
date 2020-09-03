@@ -28,39 +28,49 @@ class Estrellas {
   
   void menu(){
     
-    if(mouseX>400&&mouseX<595&&mouseY>315&&mouseY<355){   //Región de "JUGAR"
+    if(mouseX>400&&mouseX<595&&mouseY>265&&mouseY<305){   //Región de "JUGAR"
       
       stroke(230,240,30);
-      line(400,315,595,315);
-      line(400,355,595,355);
-      line(400,315,400,355);
-      line(595,315,595,355);
+      line(400,265,595,265);
+      line(400,305,595,305);
+      line(400,265,400,305);
+      line(595,265,595,305);
      if(mousePressed){
         stage=1;
       }
     } 
-    if(mouseX>220&&mouseX<780&&mouseY>385&&mouseY<425){   //Región de "COMO JUGAR"
+    if(mouseX>220&&mouseX<780&&mouseY>335&&mouseY<375){   //Región de "COMO JUGAR"
       stroke(230,240,30);
-      line(220,385,780,385);
-      line(220,425,780,425);
-      line(220,385,220,425);
-      line(780,385,780,425);
+      line(220,335,780,335);
+      line(220,375,780,375);
+      line(220,335,220,375);
+      line(780,335,780,375);
       if(mousePressed){
         stage=2;
       }
     }
     
-    if(mouseX>360&&mouseX<640&&mouseY>455&&mouseY<495){   //Región de "COMO JUGAR"
+    if(mouseX>360&&mouseX<640&&mouseY>495&&mouseY<545){   //Región de "CREDITOS"
       stroke(230,240,30);
-      line(360,455,640,455);
-      line(360,495,640,495);
-      line(360,455,360,495);
-      line(640,455,640,495);
+      line(360,500,640,500);
+      line(360,545,640,545);
+      line(360,500,360,545);
+      line(640,500,640,545);
       if(mousePressed){
         stage=3;
       }
     }
     
+    if(mouseX>360&&mouseX<640&&mouseY>410&&mouseY<460){   //Región de "TUTORIAL"
+      stroke(230,240,30);
+      line(360,410,640,410);
+      line(360,460,640,460);
+      line(360,410,360,460);
+      line(640,410,640,460);
+      if(mousePressed){
+        stage=4;
+      }
+    }
     else{
     }
   }

@@ -45,7 +45,7 @@ Enemigo BIL;
 Enemigo aliens;
 cajas caja;
 int count=0;     //Contador de kills
-int l=0,k=0;  //tiempo de la historia
+int l=0,k=0,t=0;  //tiempo de la historia
 
 
 void setup(){
@@ -65,14 +65,9 @@ void setup(){
   edadd=loadImage("clasificacion2.jpg");
   caras=new Sprite(this,"caraszurge.png",1,2,2);
   caras.setDead(true);
-  //caras.setXY(400,500);
-  //luna1=loadImage("luna1.png");
-  //luna2=loadImage("luna2.png"); 
   balabazooka=new Sprite(this,"balabazooka.png",1,2,2);
   balafusil=new Sprite(this,"balafusil.png",1,1,2);
-  //laser=new Sprite(this,"laser.png",2,2,2);
   zurge=new Sprite(this,"zurge.png",5,5,2);           //Declaracion de los sprites
-  //laserbala=new Sprite(this,"laserbala.png",2,3,2);
   rectMode(CENTER);
   imageMode(CENTER);
   textAlign(CENTER);
@@ -93,31 +88,39 @@ void setup(){
     cajas[i]=new Sprite(this,"cajas.png",2,3,2);    //  i=0  :energia;    i=1  :municion;    i=2  :orbe de bil;    i=3  :hacha de gus;    i=4   : material
     cajas[i].setDead(true);
   }
-  
+  menu.setGain(-20);
+  boss.setGain(-20);  //1era corrección: Volumen mas bajo en el juego
 }
 
 void draw(){
   println(l);
-  if(l<360&&stage==-2){      //Narración de la historia
+  if(l<460&&stage==-2){      //Narración de la historia
     background(0);
     textSize(20);
     text("Z.U.R.G.E se ecuentra en peligro, su sistema está fallando y debe recolectar",width/2,200);
-    text("un material que puede salvarlo. Lo aterrador es que Z.U.R.G.E debe recorrer mundos muy",width/2,250);
+    text("un material que puede salvarlo. El problema es que Z.U.R.G.E debe recorrer mundos muy",width/2,250);
     text("macabros para obtenerlo, donde hay todo tipo de seres que no tienen ninguna intención de",width/2,300);
-    text(" permitir que Z.U.R.G.E consiga su objetivo. ¡Ayuda a Z.U.R.G.E a llegar a su salvación!",width/2,350);
+    text(" permitirle que consiga su objetivo, derrotalos y ¡Ayuda a Z.U.R.G.E a llegar a su salvación!",width/2,350);  //2da corrección: Mensaje más prolongado y específico
+    fill(230,240,30);
     text("¡Consigue recolectar 3 materiales!",width/2,400);
+    fill(255);
     stroke(230,240,30);
-    line(50,100,950,100);
-    line(50,100,50,450);
-    line(50,450,950,450);
-    line(950,100,950,450);
+    line(50,105,950,105);
+    line(50,105,50,455);
+    line(50,455,950,455);
+    line(950,105,950,455);
     textSize(13);
     image(edad,width-155,55,90,90);
     image(edadd,width-55,55,90,90);
+    strokeWeight(3);
+    line(0.2,0.2,width-0.2,0.2);
+    line(0.2,0.2,0.2,height-0.2);
+    line(width-0.2,0.2,width-0.2,height-0.2);
+    line(0.2,height-0.2,width-0.2,height-0.2); //Margen de pantalla
     l++;
     textSize(20);
   }
-  if(l==360){
+  if(l==450){
     stage=0;
     l=530;
   }
@@ -131,6 +134,11 @@ void draw(){
     textSize(50);
     text("PERDISTE",width/2,height/2);
     ZURGE.heal=width/3-80;
+    strokeWeight(3);
+    line(0.2,0.2,width-0.2,0.2);
+    line(0.2,0.2,0.2,height-0.2);
+    line(width-0.2,0.2,width-0.2,height-0.2);
+    line(0.2,height-0.2,width-0.2,height-0.2); //Margen de pantalla
     //caja.nmat=0;
     l++;
     if(l>600){
@@ -162,9 +170,10 @@ void draw(){
     line(780,100,780,230);
     text("Z.U.R.G.E",width/2,200);
     textSize(30);
-    text("Jugar",width/2,350);
-    text("¿Cómo se juega?",width/2,420);
-    text("Créditos",width/2,490);
+    text("Jugar",width/2,300);
+    text("¿Cómo se juega?",width/2,370);
+    text("Tutorial",width/2,455);
+    text("Créditos",width/2,540);
     stars[0].menu();
     for(int i=0;i<30;i++){
       stars[i].fondo();     //Metodo del fondo
@@ -255,7 +264,7 @@ void draw(){
     rect(400,130,30,30);
     rect(430,130,30,30);
      // teclas e y r
-    rect(575,295,30,30);
+    rect(665,295,30,30);
     rect(625,345,30,30);
      //q
     rect(270,220,30,30);
@@ -266,7 +275,7 @@ void draw(){
     text("s",195,135);
     text("d",225,135);
      //wasd
-    text("e",570,300);
+    text("e",660,300);
     text("r",620,350);
     text("q",265,225);
     //flechas
@@ -289,8 +298,8 @@ void draw(){
     text("Recolecta energía. Cuando llenes la barra, podrás usar una embestida mientras tienes un",50,180);
     text("escudo y serás inmune a los enemigos en ese momento. ¡Solo se activa al llenar la barra!",50,200);
     text("Presiona la tecla                      y da click para usarla, te vas a dirigir hacia el cursor",50,230);
-    text("si tocas a un enemigo no sufrirás daño. Se desactiva al tocar enemigos o bordes de la pantalla",50,265); 
-    text("Puedes disparar un fusil presionando la tecla                    y haciendo click",50,300);
+    text("si tocas a un enemigo no sufrirás daño. Se desactiva al tocar enemigos o bordes de la",50,265); 
+    text("pantalla. Puedes disparar un fusil presionando la tecla                    y haciendo click",50,300);
     text("o puedes disparar una bazooka presionando la tecla                 y haciendo click",50,350);
     text("Puedes dar golpes presionando click en la dirección que quieras, pero cuidado, si tocas",50,400);
     text("a los enemigos tu vida va a disminuir. ¡Mejor usa tus armas!",50,420);
@@ -323,7 +332,7 @@ void draw(){
     
     textAlign(CORNER);
     textSize(15);
-    text("Musica extraida de: freesound.com",370,100);
+    text("Musica extraida de: freesound.com",280,100);
     textSize(10);
     text("Menú: Metal intro- Propiedad de Leonard B. Blaesing",50,150);
     text("Sonido de disparos: Game Style-Shot - Sin derechos de autor",50,200);
@@ -340,7 +349,67 @@ void draw(){
     }
   }
   
-  if(stage==4){   //Fase de ganar
+  if(stage==4){   //3era correción: Fase de pruebas de los personajes y controles
+    clear();
+    t++;
+    if(t<500){
+      text("Presiona las teclas e o r, y da click para usar tus armas",width/2,80);
+      /*if((keyPressed&&key=='e'||key=='r')&&mousePressed){
+      t=510;
+     }*/
+    }else if(t>500&&t<800){
+      text("¡Recolecta munición y energía!",width/2,80);  
+    }else if(caja.limb>250&&t>850){
+      text("¡Usa la embestida, presionando q y dando click hacia donde quieras ir!",width/2,80);
+      /*if(keyPressed&&key=='q'&&mousePressed){
+      t=810;
+      }*/
+    }else if(t>1000&&t<2000){
+      aliens.enemigo();
+      aliens.movi();
+    }else if(t>2000&&t<3000){
+      guss.enemigo();
+      guss.movi();
+    }else if(t>3000&&t<4000){
+      BIL.movi();
+      BIL.enemigo(); 
+    }
+    
+    textSize(8);  
+    text("Presiona la tecla 0 para volver al menú",width-180,20);
+    
+    rectMode(CORNER);
+    for(int i=0;i<30;i++){  //estrellas
+      stars[i].fondo();
+    }
+    line(5,5,5,height-5);
+    line(5,5,width-5,5);
+    line(width-5,height-5,width-5,5);
+    line(5,height-5,width-5,height-5);
+    float elapsedTime = (float) sw.getElapsedTime();
+    S4P.updateSprites(elapsedTime);
+    S4P.drawSprites();
+    
+    ZURGE.movi();
+    ZURGE.zurge();
+    ZURGE.heridas();
+    //aliens.enemigo();
+    //aliens.movi();
+   // guss.enemigo();
+    caja.fondo();
+    caja.movi();
+   // guss.movi();
+    //guss.enemigos();
+   // guss.gus();
+   // BIL.movi();
+   // BIL.enemigo();        //Aplicacion de los metodos 
+    if(keyPressed&&key=='0'){
+      stage=0;    //Volver al menu
+    }
+ 
+  }
+  
+  if(stage==5){   //Fase de ganar
     clear();
     boss.pause();
     menu.pause();
@@ -354,9 +423,13 @@ void draw(){
     text("GANASTE",width/2,150);
     textSize(40);
     text("Has salvado a Z.U.R.G.E",width/2,250);
+    line(0.2,0.2,width-0.2,0.2);
+    line(0.2,0.2,0.2,height-0.2);
+    line(width-0.2,0.2,width-0.2,height-0.2);
+    line(0.2,height-0.2,width-0.2,height-0.2); //Margen de pantalla
     
   }
-  if(stage==5&&ZURGE.heal>=5){        //Fase del nivel 2
+  if(stage==6&&ZURGE.heal>=5){        //Fase del nivel 2
     k++;
     if(k<600){
       for(int i=0;i<3;i++){
@@ -374,6 +447,11 @@ void draw(){
       line(200,170,790,170);
       line(200,50,200,170);
       line(790,50,790,170);       //Pantalla estatica de nivel 2
+      
+      line(0.2,0.2,width-0.2,0.2);
+      line(0.2,0.2,0.2,height-0.2);
+      line(width-0.2,0.2,width-0.2,height-0.2);
+      line(0.2,height-0.2,width-0.2,height-0.2); //Margen de pantalla
     }
     if(k>=600){   //Despues de esta pantalla, nivel 2
       k++;
@@ -390,7 +468,7 @@ void draw(){
       text("Material:",60,20);
       text(caja.nmat,120,20);
       if(caja.nmat>=3){
-        stage=4;
+        stage=5;
       }
       stroke(230,240,30);
       line(5,5,5,height-5);

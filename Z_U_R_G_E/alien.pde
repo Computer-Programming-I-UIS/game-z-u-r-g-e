@@ -104,7 +104,7 @@ class Enemigo //extends Sprite
           caja.a=3;
           caja.b=150;
           vid=5;
-          stage=5;
+          stage=6;
           boss.pause();
       }
       else {
