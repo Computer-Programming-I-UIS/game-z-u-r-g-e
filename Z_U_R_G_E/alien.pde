@@ -42,7 +42,8 @@ class Enemigo //extends Sprite
       if (!enemigos[0].isDead() && vid>0 && (enemigos[0].cc_collision(balafusil) || enemigos[0].cc_collision(balabazooka))&& (!balafusil.isDead()||!balabazooka.isDead())) { //muerte
         vid-=1;
         caja.c-=1;
-        ZURGE.xbala=ZURGE.xzurge;
+        balabazooka.setDead(true);
+        balafusil.setDead(true);
         shot.play(-10);
       }
       else if(vid==0){
@@ -86,7 +87,8 @@ class Enemigo //extends Sprite
       if (!enemigos[1].isDead() && (enemigos[1].cc_collision(balafusil) || enemigos[1].cc_collision(balabazooka))&& (!balafusil.isDead()||!balabazooka.isDead())) {  //muerte
           vid-=1;
           caja.c-=1;
-          ZURGE.xbala=ZURGE.xzurge;
+        balabazooka.setDead(true);
+        balafusil.setDead(true);
           shot.play(-10);
       }
       if(vid==0){
@@ -136,8 +138,9 @@ class Enemigo //extends Sprite
       if (!enemigos[0].isDead() && (enemigos[0].cc_collision(balafusil) || enemigos[0].cc_collision(balabazooka))&& (!balafusil.isDead()||!balabazooka.isDead())) { //muerte
         vid-=1;
         caja.c-=1;
-        ZURGE.xbala=ZURGE.xzurge;
         shot.play(-10);
+        balabazooka.setDead(true);
+        balafusil.setDead(true);
       }
       if(vid==0){
         f=true;
@@ -173,8 +176,9 @@ class Enemigo //extends Sprite
       if (!enemigos[1].isDead() && (enemigos[1].cc_collision(balafusil) || enemigos[1].cc_collision(balabazooka))&& (!balafusil.isDead()||!balabazooka.isDead())) {  //muerte
           vid-=1;
           caja.c-=1;
-          ZURGE.xbala=ZURGE.xzurge;
           shot.play(-10);
+        balabazooka.setDead(true);
+        balafusil.setDead(true);
       }
       if(vid==0){
           f=true;
@@ -187,7 +191,7 @@ class Enemigo //extends Sprite
           xproyec=height;
           yproyec=width;
           t=0;
-          caja.a=3;
+          //caja.a=3;
           caja.b=150;
           vid=2;
       }
@@ -214,10 +218,10 @@ class Enemigo //extends Sprite
              cajas[2].setDead(false);
              cajas[2].setXY(xproyec-=30,yproyec);
              cajas[2].setFrameSequence(2,2,1,1);
+             enemigos[2].setFrameSequence(12,12,1,1);
              if(t%90==0){
              orbe.loop();
              }
-             enemigos[2].setFrameSequence(12,12,1,1);
            }
            else{
               xproyec=xenemigo;
@@ -227,8 +231,9 @@ class Enemigo //extends Sprite
         if (!enemigos[2].isDead() && (enemigos[2].cc_collision(balafusil) ||enemigos[2].cc_collision(balabazooka))&& (!balafusil.isDead()||!balabazooka.isDead())) { //muerte
             caja.c-=1;
             vid-=1;
-            ZURGE.xbala=ZURGE.xzurge;
             shot.play(-10);
+        balabazooka.setDead(true);
+        balafusil.setDead(true);
         }
         if(vid==0){
             f=true;

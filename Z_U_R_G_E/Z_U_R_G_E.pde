@@ -68,6 +68,8 @@ void setup(){
   balabazooka=new Sprite(this,"balabazooka.png",1,2,2);
   balafusil=new Sprite(this,"balafusil.png",1,1,2);
   zurge=new Sprite(this,"zurge.png",5,5,2);           //Declaracion de los sprites
+  balabazooka.setDead(true);
+  balafusil.setDead(true);
   rectMode(CENTER);
   imageMode(CENTER);
   textAlign(CENTER);
@@ -151,6 +153,7 @@ void draw(){
     for(int i=0;i<3;i++){
       enemigos[i].setDead(true);
     }
+    caja.nmat=0;
     caja.c=10;
     zurge.setDead(false);
     l++;
@@ -223,6 +226,7 @@ void draw(){
     ZURGE.movi();
     ZURGE.zurge();
     ZURGE.heridas();
+    ZURGE.disparos();
     aliens.enemigo();
     aliens.movi();
     guss.enemigo();
@@ -435,6 +439,8 @@ void draw(){
       for(int i=0;i<3;i++){
         enemigos[i].setDead(true);
       }
+      balabazooka.setDead(true);
+      balafusil.setDead(true);
       background(0);
       textFont(fuente);
       text("NIVEL 2",width/2,150);
@@ -496,6 +502,7 @@ void draw(){
         guss.movi();
         BIL.movi();
         BIL.enemigo2lvl();
+        ZURGE.disparos();
      }
     }
   }
