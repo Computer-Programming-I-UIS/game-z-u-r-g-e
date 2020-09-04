@@ -95,36 +95,12 @@ class Zurge {
      }
    }
    
-   //disparo con fusil
+   //posicion de disparo con fusil
    if(keyPressed&key=='e'&& mousePressed ||keyPressed&key=='r'&& mousePressed){
      //shot.play();
      //shot.play(-10);
    }
    if(keyPressed&& key=='e' ){  //Coge el fusil
-      /* balafusil.setXY(xbala+60,yzurge-5);
-     if(mousePressed&&b==0&&caja.c>0){
-      // zurge.setFrameSequence(13,13,2,1);
-       balafusil.setDead(false);
-      // zurge.setFrameSequence(14,14,2,1);
-       balafusil.setFrameSequence(0,0,2,1);
-       //zurge.setFrameSequence(17,17,2,1);
-       velbala=constrain(velbala,0,(width-50)/10);
-       if(mouseX>xzurge){
-       velbala+=3;
-         zurge.setFrameSequence(13,13,2,1);
-         xbala+=velbala;
-       }else{
-       velbala+=3;
-         zurge.setFrameSequence(15,15,2,1);
-         balafusil.setXY(xbala-60,yzurge-5);
-         xbala-=velbala;
-       }
-      
-     }
-     else {
-       xbala=xzurge;
-       balafusil.setDead(true);
-     }*/
      if(mouseX>xzurge){
        zurge.setFrameSequence(8,8,0.9,1);
      }else{
@@ -138,7 +114,7 @@ class Zurge {
          balafusil.setDead(true);
        }
    }
-  //posicion de disparo con bazooka con bazooka
+  //posicion de disparo con bazooka 
 
    else if(keyPressed&&key=='r'){   //Coge la bazooka
      if(mouseX>xzurge){

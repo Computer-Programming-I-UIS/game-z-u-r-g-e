@@ -149,6 +149,7 @@ void draw(){
   }
   
   if(stage==0){      //Menú
+    t=0;
     k=0;
     for(int i=0;i<3;i++){
       enemigos[i].setDead(true);
@@ -355,6 +356,7 @@ void draw(){
   
   if(stage==4){   //3era correción: Fase de pruebas de los personajes y controles
     clear();
+    ZURGE.heal=800;
     t++;
     if(t<500){
       text("Presiona las teclas e o r, y da click para usar tus armas",width/2,80);
@@ -368,17 +370,30 @@ void draw(){
       /*if(keyPressed&&key=='q'&&mousePressed){
       t=810;
       }*/
-    }else if(t>1000&&t<2000){
+    }
+    if(t>1000&&t<2000){  
       aliens.enemigo();
       aliens.movi();
     }else if(t>2000&&t<3000){
+      aliens.vid=0;
+      count=5;
       guss.enemigo();
       guss.movi();
+      guss.vid=5;
     }else if(t>3000&&t<4000){
+      enemigos[1].setDead(true);
+      cajas[3].setDead(true);
+      guss.vid=0;
+      count=7;
       BIL.movi();
-      BIL.enemigo(); 
+      BIL.enemigo2lvl(); 
+      BIL.vid=5;
     }
-    
+    else{
+      enemigos[2].setDead(true);
+      cajas[2].setDead(true);
+      stage=0;
+    }
     textSize(8);  
     text("Presiona la tecla 0 para volver al menú",width-180,20);
     
@@ -397,6 +412,7 @@ void draw(){
     ZURGE.movi();
     ZURGE.zurge();
     ZURGE.heridas();
+    ZURGE.disparos();
     //aliens.enemigo();
     //aliens.movi();
    // guss.enemigo();
