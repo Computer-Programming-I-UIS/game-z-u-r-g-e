@@ -103,11 +103,13 @@ class Enemigo //extends Sprite
           yproyec=width;
           t=0;
           tm=0;
-          caja.a=3;
           caja.b=150;
           vid=5;
-          stage=6;
           boss.pause();
+          if(stage!=4){
+            stage=6;
+            caja.a=3;
+          }
       }
       else {
         g++;

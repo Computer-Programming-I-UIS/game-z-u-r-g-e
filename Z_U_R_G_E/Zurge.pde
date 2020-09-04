@@ -222,7 +222,7 @@ class Zurge {
            caja.limb=0;
          }
          else{
-          heal=0;
+          heal=1;
          }
       }
       if (!zurge.isDead()&& cajas[2].oo_collision(zurge,40)&&!cajas[2].isDead() ) {  //  daño por chocar con orbe de bil a zurge
@@ -256,7 +256,7 @@ class Zurge {
         cajas[2].setDead(true);
         cajas[2].setXY(width,height);    
       }
-      else if(heal<5){
+      else if(heal<1){
         stage=-1;
         zurge.setDead(true);
         textSize(15);

@@ -364,6 +364,7 @@ void draw(){
       t=510;
      }*/
     }else if(t>500&&t<800){
+      caja.limb=255;
       text("¡Recolecta munición y energía!",width/2,80);  
     }else if(caja.limb>250&&t>850){
       text("¡Usa la embestida, presionando q y dando click hacia donde quieras ir!",width/2,80);
@@ -375,24 +376,20 @@ void draw(){
       aliens.enemigo();
       aliens.movi();
     }else if(t>2000&&t<3000){
+      enemigos[0].setDead(true);
       aliens.vid=0;
       count=5;
       guss.enemigo();
       guss.movi();
       guss.vid=5;
     }else if(t>3000&&t<4000){
+      text("mata a bil para poder obtener el material",width/2,80);
       enemigos[1].setDead(true);
       cajas[3].setDead(true);
       guss.vid=0;
       count=7;
       BIL.movi();
       BIL.enemigo2lvl(); 
-      BIL.vid=5;
-    }
-    else{
-      enemigos[2].setDead(true);
-      cajas[2].setDead(true);
-      stage=0;
     }
     textSize(8);  
     text("Presiona la tecla 0 para volver al menú",width-180,20);
@@ -423,7 +420,8 @@ void draw(){
    // guss.gus();
    // BIL.movi();
    // BIL.enemigo();        //Aplicacion de los metodos 
-    if(keyPressed&&key=='0'){
+    if(keyPressed&&key=='0'||caja.nmat==1){
+      boss.pause();
       stage=0;    //Volver al menu
     }
  
