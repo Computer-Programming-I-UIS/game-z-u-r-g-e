@@ -21,7 +21,7 @@ class Enemigo //extends Sprite
     xenemigo=constrain(xenemigo,100,width-60);
     yenemigo=constrain(yenemigo,60,height-60);
     a++;
-    if(a<40){
+    if(a<40&&g>d){
       xenemigo+=vel*b;
       yenemigo+=vel*c;
     }

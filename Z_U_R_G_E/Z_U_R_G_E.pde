@@ -28,9 +28,9 @@ Sprite laserbala;
 Sprite balabazooka;
 Sprite balafusil;       //Sprites usados
 StopWatch sw = new StopWatch();      //Reloj que usan los sprites
-
+boolean e,r;
 float v=width,w=width*4/5,h=height*3/8,j=height/2;
-int stage;
+int stage,m;
 PFont fuente;
 PImage star;
 PImage edad;
@@ -151,6 +151,7 @@ void draw(){
   if(stage==0){      //Menú
     t=0;
     k=0;
+    caja.a=1;
     for(int i=0;i<3;i++){
       enemigos[i].setDead(true);
     }
@@ -521,4 +522,33 @@ void draw(){
     }
   }
 
+}
+void keyPressed(){
+  if(keyPressed){
+    if(key=='e'){
+      e=true;
+    }
+    else if(key=='r'){
+      r=true;
+    }
+    else{
+      e=false;
+      r=false;
+    }
+    if(key=='w'||keyCode==UP){
+      m=1;
+    }
+    else if(key=='s'||keyCode==DOWN){
+      m=-1;
+    }
+    else if(key=='a'||keyCode==LEFT){
+      m=-2;
+    }
+    else if(key=='d'||keyCode==RIGHT){
+      m=2;
+    }
+    else{
+      m=0;
+    }
+  }
 }

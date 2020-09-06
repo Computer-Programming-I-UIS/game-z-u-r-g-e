@@ -20,36 +20,20 @@ class Zurge {
     xzurge=constrain(xzurge,100,width-50);
     yzurge=constrain(yzurge,50,height-50);
     if(keyPressed){
-      switch(key){
-        case 'w':
+      switch(m){
+        case 1:
         yzurge-=vel;
         break;
-        case 's':
+        case -1:
         yzurge+=vel;
         break;
-        case 'a':
+        case -2:
         xzurge-=vel;
         break;
-        case 'd':
+        case 2:
         xzurge+=vel;
         break;
         default:
-        switch(keyCode){
-          case UP:
-          yzurge-=vel;
-          break;
-          case DOWN:
-          yzurge+=vel;
-          break;
-          case LEFT:
-          xzurge-=vel;
-          break;
-          case RIGHT:
-          xzurge+=vel;
-          break;
-          default:
-          break;
-        }
       }
     }
   }
@@ -58,13 +42,13 @@ class Zurge {
    heal=constrain(heal,0,width/3-80);
    rect(50+width/100,97*height/100,heal,height/100);  //  indicador de vida
    zurge.setXY(xzurge,yzurge);
-   if(mouseX>xzurge&&mousePressed){
+   if(mouseX>xzurge&&mousePressed&&e==false&&r==false){
      zurge.setFrameSequence(1,3,0.09,1);
-   }else if(mouseX<xzurge&&mousePressed){
+   }else if(mouseX<xzurge&&mousePressed&&e==false&&r==false){
      zurge.setFrameSequence(5,7,0.09,1);
-   }else if(mouseX>xzurge){
+   }else if(mouseX>xzurge&&e==false&&r==false){
      zurge.setFrameSequence(0,0,0.09,1);
-   }else{
+   }else if(mouseX<xzurge&&e==false&&r==false){
      zurge.setFrameSequence(4,4,0.09,1);
    }
    if(caja.limb>=250){ //250 aprox = a width/3-80
@@ -96,11 +80,7 @@ class Zurge {
    }
    
    //posicion de disparo con fusil
-   if(keyPressed&key=='e'&& mousePressed ||keyPressed&key=='r'&& mousePressed){
-     //shot.play();
-     //shot.play(-10);
-   }
-   if(keyPressed&& key=='e' ){  //Coge el fusil
+   if(keyPressed&&e==true&&r==false&&m!=5){  //Coge el fusil
      if(mouseX>xzurge){
        zurge.setFrameSequence(8,8,0.9,1);
      }else{
@@ -116,7 +96,7 @@ class Zurge {
    }
   //posicion de disparo con bazooka 
 
-   else if(keyPressed&&key=='r'){   //Coge la bazooka
+   else if(keyPressed&&r==true&&e==false&&m!=5){   //Coge la bazooka
      if(mouseX>xzurge){
        zurge.setFrameSequence(10,10,0.9,1);
      }
@@ -138,7 +118,7 @@ class Zurge {
   void disparos(){
     
   velbala=constrain(velbala,0,(width-50)/10);
-    if((keyPressed&&key=='e'&&mousePressed&&caja.c>0)||!balafusil.isDead()){
+    if((keyPressed&&e==true&&r==false&&mousePressed&&caja.c>0)||!balafusil.isDead()){
        shot.play();
        balafusil.setDead(false);
        balafusil.setFrameSequence(0,0,2,1);
@@ -156,7 +136,7 @@ class Zurge {
            b=-1;
          }
     }
-    else if((keyPressed&&key=='r'&&mousePressed&&caja.c>0)||!balabazooka.isDead()){
+    else if((keyPressed&&r==true&&e==false&&mousePressed&&caja.c>0)||!balabazooka.isDead()){
       shot.play();
       balabazooka.setDead(false);
       velbala=30;
@@ -190,8 +170,9 @@ class Zurge {
        aliens.g=0;
        aliens.xenemigo=random(width-64,width);
        aliens.yenemigo=random(0,height);
-         if(key=='q'){
+         if(p==1||p==-1){
            caja.limb=0;
+           p=0;
          }
          else{
           heal-=40;
@@ -204,8 +185,9 @@ class Zurge {
        guss.xenemigo=random(width-64,width);
        guss.yenemigo=random(0,height);
        cajas[3].setDead(true);
-         if(key=='q'){
+         if(p==1||p==-1){
            caja.limb=0;
+           p=0;
          }
          else{
           heal-=80;
@@ -218,18 +200,22 @@ class Zurge {
        BIL.xenemigo=random(width-64,width);
        BIL.yenemigo=random(0,height);
        cajas[2].setDead(true);
-         if(key=='q'){
+         if(p==1||p==-1){
            caja.limb=0;
+           p=0;
+         }
+         else if (stage==4){
+           stage=0;
          }
          else{
-          heal=1;
+          heal=0;
          }
       }
       if (!zurge.isDead()&& cajas[2].oo_collision(zurge,40)&&!cajas[2].isDead() ) {  //  daño por chocar con orbe de bil a zurge
        cajas[2].setXY(width,height);
        cajas[2].setDead(true);
        BIL.t=0;
-         if(key=='q'){
+         if(p==1||p==-1){
          }
          else{
           heal-=60;
@@ -240,7 +226,7 @@ class Zurge {
        cajas[3].setDead(true);
        cajas[3].setXY(width,height);
        guss.t=0;
-         if(key=='q'){
+         if(p==1||p==-1){
          }
          else{
           heal-=100;
