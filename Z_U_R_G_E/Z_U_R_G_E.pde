@@ -446,7 +446,9 @@ void draw(){
     line(0.2,0.2,0.2,height-0.2);
     line(width-0.2,0.2,width-0.2,height-0.2);
     line(0.2,height-0.2,width-0.2,height-0.2); //Margen de pantalla
-    
+    if(l>600){
+      l=260;
+    }
   }
   if(stage==6&&ZURGE.heal>=5){        //Fase del nivel 2
     k++;
