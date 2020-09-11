@@ -55,4 +55,10 @@ ToDo
 - El canal de Youtube "The Coding Train" fue de gran ayuda para comprender algunos conceptos de la plataforma.
 - El libro de "Getting Started With Processing" de A Hands-O - Casey Reas fue muy útil para el desarrollo del juego.
 
+Banner
+![./BARNNER.png](./BARNNER.png)
+----
+
+Banner
+![./GAMEPLAY.gif](./GAMEPLAY.gif)
 **¿Qué te pareció?, ¿Pudiste conseguir la victoria? Esperamos te haya gustado :D*
