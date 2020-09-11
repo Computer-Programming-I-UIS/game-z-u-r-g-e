@@ -59,6 +59,8 @@ Banner
 ![./BARNNER.png](./BARNNER.png)
 ----
 
-Banner
+gameplay
 ![./GAMEPLAY.gif](./GAMEPLAY.gif)
+
+----
 **¿Qué te pareció?, ¿Pudiste conseguir la victoria? Esperamos te haya gustado :D*
